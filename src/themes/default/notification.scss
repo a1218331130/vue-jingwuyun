@@ -1,0 +1,75 @@
+.notification {
+  text-align: left;
+  .el-header {
+    position: absolute;
+    top: 8px;
+    left: 160px;
+  }
+
+  .title {
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: center;
+    background-color: #0e598d;
+    width: 150px;
+    height: 45px;
+    color: #fff;
+    font-size: 15px;
+    line-height: 45px;
+  }
+
+  .el-icon-search {
+    color: #2f80c5;
+    cursor: pointer;
+  }
+
+  .el-dialog__body {
+    padding: 0;
+  }
+
+  .el-dialog__body {
+    margin-top: 0;
+    max-height: calc(100% - 45px);
+  }
+
+  .el-dialog__header {
+    height: 45px;
+    line-height: 45px;
+  }
+
+  .el-dialog__header .el-dialog__title {
+    font-size: 15px;
+    margin-left: -25px;
+  }
+
+  .el-news {
+    width: 150px;
+    min-height: 516px;
+    background: url("../../assets/side-bar_bottombg.png") no-repeat left bottom, rgba(21, 116, 197, 0.9);
+    background: url("../../assets/side-bar_bottombg.png") no-repeat left bottom, -o-linear-gradient(top, rgb(21, 116, 197), rgb(19, 59, 114));
+    background: url("../../assets/side-bar_bottombg.png") no-repeat left bottom, -webkit-gradient(linear, 0 0, 0 bottom, from(rgb(21, 140, 230)), to(rgb(19, 59, 114)));
+  }
+
+  .el-dialog__header {
+    background: #2f80c5;
+    border-bottom: 0;
+    color: #fff;
+  }
+
+  .el-dialog__header .el-dialog__title {
+    color: #fff;
+  }
+
+  .el-dialog__header:before {
+    color: transparent;
+  }
+
+  .r-content {
+    p {
+      text-indent: 2rem;
+      margin: 0;
+      line-height: 28px;
+    }
+  }
+}

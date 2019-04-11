@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>系统维护中</title>
+
+  <style lang="scss" scoped>
+    body {
+      margin: 0;
+    }
+
+    .app-wrapper {
+      margin: 0 auto;
+      max-width: 1920px;
+      min-width: 1200px;
+      height: 100vh;
+      min-height: 600px;
+    }
+
+    .page-container {
+      background: url('/static/img/wh_bg.jpg') no-repeat center top;
+      background-size: cover;
+      min-height: 100% !important;
+      height: 100%;
+      position: relative;
+    }
+
+    .error-box {
+      text-align: center;
+      width: 1115px;
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .error-box__title {
+      font-size: 96px;
+      color: #aafdff;
+      margin-bottom: 70px;
+    }
+
+    .error-box__appellation {
+      font-size: 34px;
+      text-align: left;
+      color: #aafdff;
+      padding: 0 20px;
+      margin-bottom: 30px;
+    }
+
+    .error-box__box {
+      background: url('/static/img/wh_box.png') no-repeat center center;
+      width: 1104px;
+      height: 320px;
+    }
+
+    .error-box__content {
+      font-size: 32px;
+      color: #ffe013;
+      line-height: 56px;
+      padding: 40px 85px;
+      p {
+        margin: 0;
+      }
+    }
+
+    .heightlight {
+      color: #33fff3;
+      margin: 0 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div ondragstart="return false" class="app-wrapper">
+    <div class="page-container">
+      <div class="error-box">
+        <div class="error-box__title">
+          系统维护
+        </div>
+        <div class="error-box__appellation">
+          尊敬的客户：
+        </div>
+        <div class="error-box__box">
+          <div class="error-box__content">
+            系统正在维护中，<br/> 届时将无法正常访问网站。
+            <br/> 给您带来不便非常抱歉！
+            <br/> 如有问题，请联系客服中心
+            <span class="heightlight">4008 820 542</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

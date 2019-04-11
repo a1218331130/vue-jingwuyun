@@ -1,0 +1,122 @@
+@import "vars";
+
+/**
+* 1. 设置默认字体类型为 sans-serif.
+* 2. 当用户放大或缩小页面时不改变字体大小。
+*/
+
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+body,
+html {
+  height: 100%;
+  min-height: 600px;
+}
+
+body {
+  font-family: $fontFamily;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  background: $white;
+  font-size: $S;
+  line-height: 1.5em;
+}
+
+a {
+  text-decoration: none;
+  color: $primaryColor;
+
+  &:hover {
+    color: $primaryLightColor;
+  }
+
+  &:focus {
+    // 处理 Chrome 与其它浏览器中关于 'outline' 的不一致性。
+    outline: thin dotted;
+  }
+}
+
+// 为所有浏览器改善当激活或悬停在元素上时元素内容的可读性。
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+h1 {
+  font-size: $XL;
+  margin: 0.67em 0;
+}
+
+h2 {
+  font-size: $L;
+  margin: 0.67em 0;
+}
+
+h3 {
+  font-size: $M;
+  margin: 0.67em 0;
+}
+
+h4,
+h5,
+h6 {
+  font-size: $S;
+  margin: 0.67em 0;
+}
+
+// 处理  Firefox 4+, Safari 5, 及 Chrome 中默认的 'bolder' 样式为　'bold'.
+
+b,
+strong {
+  font-weight: bold;
+}
+
+// 为所有浏览器改善预格式化文本的可读性。
+
+pre {
+  white-space: pre-wrap;
+}
+
+// 删除 IE 8/9 中当内容位于 'a' 中出现的边框。
+
+img {
+  border: 0;
+}
+
+.user-select--none {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.clearfix {
+  overflow: hidden;
+  _zoom: 1;
+}
+
+.iconfont {
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  &.icon-close {
+    cursor: pointer;
+  }
+}
+
+.el-button > span > .iconfont {
+  margin-right: 5px;
+}

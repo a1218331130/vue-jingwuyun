@@ -1,0 +1,96 @@
+.el-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+}
+
+.el-layout--fit {
+  height: 100%;
+  overflow: hidden;
+}
+
+.el-layout__middle {
+  flex-grow: 1;
+  display: flex;
+  align-items: stretch;
+  order: 1;
+  height: 100%;
+}
+
+.el-region-north {
+  width: 100%;
+  top: 0;
+  left: 0;
+  order: 0;
+}
+
+.el-region-west {
+  order: 0;
+  left: 0;
+}
+
+.el-region-center {
+  flex-grow: 1;
+  overflow: auto;
+  order: 1;
+
+}
+
+.el-region-east {
+  order: 2;
+  right: 0;
+}
+
+.el-region-south {
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  order: 2;
+}
+.north-fixed > .el-region-north {
+  position: fixed;
+}
+
+.south-fixed > .el-region-south {
+  position: fixed;
+}
+
+.west-fixed > .el-layout__middle > .el-region-west {
+  position: fixed;
+  height: 100%;
+}
+
+// .east-fixed > .el-layout__middle > .el-region-east {
+//   position: fixed;
+//   height: 100%;
+// }
+
+.east-fixed .el-layout__middle {
+    position: relative;
+    .el-region-east {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+    }
+}
+
+
+.center-fixed > .el-layout__middle > .el-region-center {
+  position: fixed;
+}
+
+.el-region.no-zoom {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+//再版，加右侧搜索栏页面结构布局
+.app-second-north {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background-color: #fff;
+  border-bottom: 1px solid #D7D7D7;
+}

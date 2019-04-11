@@ -1,0 +1,64 @@
+.ez-popup {
+    display: none;
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    -webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+    width: 335px;
+}
+
+.ez-popup:after,
+.ez-popup:before {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.ez-popup:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-top-color: #FFFFFF;
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+.ez-popup:before {
+    border-color: rgba(255, 255, 255, 0);
+    border-top-color: #FFFFFF;
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+.ez-popup-closer {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    text-decoration: none;
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.ez-popup-closer:after {
+    content: "\e7a5";
+}
+
+.ez-popup-content {
+    text-align: center;
+    font-family: å¾®è½¯é›…é»‘, å®‹ä½“;
+    font-size: 15px;
+    line-height: 15px;
+    background: white;
+    width: 334px;
+}

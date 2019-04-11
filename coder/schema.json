@@ -1,0 +1,7160 @@
+{
+  "doc": {
+    "global": {
+      "pathPrefix": "",
+      "methods": [
+        "fetch",
+        "get",
+        "add",
+        "update",
+        "remove"
+      ],
+      "methodTypeMap": {
+        "fetch": "get",
+        "get": "get",
+        "add": "post",
+        "update": "post",
+        "remove": "get"
+      },
+      "methodSuffixMap": {
+        "fetch": "/list",
+        "get": "/info/:id",
+        "add": "/save",
+        "update": "/update",
+        "remove": "/delete"
+      },
+      "stateListName": "list",
+      "stateModelName": "model",
+      "statePageName": "page",
+      "statePageSizeName": "limit",
+      "stateTotalName": "total",
+      "mockDataName": "data",
+      "mockCodeName": "code",
+      "mockMsgName": "message"
+    },
+    "model": {
+      "type": "Object | Array",
+      "fields": {
+        "title": "[String] 接口名称/描述",
+        "path": "[String] 接口路径，必填",
+        "prefix": "[String] 接口地址前缀，可选，默认为空字符串，前缀需要在/src/config.js中配置",
+        "methods": "[Array | Boolean], 需生成接口的方法，可选，默认值：['fetch', 'get', 'add', 'update', 'remove'], 如需自定义方法设置为false",
+        "method": "[String] 可选值：fetch/get/add/update/remove,可选，methods为false时才有效",
+        "options": "[Object], VueResource参数选项，可选",
+        "columns": "[Object], 模拟数据字段mock模板",
+        "template": "[String], Mock自定义模板函数名称, 名称必须在/src/mock/templates.js中能找到，设置了该值，columns将失效",
+        "name": "[String], 自定义请求接口方法名，methods为false时，必须要设置",
+        "state": "[String], 自定义store的状态名称，methods为false并且method为空时，必须要设置，请求响应数据将保存在这个状态名称",
+        "disabled": "[Boolean] true时排除该接口，即不生成代码"
+      }
+    }
+  },
+  "global": {
+    "pathPrefix": "FWZX_PATH",
+    "methodTypeMap": {
+      "fetch": "post",
+      "get": "post",
+      "add": "post",
+      "update": "post",
+      "remove": "post"
+    },
+    "stateListName": "PageData",
+    "stateModelName": "Model",
+    "statePageName": "PageIndex",
+    "statePageSizeName": "PageSize",
+    "stateTotalName": "DataCount",
+    "mockDataName": "data",
+    "mockCodeName": "status",
+    "mockMsgName": "message"
+  },
+  "models": {
+    "sooKey": [
+      {
+        "title": "获取直通车单点登录秘钥skey",
+        "path": "xtztc/info/getrandkey",
+        "methods": false,
+        "name": "getSecretKey",
+        "state": "getSecretKey"
+      }
+    ],
+    "image": [
+      {
+        "title": "获取身份证图片 {Sfzh:'XXX'}",
+        "path": "Sys/GetSfzhImage",
+        "methods": false,
+        "name": "getImageByIdCard",
+        "state": "imageByIdCard"
+      },
+      {
+        "title": "获取标准库的图标 {Id:'',TableId:''}",
+        "path": "Sys/GetBzbImage",
+        "methods": false,
+        "name": "getImageById",
+        "state": "imageById"
+      },
+      {
+        "title": "保存图片地址到附件中 {Sfzh:'XXX',ImageUrls:[{'http://XXX'},...]}",
+        "path": "Sys/SaveUrlsToFile",
+        "methods": false,
+        "name": "postUrlsToFile",
+        "state": "postUrlsToFileRes"
+      }
+    ],
+    "fileToFormal": [
+      {
+        "title": "上传附件从临时目录移交到正式目录保存 触发接口",
+        "path": "Sys/FileUploaderToSaves",
+        "methods": false,
+        "name": "SaveFileToFormal",
+        "state": "SaveFileToFormal"
+      }
+    ],
+    "videoInfo": [
+      {
+        "title": "获取上传视频-基本信息",
+        "path": "Sys/GetVideoInfo",
+        "methods": false,
+        "name": "GetVideoInfo",
+        "state": "GetVideoInfo"
+      }
+    ],
+    "baseData": [
+      {
+        "path": "sys/Base64ImageUploader",
+        "methods": false,
+        "name": "Base64ImageSaver",
+        "state": "Base64ImageSaverRes"
+      },
+      {
+        "path": "query/getperson/info",
+        "methods": false,
+        "name": "getPersonInfoFromMainData",
+        "state": "personInfo"
+      },
+      {
+        "path": "zfsc/library/getXzqhList",
+        "methods": false,
+        "name": "fetchAreaList",
+        "state": "areaList"
+      },
+      {
+        "path": "zfsc/library/getHotelList",
+        "methods": false,
+        "name": "fetchHotelList",
+        "state": "hotelList"
+      },
+      {
+        "path": "Ajgl/GetJzajByAjbh",
+        "methods": false,
+        "name": "getCaseBaseInfo",
+        "state": "caseBaseInfo"
+      },
+      {
+        "path": "Ajgl/GetJzajXyrysByAjbh",
+        "methods": false,
+        "name": "fetchSuspectPersons",
+        "state": "suspectPersons"
+      },
+      {
+        "path": "Ajgl/GetJzajQkrysByAjbh",
+        "methods": false,
+        "name": "fetchRecordPersons",
+        "state": "recordPersons"
+      },
+      {
+        "path": "zfsc/library/getAreaList",
+        "methods": false,
+        "name": "fetchAreaTreeList",
+        "state": "areaTreeList"
+      }, {
+        "title": "根据区划编码查找下拉网吧",
+        "path": "zfsc/library/getNetBarListByArea",
+        "methods": false,
+        "name": "fetchTacticsNetBarList",
+        "state": "fetchTacticsNetBarListResult"
+      },
+      {
+        "title": "根据区划编码查找下拉酒店",
+        "path": "zfsc/library/getHotelListByArea",
+        "methods": false,
+        "name": "fetchHotelListByAreaCode",
+        "state": "hotelListByAreaCode"
+      },
+      {
+        "title": "获取在线人数",
+        "path": "Sys/GetOnlineCount",
+        "methods": false,
+        "name": "GetOnlineCount",
+        "state": "GetOnlineCount"
+      }
+    ],
+    "sysDictionary": [
+      {
+        "path": "Sys/GetDeptDicts",
+        "methods": false,
+        "name": "GetDeptDicts",
+        "state": "DeptDicts"
+      },
+      {
+        "path": "Sys/GetRoleDicts",
+        "methods": false,
+        "name": "GetRoleDicts",
+        "state": "RoleDicts"
+      }
+    ],
+    "area": [
+      {
+        "title": "中国行政区划级联数据 参数fjdm,keyword",
+        "path": "sys/dict/findbyfjdm",
+        "methods": false,
+        "name": "fetchAdminDivision",
+        "state": "list"
+      }
+    ],
+    "orgs": [
+      {
+        "title": "获取组织树",
+        "path": "system/org/findbytree",
+        "methods": false,
+        "name": "FetchSysOrgTreeById",
+        "state": "sysOrgTreeById"
+      },
+      {
+        "title": "根据ORGID获取组织列表",
+        "path": "system/org/findbytreepage",
+        "methods": false,
+        "name": "FetchSysOrgListById",
+        "state": "sysOrgListById"
+      },
+      {
+        "title": "获取组织列表",
+        "path": "system/org/list",
+        "methods": false,
+        "name": "GetSysOrgList",
+        "state": "sysOrgList"
+      },
+      {
+        "title": "选择组织",
+        "path": "system/org/select",
+        "methods": false,
+        "name": "GetSysOrgTree",
+        "state": "sysOrgTree"
+      },
+      {
+        "title": "根据当前单位id获取下级单位列表",
+        "path": "system/org/findbyjztree",
+        "methods": false,
+        "name": "fetchSysOrgByCurryOrg",
+        "state": "orgByCurryOrg"
+      },
+      {
+        "title": "获取组织详情",
+        "path": "system/org/info",
+        "methods": false,
+        "name": "GetSysOrgInfo",
+        "state": "sysOrgInfo"
+      },
+      {
+        "title": "根据警种获取组织列表",
+        "path": "system/org/findbyjz",
+        "methods": false,
+        "name": "GetSysOrgTreeByType",
+        "state": "sysOrgTreeFromType"
+      },
+      {
+        "title": "新增组织",
+        "path": "system/org/save",
+        "methods": false,
+        "name": "AddSysOrg",
+        "state": "addSysOrg"
+      },
+      {
+        "title": "修改组织",
+        "path": "system/org/update",
+        "methods": false,
+        "name": "UpdateSysOrg",
+        "state": "updateSysOrg"
+      },
+      {
+        "title": "删除组织",
+        "path": "system/org/delete",
+        "methods": false,
+        "name": "DeleteSysOrg",
+        "state": "deleteSysOrg"
+      },
+      {
+        "title": "获取单位列表",
+        "path": "system/org/findbyzx",
+        "methods": false,
+        "name": "sysZxOrg",
+        "state": "centerOrg"
+      }
+    ],
+    "roles": [
+      {
+        "title": "获取角色列表",
+        "path": "system/role/list",
+        "methods": false,
+        "name": "GetSysRoleList",
+        "state": "sysRoleList"
+      },
+      {
+        "title": "选择组织",
+        "path": "system/role/select",
+        "methods": false,
+        "name": "GetSysRoleTree",
+        "state": "sysRoleTree"
+      },
+      {
+        "title": "获取角色详情",
+        "path": "system/role/info",
+        "methods": false,
+        "name": "GetSysRoleInfo",
+        "state": "sysRoleInfo"
+      },
+      {
+        "title": "新增角色",
+        "path": "system/role/save",
+        "methods": false,
+        "name": "SaveSysRole",
+        "state": "saveSysRole"
+      },
+      {
+        "title": "修改角色",
+        "path": "system/role/update",
+        "methods": false,
+        "name": "UpdateSysRole",
+        "state": "updateSysRole"
+      },
+      {
+        "title": "删除角色",
+        "path": "system/role/delete",
+        "methods": false,
+        "name": "DeleteSysRole",
+        "state": "deleteSysRole"
+      }
+    ],
+    "users": [
+      {
+        "title": "用户登录",
+        "path": "/jwy/login/UserLogin",
+        "prefix": "LOGIN_HOST",
+        "methods": false,
+        "name": "UserLogin",
+        "state": "UserLogin",
+        "template": "handleLogin"
+      },
+      {
+        "title": "获取用户权限权限",
+        "path": "Sys/GetUserActions",
+        "methods": false,
+        "name": "GetUserActions",
+        "state": "UserActions"
+      },
+      {
+        "title": "用户登出",
+        "path": "Login/LoginOut",
+        "methods": false,
+        "name": "UserLogout",
+        "state": "userLogout"
+      },
+      {
+        "title": "获取用户菜单",
+        "path": "Sys/GetUserMenu",
+        "methods": false,
+        "name": "FetchUserMenu",
+        "state": "userMenu"
+      },
+      {
+        "title": "获取用户菜单(LIST)",
+        "path": "Sys/GetUserMenu",
+        "methods": false,
+        "name": "FetchUserMenuList",
+        "state": "userMenuList"
+      },
+      {
+        "title": "获取当前用户信息",
+        "path": "Sys/GetCurrentUser",
+        "methods": false,
+        "name": "GetCurrentUser",
+        "state": "CurrentUser"
+      },
+      {
+        "title": "根据单位获取用户分页列表",
+        "path": "system/user/findbyorgidpage",
+        "methods": false,
+        "name": "FetchUserListByOrgId",
+        "state": "listByOrgId"
+      },
+      {
+        "title": "获取用户列表",
+        "path": "system/user/list",
+        "methods": false,
+        "name": "GetSysUserList",
+        "state": "sysUserList"
+      },
+      {
+        "title": "获取用户详情",
+        "path": "system/user/info",
+        "methods": false,
+        "name": "GetSysUserInfo",
+        "state": "sysUserInfo"
+      },
+      {
+        "title": "新增用户",
+        "path": "system/user/save",
+        "methods": false,
+        "name": "AddSysUser",
+        "state": "addSysUser"
+      },
+      {
+        "title": "修改用户",
+        "path": "system/user/update",
+        "methods": false,
+        "name": "UpdateSysUser",
+        "state": "updateSysUser"
+      },
+      {
+        "title": "删除用户",
+        "path": "system/user/delete",
+        "methods": false,
+        "name": "DelSysUser",
+        "state": "delSysUser"
+      },
+      {
+        "title": "修改用户密码",
+        "path": "system/user/password",
+        "methods": false,
+        "name": "UpdatePassword",
+        "state": "updatePassword"
+      },
+      {
+        "title": "获取登录的用户信息",
+        "path": "system/user/info",
+        "methods": false,
+        "name": "GetSysUser",
+        "state": "currentUser"
+      },
+      {
+        "title": "查询用户信息",
+        "path": "system/user/findUser",
+        "methods": false,
+        "name": "FindSysUser",
+        "state": "sysUserInfo"
+      },
+      {
+        "title": "获取某单位下所有用户列表('orgId':'431200000000')",
+        "path": "system/user/findbyorgid",
+        "methods": false,
+        "name": "fetchSysUsersByOrgid",
+        "state": "sysUserFromOrgid"
+      },
+      {
+        "title": "根据关键字查询用户列表",
+        "path": "system/user/findbyname",
+        "methods": false,
+        "name": "fetchUserListByKeyword",
+        "state": "fetchUserListByKeyword"
+      },
+      {
+        "title": "检测当前用户名是否存在",
+        "path": "system/user/checktotal",
+        "methods": false,
+        "name": "checkUser",
+        "state": "checkUser"
+      }
+    ],
+    "menus": [
+      {
+        "path": "/SideBarMenus",
+        "prefix": "TEST_PATH",
+        "methods": false,
+        "name": "SideBarMenus",
+        "state": "SideBarMenus",
+        "template": "handleFetchMenuTree"
+      },
+      {
+        "path": "sys/menu/list",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchSysMenu",
+        "_state": "sysMenu",
+        "_template": "sysMenu"
+      },
+      {
+        "path": "sys/menu/save",
+        "methods": false,
+        "method": "add",
+        "name": "AddSysMenu"
+      },
+      {
+        "path": "sys/menu/update",
+        "methods": false,
+        "method": "update",
+        "name": "UpdateSysMenu"
+      },
+      {
+        "path": "sys/menu/delete",
+        "methods": false,
+        "method": "remove",
+        "name": "RemoveSysMenu"
+      },
+      {
+        "path": "sys/menu/info",
+        "methods": false,
+        "method": "get",
+        "name": "GetSysMenu"
+      }
+    ],
+    "menuTree": [
+      {
+        "title": "菜单树分页列表",
+        "path": "system/menutree/list",
+        "methods": false,
+        "name": "fetchMenuTree",
+        "state": "list"
+      },
+      {
+        "title": "新增菜单树",
+        "path": "system/menutree/save",
+        "methods": false,
+        "name": "postMenuTree",
+        "state": "postRes"
+      },
+      {
+        "title": "修改菜单树",
+        "path": "system/menutree/update",
+        "methods": false,
+        "name": "updateMenuTree",
+        "state": "updateRes"
+      },
+      {
+        "title": "删除菜单树",
+        "path": "system/menutree/delete",
+        "methods": false,
+        "name": "deleteMenuTree",
+        "state": "deleteRes"
+      },
+      {
+        "title": "查询用户菜单树节点信息",
+        "path": "system/menutree/info",
+        "methods": false,
+        "name": "getMenuTree",
+        "state": "detail"
+      },
+      {
+        "title": "从菜单管理复制子菜单(ParentID,MenuId)",
+        "path": "Sys/CopySonMenusToTree",
+        "methods": false,
+        "name": "postCopySonMenusToTree",
+        "state": "copySonMenusRes"
+      },
+      {
+        "title": "查询用户拥有的菜单树信息",
+        "path": "system/menutree/findall",
+        "methods": false,
+        "name": "fetchMenuTreeByUser",
+        "state": "userList"
+      },
+      {
+        "title": "用户有权限菜单列表",
+        "path": "sys/menu/listbyuser",
+        "methods": false,
+        "name": "fetchMenuForTree",
+        "state": "menuList"
+      }
+    ],
+    "redList": [
+      {
+        "title": "红名单列表",
+        "path": "safetyReview/redList/list",
+        "methods": false,
+        "name": "fetchRedList",
+        "state": "list"
+      },
+      {
+        "title": "红名单新增",
+        "path": "safetyReview/redList/save",
+        "methods": false,
+        "name": "postRedList",
+        "state": "addRedListRes"
+      },
+      {
+        "title": "红名单详情",
+        "path": "safetyReview/redList/getRedListById",
+        "methods": false,
+        "name": "getRedListById",
+        "state": "getRedListById"
+      },
+      {
+        "title": "红名单编辑",
+        "path": "safetyReview/redList/update",
+        "methods": false,
+        "name": "updateRedListById",
+        "state": "updateRedListById"
+      },
+      {
+        "title": "红名单启用/禁用",
+        "path": "safetyReview/redList/updateIsEnable",
+        "methods": false,
+        "name": "updateIsEnable",
+        "state": "updateIsEnable"
+      },
+      {
+        "title": "红名单批量启用/禁用",
+        "path": "safetyReview/redList/updateIsEnableBatch",
+        "methods": false,
+        "name": "updateIsEnableBatch",
+        "state": "updateIsEnableBatch"
+      },
+      {
+        "title": "红名单删除",
+        "path": "safetyReview/redList/delete",
+        "methods": false,
+        "name": "deleteRedList",
+        "state": "deleteRedList"
+      },
+      {
+        "title": "获取单位",
+        "path": "safetyReview/redList/findDeptTree",
+        "methods": false,
+        "name": "findDeptTree",
+        "state": "findDeptTree"
+      }
+    ],
+    "waiteList": [
+      {
+        "title": "白名单列表",
+        "path": "safetyReview/whiteList/list",
+        "methods": false,
+        "name": "fetchWaiteList",
+        "state": "list"
+      },
+      {
+        "title": "白名单导入",
+        "path": "safetyReview/whiteList/excelImport",
+        "methods": false,
+        "name": "excelImport",
+        "state": "excelImport"
+      },
+      {
+        "title": "白名单新增",
+        "path": "safetyReview/whiteList/save",
+        "methods": false,
+        "name": "postWaiteList",
+        "state": "addwhiteListRes"
+      },
+      {
+        "title": "白名单详情",
+        "path": "safetyReview/whiteList/getRedListById",
+        "methods": false,
+        "name": "getWaiteListById",
+        "state": "getWaiteListById"
+      },
+      {
+        "title": "白名单编辑",
+        "path": "safetyReview/whiteList/update",
+        "methods": false,
+        "name": "updateWaiteListById",
+        "state": "updateWaiteListById"
+      },
+      {
+        "title": "白名单启用/禁用",
+        "path": "safetyReview/whiteList/updateIsEnable",
+        "methods": false,
+        "name": "updateWaiteIsEnable",
+        "state": "updateWaiteIsEnable"
+      },
+      {
+        "title": "白名单批量启用/禁用",
+        "path": "safetyReview/whiteList/updateIsEnableBatch",
+        "methods": false,
+        "name": "updateWaiteIsEnableBatch",
+        "state": "updateWaiteIsEnableBatch"
+      },
+      {
+        "title": "白名单删除",
+        "path": "safetyReview/whiteList/delete",
+        "methods": false,
+        "name": "deleteWaiteList",
+        "state": "deleteWaiteList"
+      },
+      {
+        "title": "白名单手动同步警员信息",
+        "path": "safetyReview/whiteList/synchronize",
+        "methods": false,
+        "name": "synchronize",
+        "state": "synchronize"
+      }
+    ],
+    "blackList": [
+      {
+        "title": "黑名单新增",
+        "path": "safetyReview/blackList/apply",
+        "methods": false,
+        "name": "postApply",
+        "state": "postApply"
+      },
+      {
+        "title": "黑名单草稿列表",
+        "path": "safetyReview/blackList/listDraft",
+        "methods": false,
+        "name": "fetchDraftList",
+        "state": "draftList"
+      },
+      {
+        "title": "黑名单详情",
+        "path": "safetyReview/blackList/getBlackListById",
+        "methods": false,
+        "name": "getBlackListById",
+        "state": "getBlackListById"
+      },
+      {
+        "title": "黑名单草稿编辑",
+        "path": "safetyReview/blackList/updateDraft",
+        "methods": false,
+        "name": "blackListUpdateDraft",
+        "state": "blackListUpdateDraft"
+      },
+      {
+        "title": "黑名单草稿提交申请",
+        "path": "safetyReview/blackList/draftToApply",
+        "methods": false,
+        "name": "draftToApply",
+        "state": "draftToApply"
+      },
+      {
+        "title": "黑名单删除",
+        "path": "safetyReview/blackList/deleteDraft",
+        "methods": false,
+        "name": "deleteDraft",
+        "state": "deleteDraft"
+      },
+      {
+        "title": "黑名单待审/已审列表",
+        "path": "safetyReview/blackList/pendingList",
+        "methods": false,
+        "name": "pendingList",
+        "state": "pendingList"
+      },
+      {
+        "title": "黑名单待审/已审列表查看详情",
+        "path": "safetyReview/blackList/viewDetail",
+        "methods": false,
+        "name": "viewDetail",
+        "state": "viewDetail"
+      },
+      {
+        "title": "黑名单提交审批",
+        "path": "safetyReview/blackList/approval",
+        "methods": false,
+        "name": "postApproval",
+        "state": "postApproval"
+      },
+      {
+        "title": "黑名单审批中/审批完成列表",
+        "path": "safetyReview/blackList/viewApproval",
+        "methods": false,
+        "name": "viewApprovalList",
+        "state": "viewApprovalList"
+      },
+      {
+        "title": "黑名单判断申请人、审批人接口",
+        "path": "safetyReview/blackList/judgmentUser",
+        "methods": false,
+        "name": "judgmentUser",
+        "state": "judgmentUser"
+      },
+      {
+        "title": "黑名单批量审批",
+        "path": "safetyReview/blackList/approvalBatch",
+        "methods": false,
+        "name": "approvalBatch",
+        "state": "approvalBatch"
+      }
+    ],
+    "handleLog": [
+      {
+        "title": "系统操作日志-菜单名称",
+        "path": "sys/handleLog/getMenuForSelect",
+        "methods": false,
+        "name": "getMenuForSelect",
+        "state": "getMenuForSelect"
+      },
+      {
+        "title": "系统操作日志-日志列表",
+        "path": "sys/handleLog/getSysHandleLogByPage",
+        "methods": false,
+        "name": "getSysHandleLogByPage",
+        "state": "getSysHandleLogByPage"
+      }
+    ],
+    "cooperative": [
+      {
+        "title": "获取模糊查询协同办公_协作模板列表",
+        "path": "xtbg/mould/queryList",
+        "methods": false,
+        "name": "fetchQueryList",
+        "state": "queryList"
+      },
+      {
+        "title": "新增协同办公_协作模板信息",
+        "path": "xtbg/mould/save",
+        "methods": false,
+        "name": "addMouldInfo",
+        "state": "addMouldInfo"
+      },
+      {
+        "title": "修改协同办公_协作模板信息",
+        "path": "xtbg/mould/update",
+        "methods": false,
+        "name": "updateMouldInfo",
+        "state": "updateMouldInfo"
+      },
+      {
+        "title": "删除协同办公_协作模板信息（逻辑删除）",
+        "path": "xtbg/mould/logicDelete",
+        "methods": false,
+        "name": "deleteMouldInfo",
+        "state": "deleteMouldInfo"
+      },
+      {
+        "title": "根据orgid获取协作模板列表",
+        "path": "xtbg/mould/queryByOrgid",
+        "methods": false,
+        "name": "fetchOrgMouldList",
+        "state": "orgMouldList"
+      }
+    ],
+    "notice": [
+      {
+        "path": "Notice/AddReadMsgData",
+        "methods": false,
+        "method": "update",
+        "name": "AddReadMsgData"
+      }
+    ],
+    "message": [
+      {
+        "path": "Notice/GetMessagesByPage",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchMessage"
+      },
+      {
+        "path": "Notice/GetMessagesById",
+        "methods": false,
+        "method": "get",
+        "name": "FetchMessageById"
+      },
+      {
+        "path": "Notice/EditMessage",
+        "methods": false,
+        "method": "update",
+        "name": "EditMessage"
+      },
+      {
+        "path": "Notice/AddMessage",
+        "methods": false,
+        "method": "add",
+        "name": "AddMessage"
+      },
+      {
+        "path": "Notice/DelMessages",
+        "methods": false,
+        "method": "remove",
+        "name": "DelMessages"
+      },
+      {
+        "path": "Notice/DelAttachment",
+        "methods": false,
+        "method": "remove",
+        "name": "DelAttachment"
+      },
+      {
+        "path": "Notice/GetUnReadMsgCount",
+        "methods": false,
+        "name": "GetUnReadMsgCount",
+        "state": "UnReadMsgCount"
+      },
+      {
+        "path": "Notice/UpdateSignUp",
+        "methods": false,
+        "name": "postSignUp",
+        "state": "signUpRes"
+      },
+      {
+        "path": "Notice/GetUnReadMsgList",
+        "methods": false,
+        "name": "FetchUnReadMsgList",
+        "state": "readMsgList"
+      },
+      {
+        "title": "nimahai的单位接口",
+        "path": "Notice/GetOrgReadData",
+        "methods": false,
+        "name": "GetOrgReadData",
+        "state": "OrgReadData"
+      },
+      {
+        "title": "nimahai的人员接口",
+        "path": "Notice/GetUserReadData",
+        "methods": false,
+        "name": "GetUserReadData",
+        "state": "UserReadData"
+      }
+    ],
+    "search": [
+      {
+        "title": "慧搜-结果要素",
+        "path": "Search/GetYjYslxs",
+        "methods": false,
+        "name": "SearchGetYjYslxs",
+        "state": "searchGetYjYslxs"
+      },
+      {
+        "title": "慧搜-结果",
+        "path": "Search/SearchNextPage",
+        "methods": false,
+        "name": "SearchResult",
+        "state": "searchResult"
+      },
+      {
+        "title": "慧搜-要素结果",
+        "path": "Search/SearchAggrNextPage",
+        "methods": false,
+        "name": "searchAggrResult",
+        "state": "searchAggrResult"
+      },
+      {
+        "title": "慧搜-右侧聚类树结果",
+        "path": "Search/SearchNextPage",
+        "methods": false,
+        "name": "searchAggrTreeResult",
+        "state": "searchAggrTreeResult"
+      },
+      {
+        "title": "慧搜-获取单表查询树",
+        "path": "query/singleTable/getTableList",
+        "methods": false,
+        "name": "getTableListTree",
+        "state": "getTableListTree"
+      },
+      {
+        "title": "慧搜-获取单表查询树的字段",
+        "path": "query/singleTable/getTableInfo",
+        "methods": false,
+        "name": "getTableInfo",
+        "state": "getTableInfo"
+      },
+      {
+        "title": "慧搜-单表查询搜索",
+        "path": "query/singleTable/searchNextPage",
+        "methods": false,
+        "name": "searchNextPage",
+        "state": "searchNextPage"
+      },
+      {
+        "title": "慧搜-表树",
+        "path": "Search/Search",
+        "methods": false,
+        "name": "SearchCateTree",
+        "state": "searchCateTree"
+      },
+      {
+        "title": "慧搜-表树(异步)",
+        "path": "Search/SyncSearch",
+        "methods": false,
+        "name": "SyncSearch",
+        "state": "SyncSearch"
+      },
+      {
+        "title": "慧搜-聚类树",
+        "path": "Search/Search",
+        "methods": false,
+        "name": "searchElmTree",
+        "state": "searchElmTree"
+      },
+      {
+        "title": "慧搜-聚类项",
+        "path": "Search/Search",
+        "methods": false,
+        "name": "searchElms",
+        "state": "searchElms"
+      },
+      {
+        "title": "慧搜-专题集合",
+        "path": "Search/GetZts",
+        "methods": false,
+        "name": "GetSearchSpecial",
+        "state": "searchSpecial"
+      },
+      {
+        "title": "慧搜-专题搜索",
+        "path": "Search/SearchZt",
+        "methods": false,
+        "name": "searchZt",
+        "state": "searchZt"
+      },
+      {
+        "title": "慧搜-获取人员标签",
+        "path": "SysLabel/GetDbLabels",
+        "methods": false,
+        "name": "getDbLabels",
+        "state": "DbLabels"
+      },
+      {
+        "title": "慧搜-获取人员标签-stocket",
+        "path": "SysLabel/SyncGetDbLabels",
+        "methods": false,
+        "name": "getDbLabelsByStocket",
+        "state": "DbLabelsByStocket"
+      },
+      {
+        "title": "慧搜-首页提示集合",
+        "path": "Search/GetSearchNodes",
+        "methods": false,
+        "name": "GetSearchNodes",
+        "state": "searchNodes"
+      },
+      {
+        "title": "慧搜-纪录",
+        "path": "Search/GetSearchHisLog",
+        "methods": false,
+        "name": "GetSearchHisLog",
+        "state": "searchHisLog"
+      },
+      {
+        "title": "慧搜-获取要素集合",
+        "path": "Search/GetYs",
+        "methods": false,
+        "name": "GetSearchElmList",
+        "state": "searchElmList"
+      },
+      {
+        "title": "慧搜-获取行业分类集合",
+        "path": "Search/GetHylxs",
+        "methods": false,
+        "name": "GetSearchCatList",
+        "state": "searchCatList"
+      },
+      {
+        "title": "慧搜-批量检索(开启)",
+        "path": "Search/SearchPl",
+        "methods": false,
+        "name": "fetchSearchPl",
+        "state": "searchPlList"
+      },
+      {
+        "title": "慧搜-批量检索(停止)",
+        "path": "Search/StopPlSearch",
+        "methods": false,
+        "name": "removeSearchPl",
+        "state": "stopSearchPlRes"
+      },
+      {
+        "title": "慧搜-获取批量检索日志列表",
+        "path": "Search/GetSearchHisPlLog",
+        "methods": false,
+        "name": "fetchBatchHistory",
+        "state": "batchHistoryList"
+      },
+      {
+        "title": "慧搜-可以查询批量检索的关键字 参数：PljsID",
+        "path": "Search/GetSearchHisLog",
+        "methods": false,
+        "name": "getBatchDetail",
+        "state": "batchDetail"
+      },
+      {
+        "title": "慧搜-数据导出 参数：Ids(Arr) TableId(Str)",
+        "path": "Search/ExportData",
+        "methods": false,
+        "name": "getExportData",
+        "state": "exportData"
+      }
+    ],
+    "improt": [
+      {
+        "title": "数据导入-上传数据导入文件",
+        "path": "Sjdr/UploadFile",
+        "methods": false,
+        "name": "postImprotUpload",
+        "state": "uploadRes"
+      },
+      {
+        "title": "数据导入-预览数据",
+        "path": "Sjdr/GetViewData",
+        "methods": false,
+        "name": "fetchImprotPrview",
+        "state": "list"
+      },
+      {
+        "title": "数据导入-获取自动匹配列头",
+        "path": "Sjdr/GetYwColumns",
+        "methods": false,
+        "name": "getImprotAutoMatchColumns",
+        "state": "matchColumns"
+      },
+      {
+        "title": "数据导入-获取导入账单话单主账号信息",
+        "path": "Sjdr/GetFileZzhs",
+        "methods": false,
+        "name": "getImprotMainAccoundInfo",
+        "state": "mainAccoundInfo"
+      },
+      {
+        "title": "数据导入-导入账单话单数据",
+        "path": "Sjdr/SaveSjdrxx",
+        "methods": false,
+        "name": "postImprotData",
+        "state": "postDataRes"
+      },
+      {
+        "title": "数据导入-话单数据",
+        "path": "Hdgl/SaveHdglHdzh",
+        "methods": false,
+        "name": "SaveHdglHdzh",
+        "state": "saveHdglHdzh"
+      },
+      {
+        "title": "删除话单数据",
+        "path": "Hdgl/DeleteHdzh",
+        "methods": false,
+        "name": "DeleteHdzh",
+        "state": "deleteHdzh"
+      },
+      {
+        "title": "话单数据列表",
+        "path": "Hdgl/GetHdglHdzhs",
+        "methods": false,
+        "name": "GetHdglHdzhs",
+        "state": "getHdglHdzhs"
+      },
+      {
+        "title": "数据导入-获取文本文件内容(可用于JSON)",
+        "path": "Sys/ReadFileText",
+        "methods": false,
+        "name": "getTextFileContent",
+        "state": "textFileContent"
+      },
+      {
+        "title": "文件导入-获取资源表列表",
+        "path": "Sjdr/GetZYBList",
+        "methods": false,
+        "name": "getZybList",
+        "state": "zybDataList"
+      }
+    ],
+    "know": [
+      {
+        "path": "MlkMsg/GetStrategyList",
+        "methods": false,
+        "name": "GetStrategyList",
+        "state": "list"
+      },
+      {
+        "path": "MlkMsg/GetStrategyById",
+        "methods": false,
+        "name": "GetStrategyById",
+        "state": "detail"
+      },
+      {
+        "path": "MlkMsg/AddStrategyMsg",
+        "methods": false,
+        "method": "add",
+        "name": "AddStrategyMsg"
+      },
+      {
+        "path": "MlkMsg/EditStrategyMsg",
+        "methods": false,
+        "method": "update",
+        "name": "EditStrategyMsg"
+      },
+      {
+        "path": "MlkMsg/DelStrategyById",
+        "methods": false,
+        "method": "remove",
+        "name": "DelStrategyById"
+      },
+      {
+        "path": "MlkMsg/AddStrategyRead",
+        "methods": false,
+        "method": "add",
+        "name": "AddStrategyRead"
+      },
+      {
+        "path": "MlkMsg/GetStrategyRead",
+        "methods": false,
+        "method": "get",
+        "name": "GetStrategyRead"
+      }
+    ],
+    "knowNews": [
+      {
+        "path": "MlkMsg/GetStrategyList",
+        "methods": false,
+        "method": "fetch",
+        "name": "GetStrategyNewsList"
+      }
+    ],
+    "knowCollect": [
+      {
+        "path": "MlkMsg/AddStrategyCollect",
+        "methods": false,
+        "method": "add",
+        "name": "AddStrategyCollect"
+      },
+      {
+        "path": "MlkMsg/DelStrategyCollect",
+        "methods": false,
+        "method": "remove",
+        "name": "DelStrategyCollect"
+      },
+      {
+        "path": "MlkMsg/GetStrategyCollects",
+        "methods": false,
+        "method": "get",
+        "name": "GetStrategyCollects"
+      }
+    ],
+    "knowPraise": [
+      {
+        "path": "MlkMsg/AddStrategyPraise",
+        "methods": false,
+        "method": "add",
+        "name": "AddStrategyPraise"
+      },
+      {
+        "path": "MlkMsg/DelStrategyPraise",
+        "methods": false,
+        "method": "remove",
+        "name": "DelStrategyPraise"
+      },
+      {
+        "path": "MlkMsg/GetStrategyPraise",
+        "methods": false,
+        "method": "get",
+        "name": "GetStrategyPraise"
+      }
+    ],
+    "knowComment": [
+      {
+        "path": "MlkMsg/AddStrategyComment",
+        "methods": false,
+        "method": "add",
+        "name": "AddStrategyComment"
+      },
+      {
+        "path": "MlkMsg/DelStrategyComment",
+        "methods": false,
+        "method": "remove",
+        "name": "DelStrategyComment"
+      },
+      {
+        "path": "MlkMsg/GetStrategyComments",
+        "methods": false,
+        "method": "get",
+        "name": "GetStrategyComments"
+      }
+    ],
+    "knowTemplate": [
+      {
+        "path": "Zsk/ZskMbbGetPageList",
+        "methods": false,
+        "method": "fetch",
+        "name": "ZskMbbGetPageList"
+      },
+      {
+        "path": "Zsk/ZskMbbGetData",
+        "methods": false,
+        "method": "get",
+        "name": "ZskMbbGetData"
+      },
+      {
+        "path": "Zsk/ZskMbbAdd",
+        "methods": false,
+        "method": "add",
+        "name": "ZskMbbAdd"
+      },
+      {
+        "path": "Zsk/ZskMbbEdit",
+        "methods": false,
+        "method": "update",
+        "name": "ZskMbbEdit"
+      },
+      {
+        "path": "Zsk/ZskMbbDel",
+        "methods": false,
+        "method": "remove",
+        "name": "ZskMbbDel"
+      }
+    ],
+    "knowCate": [
+      {
+        "path": "Zsk/ZskFlGetTree",
+        "methods": false,
+        "method": "get",
+        "name": "ZskFlGetTree"
+      },
+      {
+        "path": "Zsk/ZskFlGetTreeSelect",
+        "methods": false,
+        "method": "get",
+        "name": "ZskFlGetTreeSelect"
+      },
+      {
+        "path": "Zsk/ZskFlGetData",
+        "methods": false,
+        "method": "get",
+        "name": "ZskFlGetData"
+      },
+      {
+        "path": "Zsk/ZskFlAdd",
+        "methods": false,
+        "method": "add",
+        "name": "ZskFlAdd"
+      },
+      {
+        "path": "Zsk/ZskFlEdit",
+        "methods": false,
+        "method": "update",
+        "name": "ZskFlEdit"
+      },
+      {
+        "path": "Zsk/ZskFlDel",
+        "methods": false,
+        "method": "remove",
+        "name": "ZskFlDel"
+      }
+    ],
+    "systemNew": [
+      {
+        "title": "警务云-精准布控，工作提醒，系统信息",
+        "path": "message/new/list",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchSystemNew"
+      },
+      {
+        "title": "警务云-精准布控，工作提醒，系统信息修改已读状态",
+        "path": "message/new/updateMessageState",
+        "methods": false,
+        "method": "get",
+        "name": "updateMessageState",
+        "state": "updateMessageState"
+      },
+      {
+        "path": "Notice/GetNewsById",
+        "methods": false,
+        "method": "get",
+        "name": "GetNewsById"
+      },
+      {
+        "path": "Notice/UpdateNewsState",
+        "methods": false,
+        "method": "update",
+        "name": "UpdateNewsState"
+      },
+      {
+        "path": "Notice/GetUnreadNewsCount",
+        "methods": false,
+        "name": "GetUnreadNewsCount",
+        "state": "UnreadNewsCount"
+      },
+      {
+        "path": "message/new/getUnreadMessageCount",
+        "methods": false,
+        "name": "GetTotalUnreadCount",
+        "state": "GetTotalUnreadCount"
+      }
+    ],
+    "serviceBus": [
+      {
+        "path": "sys/service/list",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchServiceBus"
+      },
+      {
+        "path": "sys/service/info",
+        "methods": false,
+        "method": "get",
+        "name": "FetchServiceBusById"
+      },
+      {
+        "path": "sys/service/save",
+        "methods": false,
+        "method": "add",
+        "name": "AddServiceBus"
+      },
+      {
+        "path": "sys/service/update",
+        "methods": false,
+        "method": "update",
+        "name": "updateServiceBus"
+      },
+      {
+        "path": "sys/service/delete",
+        "methods": false,
+        "method": "remove",
+        "name": "deleteserviceBusById"
+      },
+      {
+        "path": "sys/service/deleteBatch",
+        "methods": false,
+        "method": "remove",
+        "name": "deleteserviceBusByBatch"
+      },
+      {
+        "path": "sys/service/select",
+        "methods": false,
+        "name": "getServiceBus",
+        "state": "serviceBusByName"
+      }
+    ],
+    "log": [
+      {
+        "path": "SysLog/GetSysLogByPage",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchLog"
+      }
+    ],
+    "errLog": [
+      {
+        "path": "SysLog/GetSysErrLogByPage",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchErrLog"
+      }
+    ],
+    "dict": [
+      {
+        "path": "sys/dict/getType",
+        "methods": false,
+        "_method": "fetch",
+        "name": "FetchDictType",
+        "state": "FetchDictType"
+      },
+      {
+        "path": "sys/dict/info",
+        "methods": false,
+        "method": "get",
+        "name": "GetDictInfo"
+      },
+      {
+        "path": "sys/dict/update",
+        "methods": false,
+        "method": "update",
+        "name": "UpdateDictInfo"
+      },
+      {
+        "path": "sys/dict/save",
+        "methods": false,
+        "method": "add",
+        "name": "AddDictInfo"
+      },
+      {
+        "path": "sys/dict/delete",
+        "methods": false,
+        "method": "remove",
+        "name": "RemoveDictInfo"
+      },
+      {
+        "path": "sys/dict/querybykey",
+        "methods": false,
+        "name": "FetchDictByKey",
+        "state": "FetchDictByKey"
+      },
+      {
+        "title": "[内存字典]梅姐接口记得用这个取字典",
+        "path": "Sys/GetSysDictByType",
+        "methods": false,
+        "name": "GetSysDictByType",
+        "state": "GetSysDictByType"
+      },
+      {
+        "title": "[内存字典]梅姐接口记得用这个取单位字典列表",
+        "path": "Sys/GetDeptDicts",
+        "methods": false,
+        "name": "GetDeptDictsList",
+        "state": "GetDeptDictsList"
+      },
+      {
+        "path": "sys/dict/querybykeypage",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchDictByKeyList"
+      },
+      {
+        "title": "获取用户字典列表",
+        "path": "Sys/GetUserDicts",
+        "methods": false,
+        "name": "fetchUserDicts",
+        "state": "fetchUserDicts"
+      }
+    ],
+    "people": [
+      {
+        "path": "/test/peopleList",
+        "methods": false,
+        "state": "PeopleList",
+        "name": "FetchPeopleList",
+        "template": "handleFetchPeopleList"
+      },
+      {
+        "path": "/test/peopleInfo",
+        "methods": false,
+        "method": "get",
+        "name": "GetPeopleInfo",
+        "template": "handleGetPeopleInfo"
+      }
+    ],
+    "xtztc": [
+      {
+        "title": "系统直通车通用列表",
+        "path": "xtztc/info/list",
+        "methods": false,
+        "method": "fetch",
+        "name": "fetchXtztcList"
+      },
+      {
+        "title": "新增",
+        "path": "xtztc/info/save",
+        "methods": false,
+        "method": "add",
+        "name": "addXtztc"
+      },
+      {
+        "title": "修改",
+        "path": "xtztc/info/update",
+        "methods": false,
+        "method": "update",
+        "name": "updateXtztc"
+      },
+      {
+        "title": "查询单个",
+        "path": "xtztc/info/info",
+        "methods": false,
+        "method": "get",
+        "name": "getXtztcInfo"
+      },
+      {
+        "title": "删除",
+        "path": "xtztc/info/delete",
+        "methods": false,
+        "method": "remove",
+        "name": "removeXtztc"
+      }
+    ],
+    "colleXtztc": [
+      {
+        "title": "系统直通车收藏列表",
+        "path": "xtztc/handle/list",
+        "methods": false,
+        "method": "fetch",
+        "name": "fetchColleXtztcList"
+      },
+      {
+        "title": "收藏系统",
+        "path": "xtztc/handle/save",
+        "methods": false,
+        "name": "updateColleXtztc",
+        "state": "updateColleXtztc"
+      },
+      {
+        "title": "取消收藏系统",
+        "path": "xtztc/handle/cancel",
+        "methods": false,
+        "method": "update",
+        "name": "cancelColleXtztc"
+      },
+      {
+        "title": "进入系统获取单点登录参数ticket",
+        "path": "xtztc/handle/in",
+        "methods": false,
+        "name": "getInSysSecret",
+        "state": "getInSysSecret"
+      },
+      {
+        "title": "外部系统列表",
+        "path": "xtztc/outSyetem/list",
+        "methods": false,
+        "name": "outSyetemList",
+        "state": "outSyetemList"
+      },
+      {
+        "title": "添加外部系统",
+        "path": "xtztc/outSyetem/save",
+        "methods": false,
+        "name": "outSyetemSave",
+        "state": "outSyetemSave"
+      },
+      {
+        "title": "修改外部系统",
+        "path": "xtztc/outSyetem/update",
+        "methods": false,
+        "name": "outSyetemUpdate",
+        "state": "outSyetemUpdate"
+      },
+      {
+        "title": "删除外部系统",
+        "path": "xtztc/outSyetem/delete",
+        "methods": false,
+        "name": "outSyetemDelete",
+        "state": "outSyetemDelete"
+      },
+      {
+        "title": "我的常用-获取应用列表",
+        "path": "mycommon/application/getApplicationList",
+        "methods": false,
+        "name": "getApplicationList",
+        "state": "getApplicationList"
+      },
+      {
+        "title": "我的常用-查看",
+        "path": "mycommon/application/list",
+        "methods": false,
+        "name": "applicationList",
+        "state": "applicationList"
+      },
+      {
+        "title": "我的常用-删除",
+        "path": "mycommon/application/delete",
+        "methods": false,
+        "name": "applicationDelete",
+        "state": "applicationDelete"
+      },
+      {
+        "title": "我的常用-保存所选的应用",
+        "path": "mycommon/application/save",
+        "methods": false,
+        "name": "applicationSave",
+        "state": "applicationSave"
+      }
+    ],
+    "applyXtztc": [
+      {
+        "titel": "申请系统",
+        "path": "xtztc/handle/apply",
+        "methods": false,
+        "method": "update",
+        "name": "applyXtztc"
+      },
+      {
+        "titel": "直通车后台管理",
+        "path": "xtztc/info/listinfo",
+        "methods": false,
+        "method": "fetch",
+        "name": "fetchListinfo"
+      },
+      {
+        "titel": "分类排序",
+        "path": "xtztc/handle/type",
+        "methods": false,
+        "name": "fetchTypeList",
+        "state": "fetchTypeList"
+      },
+      {
+        "titel": "点击数排序",
+        "path": "xtztc/handle/clicknum",
+        "methods": false,
+        "state": "fetchClicknumList",
+        "name": "fetchClicknumList"
+      }
+    ],
+    "sysLabel": [
+      {
+        "title": "系统标签-查询关键字标签",
+        "path": "SysLabel/GetSysLabels",
+        "methods": false,
+        "name": "SysLabelGetSysLabelsKeyword",
+        "state": "SysLabelGetSysLabelsKeyword"
+      },
+      {
+        "title": "系统标签-依类型查询标签",
+        "path": "SysLabel/GetSysLabels",
+        "methods": false,
+        "name": "SysLabelGetSysLabelsType",
+        "state": "SysLabelGetSysLabelsType"
+      },
+      {
+        "title": "系统标签-查询重点对象标签",
+        "path": "SysLabel/GetFocusLabels",
+        "methods": false,
+        "name": "GetSysLabelFocusLabels",
+        "state": "GetSysLabelFocusLabels"
+      },
+      {
+        "title": "系统标签-新增标签",
+        "path": "SysLabel/AddLabels",
+        "methods": false,
+        "name": "SysLabelAddLabels",
+        "state": "SysLabelAddLabels"
+      },
+      {
+        "title": "系统标签-删除我添加的标签",
+        "path": "SysLabel/DeleteMyLabels",
+        "methods": false,
+        "name": "SysLabelDelMyLabels",
+        "state": "SysLabelDelMyLabels"
+      }
+    ],
+    "caseInfo": [
+      {
+        "title": "案件信息-导出案件信息",
+        "path": "zhda/all/exportAllCase",
+        "methods": false,
+        "method": "fetch",
+        "name": "exportAllCase",
+        "state": "exportAllCaseResult"
+      },
+      {
+        "title": "案件信息-案件列表",
+        "path": "ajgl/lawcase/list",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchCaseList"
+      },
+      {
+        "title": "获取案件ID及名称",
+        "path": "ajgl/lawcase/findidandname",
+        "methods": false,
+        "name": "fetchCaseIdAndName",
+        "state": "fetchCaseIdAndName"
+      },
+      {
+        "title": "案件信息-案件档案基本信息",
+        "path": "ajgl/lawcase/info",
+        "methods": false,
+        "method": "get",
+        "name": "GetCaseInfo",
+        "state": "GetCaseInfo"
+      },
+      {
+        "title": "案件信息-案件基础信息新增",
+        "path": "ajgl/lawcase/save",
+        "methods": false,
+        "method": "add",
+        "name": "AddCaseInfo"
+      },
+      {
+        "title": "案件信息-案件新增",
+        "path": "ajgl/lawcase/saveall",
+        "methods": false,
+        "method": false,
+        "state": "AddCaseSaveAll",
+        "name": "AddCaseSaveAll"
+      },
+      {
+        "title": "案件信息-案件更新",
+        "path": "ajgl/lawcase/update",
+        "methods": false,
+        "method": "update",
+        "name": "updateCaseInfo"
+      },
+      {
+        "title": "案件信息-案件删除",
+        "path": "ajgl/lawcase/delete",
+        "methods": false,
+        "method": "remove",
+        "name": "RemoveCaseInfo"
+      },
+      {
+        "title": "案件信息-根据案件编号查询GP数据",
+        "path": "ajgl/lawcase/getgpaj",
+        "methods": false,
+        "name": "FetchCaseInfoByNumber",
+        "state": "FetchCaseInfoByNumber"
+      },
+      {
+        "title": "案件信息-案件条件筛选查询列表",
+        "path": "ajgl/oncase/select",
+        "methods": false,
+        "name": "FetchCaseListBy",
+        "state": "FetchCaseListBy"
+      }
+    ],
+    "involvedCar": [
+      {
+        "title": "涉案车辆-列表",
+        "path": "ajgl/vehicle/list",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchInvolvedCarList"
+      },
+      {
+        "title": "涉案车辆-基本信息",
+        "path": "ajgl/vehicle/info",
+        "methods": false,
+        "method": "get",
+        "name": "GetInvolvedCarInfo"
+      },
+      {
+        "title": "涉案车辆-新增",
+        "path": "ajgl/vehicle/save",
+        "methods": false,
+        "method": "add",
+        "name": "AddInvolvedCar"
+      },
+      {
+        "title": "涉案车辆-更新",
+        "path": "ajgl/vehicle/update",
+        "methods": false,
+        "method": "update",
+        "name": "updateInvolvedCar"
+      },
+      {
+        "title": "涉案车辆-删除",
+        "path": "ajgl/vehicle/delete",
+        "methods": false,
+        "method": "remove",
+        "name": "RemoveInvolvedCar"
+      }
+    ],
+    "peopleCase": [
+      {
+        "title": "办案人员-列表",
+        "path": "ajgl/police/list",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchPeopleCaseList"
+      },
+      {
+        "title": "办案人员-基本信息",
+        "path": "ajgl/police/info",
+        "methods": false,
+        "method": "get",
+        "name": "GetPeopleCaseInfo"
+      },
+      {
+        "title": "办案人员-新增",
+        "path": "ajgl/police/save",
+        "methods": false,
+        "method": "add",
+        "name": "AddPeopleCase"
+      },
+      {
+        "title": "办案人员-更新",
+        "path": "ajgl/police/update",
+        "methods": false,
+        "method": "update",
+        "name": "updatePeopleCase"
+      },
+      {
+        "title": "办案人员-删除",
+        "path": "ajgl/police/delete",
+        "methods": false,
+        "method": "remove",
+        "name": "RemovePeopleCase"
+      },
+      {
+        "title": "办案人员-权限列表-查询",
+        "path": "ajgl/personnelqx/info",
+        "methods": false,
+        "state": "fetchPersonnelLimitsList",
+        "name": "fetchPersonnelLimitsList"
+      },
+      {
+        "title": "案件研判当前登录人员-权限列表-查询",
+        "path": "ajgl/personnelqx/info",
+        "methods": false,
+        "state": "fetchLoginPersonnelLimitsList",
+        "name": "fetchLoginPersonnelLimitsList"
+      },
+      {
+        "title": "办案人员-权限列表-更新",
+        "path": "ajgl/personnelqx/update",
+        "methods": false,
+        "state": "updatePersonnelLimits",
+        "name": "updatePersonnelLimits"
+      },
+      {
+        "title": "办案人员-案件研判-权限总线列表",
+        "path": "ajgl/personnelqx/zxinfo",
+        "methods": false,
+        "state": "getUserCaseActions",
+        "name": "getUserCaseActions"
+      }
+    ],
+    "seriesCase": [
+      {
+        "title": "串案管理-列表",
+        "path": "ajgl/oncase/list",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchSeriesCaseList"
+      },
+      {
+        "title": "串案管理-基本信息",
+        "path": "ajgl/oncase/info",
+        "methods": false,
+        "method": "get",
+        "name": "GetSeriesCaseInfo"
+      },
+      {
+        "title": "串案管理-新增",
+        "path": "ajgl/oncase/save",
+        "methods": false,
+        "method": "add",
+        "name": "AddSeriesCase"
+      },
+      {
+        "title": "串案管理-更新",
+        "path": "ajgl/oncase/update",
+        "methods": false,
+        "method": "update",
+        "name": "updateSeriesCase"
+      },
+      {
+        "title": "串案管理-删除",
+        "path": "ajgl/oncase/delete",
+        "methods": false,
+        "method": "remove",
+        "name": "RemoveSeriesCase"
+      },
+      {
+        "title": "串案管理-手动串案检索",
+        "path": "ajgl/lawcase/getseriescase",
+        "methods": false,
+        "name": "fetchSeriesCaseOptions",
+        "state": "seriesCaseOptions"
+      },
+      {
+        "title": "保存并启动自动串并案",
+        "path": "Ajgl/SaveAjglZdcbXx",
+        "methods": false,
+        "name": "addAutoSeriesCaseStart",
+        "state": "addAutoSeriesCaseStart"
+      },
+      {
+        "title": "停止自动串并案",
+        "path": "Ajgl/StopAjcb",
+        "methods": false,
+        "name": "updateAutoSeriesCaseStop",
+        "state": "updateAutoSeriesCaseStopRes"
+      },
+      {
+        "title": "获取自动串并案信息",
+        "path": "Ajgl/GetAjglZdcbXx",
+        "methods": false,
+        "name": "getAutoSeriesCaseInfo",
+        "state": "autoSeriesCaseInfo"
+      },
+      {
+        "title": "获取自动串并案规则",
+        "path": "Ajgl/GetAjglCbGzbs",
+        "methods": false,
+        "name": "fetchAutoSeriesCaseRule",
+        "state": "autoSeriesCaseRule"
+      }
+    ],
+    "involvedItem": [
+      {
+        "title": "涉案物品-列表",
+        "path": "ajgl/article/list",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchInvolvedItemList"
+      },
+      {
+        "title": "涉案物品-基本信息",
+        "path": "ajgl/article/info",
+        "methods": false,
+        "method": "get",
+        "name": "GetInvolvedItemInfo"
+      },
+      {
+        "title": "涉案物品-新增",
+        "path": "ajgl/article/save",
+        "methods": false,
+        "method": "add",
+        "name": "AddInvolvedItem"
+      },
+      {
+        "title": "涉案物品-更新",
+        "path": "ajgl/article/update",
+        "methods": false,
+        "method": "update",
+        "name": "updateInvolvedItem"
+      },
+      {
+        "title": "涉案物品-删除",
+        "path": "ajgl/article/delete",
+        "methods": false,
+        "method": "remove",
+        "name": "RemoveInvolvedItem"
+      }
+    ],
+    "focusPerson": [
+      {
+        "title": "根据证件号码检测重点人员是否存在",
+        "path": "FocusObject/CheckPersonBySfz",
+        "methods": false,
+        "state": "getCheckPersonBySfz",
+        "name": "getCheckPersonBySfz"
+      },
+      {
+        "title": "新增重点人员",
+        "path": "FocusObject/AddFocusPerson",
+        "methods": false,
+        "method": "add",
+        "name": "AddFocusPerson"
+      },
+      {
+        "title": "编辑重点人员",
+        "path": "FocusObject/EditFocusPerson",
+        "methods": false,
+        "method": "update",
+        "name": "EditFocusPerson"
+      },
+      {
+        "title": "依条件分页查询重点人员列表",
+        "path": "FocusObject/GetPersonsByCond",
+        "methods": false,
+        "state": "fetchPersonsByCond",
+        "name": "fetchPersonsByCond"
+      },
+      {
+        "title": "依条件分页查询重点人员列表[待我审核]",
+        "path": "FocusObject/GetPersonsByCond",
+        "methods": false,
+        "state": "fetchAuditPersonsByCond",
+        "name": "fetchAuditPersonsByCond"
+      },
+      {
+        "title": "依条件分页查询重点人员列表[待通过]",
+        "path": "FocusObject/GetPersonsByCond",
+        "methods": false,
+        "state": "fetchPendingPersonsByCond",
+        "name": "fetchPendingPersonsByCond"
+      },
+      {
+        "title": "依条件分页查询重点人员列表[待我签收]",
+        "path": "FocusObject/GetPersonsByCond",
+        "methods": false,
+        "state": "fetchMySingPersonsByCond",
+        "name": "fetchMySingPersonsByCond"
+      },
+      {
+        "title": "依条件分页查询重点人员列表[待他签收]",
+        "path": "FocusObject/GetPersonsByCond",
+        "methods": false,
+        "state": "fetchHeSingPersonsByCond",
+        "name": "fetchHeSingPersonsByCond"
+      },
+      {
+        "title": "查询单条重点人员信息",
+        "path": "FocusObject/GetPersonById",
+        "methods": false,
+        "method": "get",
+        "name": "GetPersonById"
+      },
+      {
+        "title": "删除重点人员(支持批量操作)",
+        "path": "FocusObject/DeleteFocusPerson",
+        "methods": false,
+        "method": "remove",
+        "name": "DeleteFocusPerson"
+      },
+      {
+        "title": "加入研判（支持批量操作）",
+        "path": "FocusObject/PersonToCase",
+        "methods": false,
+        "method": "add",
+        "name": "PersonToCase"
+      },
+      {
+        "title": "查询重点人员研判历史",
+        "path": "FocusObject/GetPersonJudgeHis",
+        "methods": false,
+        "method": "add",
+        "state": "GetPersonJudgeHis",
+        "name": "GetPersonJudgeHis"
+      },
+      {
+        "title": "风险排查管控-人员基本信息列表",
+        "path": "fxpcgk/zdqtry/list",
+        "methods": false,
+        "state": "fxpcgkList",
+        "name": "fxpcgkList"
+      },
+      {
+        "title": "风险排查管控-人员基本信息添加",
+        "path": "fxpcgk/zdqtry/save",
+        "methods": false,
+        "state": "fxpcgkSave",
+        "name": "fxpcgkSave"
+      },
+      {
+        "title": "风险排查管控-人员基本信息删除",
+        "path": "fxpcgk/zdqtry/delete",
+        "methods": false,
+        "state": "fxpcgkDelete",
+        "name": "fxpcgkDelete"
+      },
+      {
+        "title": "风险排查管控-人员基本信息更新",
+        "path": "fxpcgk/zdqtry/update",
+        "methods": false,
+        "state": "fxpcgkUpdate",
+        "name": "fxpcgkUpdate"
+      },
+      {
+        "title": "风险排查管控-场所操作记录",
+        "path": "fxpcgk/operaterecord/queryList",
+        "methods": false,
+        "state": "fxpcgkQueryList",
+        "name": "fxpcgkQueryList"
+      },
+      {
+        "title": "风险排查管控-人员基本信息查询",
+        "path": "fxpcgk/zdqtry/info",
+        "methods": false,
+        "state": "fxpcgkInfo",
+        "name": "fxpcgkInfo"
+      },
+      {
+        "title": "风险排查管控-获取重点人员各分页大小",
+        "path": "fxpcgk/zdqtry/tabcount",
+        "methods": false,
+        "state": "fxpcgkTabcount",
+        "name": "fxpcgkTabcount"
+      },
+      {
+        "title": "风险排查管控-待我审批重点人员列表",
+        "path": "fxpcgk/zdqtry/approvallist",
+        "methods": false,
+        "state": "fxpcgkApprovalList",
+        "name": "fxpcgkApprovalList"
+      },
+      {
+        "title": "风险排查管控-数据导出",
+        "path": "fxpcgk/zdqtry/toexcel",
+        "methods": false,
+        "state": "fxpcgkToexcel",
+        "name": "fxpcgkToexcel"
+      },
+      {
+        "title": "风险排查管控-安全隐患信息列表",
+        "path": "fxpcgk/risk/list",
+        "methods": false,
+        "state": "fxpcgkRiskList",
+        "name": "fxpcgkRiskList"
+      },
+      {
+        "title": "风险排查管控-安全隐患信息添加",
+        "path": "fxpcgk/risk/save",
+        "methods": false,
+        "state": "fxpcgkRiskSave",
+        "name": "fxpcgkRiskSave"
+      },
+      {
+        "title": "风险排查管控-安全隐患信息删除",
+        "path": "fxpcgk/risk/delete",
+        "methods": false,
+        "state": "fxpcgkRiskDelete",
+        "name": "fxpcgkRiskDelete"
+      },
+      {
+        "title": "风险排查管控-安全隐患信息更新",
+        "path": "fxpcgk/risk/update",
+        "methods": false,
+        "state": "fxpcgkRiskUpdate",
+        "name": "fxpcgkRiskUpdate"
+      },
+      {
+        "title": "风险排查管控-安全隐患信息查询",
+        "path": "fxpcgk/risk/info",
+        "methods": false,
+        "state": "fxpcgkRiskInfo",
+        "name": "fxpcgkRiskInfo"
+      },
+      {
+        "title": "风险排查管控-关系人信息列表",
+        "path": "fxpcgk/relationer/list",
+        "methods": false,
+        "state": "fxpcgkRelationerList",
+        "name": "fxpcgkRelationerList"
+      },
+      {
+        "title": "风险排查管控-关系人信息添加",
+        "path": "fxpcgk/relationer/save",
+        "methods": false,
+        "state": "fxpcgkRelationerSave",
+        "name": "fxpcgkRelationerSave"
+      },
+      {
+        "title": "风险排查管控-关系人信息删除",
+        "path": "fxpcgk/relationer/delete",
+        "methods": false,
+        "state": "fxpcgkRelationerDelete",
+        "name": "fxpcgkRelationerDelete"
+      },
+      {
+        "title": "风险排查管控-关系人信息更新",
+        "path": "fxpcgk/relationer/update",
+        "methods": false,
+        "state": "fxpcgkRelationerUpdate",
+        "name": "fxpcgkRelationerUpdate"
+      },
+      {
+        "title": "风险排查管控-关系人信息查询",
+        "path": "fxpcgk/relationer/info",
+        "methods": false,
+        "state": "fxpcgkRelationerInfo",
+        "name": "fxpcgkRelationerInfo"
+      },
+      {
+        "title": "风险排查管控-活动轨迹信息列表",
+        "path": "fxpcgk/traject/list",
+        "methods": false,
+        "state": "fxpcgkTrajectList",
+        "name": "fxpcgkTrajectList"
+      },
+      {
+        "title": "风险排查管控-活动轨迹信息添加",
+        "path": "fxpcgk/traject/save",
+        "methods": false,
+        "state": "fxpcgkTrajectSave",
+        "name": "fxpcgkTrajectSave"
+      },
+      {
+        "title": "风险排查管控-活动轨迹信息删除",
+        "path": "fxpcgk/traject/delete",
+        "methods": false,
+        "state": "fxpcgkTrajectDelete",
+        "name": "fxpcgkTrajectDelete"
+      },
+      {
+        "title": "风险排查管控-活动轨迹信息更新",
+        "path": "fxpcgk/traject/update",
+        "methods": false,
+        "state": "fxpcgkTrajectUpdate",
+        "name": "fxpcgkTrajectUpdate"
+      },
+      {
+        "title": "风险排查管控-活动轨迹信息查询",
+        "path": "fxpcgk/traject/info",
+        "methods": false,
+        "state": "fxpcgkTrajectInfo",
+        "name": "fxpcgkTrajectInfo"
+      },
+      {
+        "title": "风险排查管控-线索信息列表",
+        "path": "fxpcgk/clue/list",
+        "methods": false,
+        "state": "fxpcgkClueList",
+        "name": "fxpcgkClueList"
+      },
+      {
+        "title": "风险排查管控-线索信息添加",
+        "path": "fxpcgk/clue/save",
+        "methods": false,
+        "state": "fxpcgkClueSave",
+        "name": "fxpcgkClueSave"
+      },
+      {
+        "title": "风险排查管控-线索信息删除",
+        "path": "fxpcgk/clue/delete",
+        "methods": false,
+        "state": "fxpcgkClueDelete",
+        "name": "fxpcgkClueDelete"
+      },
+      {
+        "title": "风险排查管控-线索信息更新",
+        "path": "fxpcgk/clue/update",
+        "methods": false,
+        "state": "fxpcgkClueUpdate",
+        "name": "fxpcgkClueUpdate"
+      },
+      {
+        "title": "风险排查管控-线索信息查询",
+        "path": "fxpcgk/clue/info",
+        "methods": false,
+        "state": "fxpcgkClueInfo",
+        "name": "fxpcgkClueInfo"
+      },
+      {
+        "title": "风险排查管控-线索信息待我审批列表",
+        "path": "fxpcgk/clue/approvallist",
+        "methods": false,
+        "state": "fxpcgkClueApprovallist",
+        "name": "fxpcgkClueApprovallist"
+      },
+      {
+        "title": "风险排查管控-线索信息获取页签数据条数",
+        "path": "fxpcgk/clue/tabcount",
+        "methods": false,
+        "state": "fxpcgkClueTabcount",
+        "name": "fxpcgkClueTabcount"
+      },
+      {
+        "title": "风险排查管控-家庭情况信息列表",
+        "path": "fxpcgk/family/list",
+        "methods": false,
+        "state": "fxpcgkFamilyList",
+        "name": "fxpcgkFamilyList"
+      },
+      {
+        "title": "风险排查管控-家庭情况信息添加",
+        "path": "fxpcgk/family/save",
+        "methods": false,
+        "state": "fxpcgkFamilySave",
+        "name": "fxpcgkFamilySave"
+      },
+      {
+        "title": "风险排查管控-家庭情况信息删除",
+        "path": "fxpcgk/family/delete",
+        "methods": false,
+        "state": "fxpcgkFamilyDelete",
+        "name": "fxpcgkFamilyDelete"
+      },
+      {
+        "title": "风险排查管控-家庭情况信息更新",
+        "path": "fxpcgk/family/update",
+        "methods": false,
+        "state": "fxpcgkFamilyUpdate",
+        "name": "fxpcgkFamilyUpdate"
+      },
+      {
+        "title": "风险排查管控-家庭情况信息查询",
+        "path": "fxpcgk/family/info",
+        "methods": false,
+        "state": "fxpcgkFamilyInfo",
+        "name": "fxpcgkFamilyInfo"
+      },
+      {
+        "title": "风险排查管控-个人车辆信息列表",
+        "path": "fxpcgk/personalcar/list",
+        "methods": false,
+        "state": "fxpcgkPersonalcarList",
+        "name": "fxpcgkPersonalcarList"
+      },
+      {
+        "title": "风险排查管控-个人车辆信息添加",
+        "path": "fxpcgk/personalcar/save",
+        "methods": false,
+        "state": "fxpcgkPersonalcarSave",
+        "name": "fxpcgkPersonalcarSave"
+      },
+      {
+        "title": "风险排查管控-个人车辆信息删除",
+        "path": "fxpcgk/personalcar/delete",
+        "methods": false,
+        "state": "fxpcgkPersonalcarDelete",
+        "name": "fxpcgkPersonalcarDelete"
+      },
+      {
+        "title": "风险排查管控-个人车辆信息更新",
+        "path": "fxpcgk/personalcar/update",
+        "methods": false,
+        "state": "fxpcgkPersonalcarUpdate",
+        "name": "fxpcgkPersonalcarUpdate"
+      },
+      {
+        "title": "风险排查管控-个人车辆信息查询",
+        "path": "fxpcgk/personalcar/info",
+        "methods": false,
+        "state": "fxpcgkPersonalcarInfo",
+        "name": "fxpcgkPersonalcarInfo"
+      },
+      {
+        "title": "风险排查管控-社会履历信息列表",
+        "path": "fxpcgk/socialrecord/list",
+        "methods": false,
+        "state": "fxpcgkSocialrecordList",
+        "name": "fxpcgkSocialrecordList"
+      },
+      {
+        "title": "风险排查管控-社会履历信息添加",
+        "path": "fxpcgk/socialrecord/save",
+        "methods": false,
+        "state": "fxpcgkSocialrecordSave",
+        "name": "fxpcgkSocialrecordSave"
+      },
+      {
+        "title": "风险排查管控-社会履历信息删除",
+        "path": "fxpcgk/socialrecord/delete",
+        "methods": false,
+        "state": "fxpcgkSocialrecordDelete",
+        "name": "fxpcgkSocialrecordDelete"
+      },
+      {
+        "title": "风险排查管控-社会履历信息更新",
+        "path": "fxpcgk/socialrecord/update",
+        "methods": false,
+        "state": "fxpcgkSocialrecordUpdate",
+        "name": "fxpcgkSocialrecordUpdate"
+      },
+      {
+        "title": "风险排查管控-社会履历信息查询",
+        "path": "fxpcgk/socialrecord/info",
+        "methods": false,
+        "state": "fxpcgkSocialrecordInfo",
+        "name": "fxpcgkSocialrecordInfo"
+      },
+      {
+        "title": "风险排查管控-通联工具信息列表",
+        "path": "fxpcgk/concart/list",
+        "methods": false,
+        "state": "fxpcgkConcartList",
+        "name": "fxpcgkConcartList"
+      },
+      {
+        "title": "风险排查管控-通联工具信息添加",
+        "path": "fxpcgk/concart/save",
+        "methods": false,
+        "state": "fxpcgkConcartSave",
+        "name": "fxpcgkConcartSave"
+      },
+      {
+        "title": "风险排查管控-通联工具信息删除",
+        "path": "fxpcgk/concart/delete",
+        "methods": false,
+        "state": "fxpcgkConcartDelete",
+        "name": "fxpcgkConcartDelete"
+      },
+      {
+        "title": "风险排查管控-通联工具信息更新",
+        "path": "fxpcgk/concart/update",
+        "methods": false,
+        "state": "fxpcgkConcartUpdate",
+        "name": "fxpcgkConcartUpdate"
+      },
+      {
+        "title": "风险排查管控-通联工具信息查询",
+        "path": "fxpcgk/concart/info",
+        "methods": false,
+        "state": "fxpcgkConcartInfo",
+        "name": "fxpcgkConcartInfo"
+      },
+      {
+        "title": "风险排查管控-金融账户信息列表",
+        "path": "fxpcgk/bankcount/list",
+        "methods": false,
+        "state": "fxpcgkBankcountList",
+        "name": "fxpcgkBankcountList"
+      },
+      {
+        "title": "风险排查管控-金融账户信息添加",
+        "path": "fxpcgk/bankcount/save",
+        "methods": false,
+        "state": "fxpcgkBankcountSave",
+        "name": "fxpcgkBankcountSave"
+      },
+      {
+        "title": "风险排查管控-金融账户信息删除",
+        "path": "fxpcgk/bankcount/delete",
+        "methods": false,
+        "state": "fxpcgkBankcountDelete",
+        "name": "fxpcgkBankcountDelete"
+      },
+      {
+        "title": "风险排查管控-金融账户信息更新",
+        "path": "fxpcgk/bankcount/update",
+        "methods": false,
+        "state": "fxpcgkBankcountUpdate",
+        "name": "fxpcgkBankcountUpdate"
+      },
+      {
+        "title": "风险排查管控-金融账户信息查询",
+        "path": "fxpcgk/bankcount/info",
+        "methods": false,
+        "state": "fxpcgkBankcountInfo",
+        "name": "fxpcgkBankcountInfo"
+      },
+      {
+        "title": "风险排查管控-实物资产信息列表",
+        "path": "fxpcgk/assets/list",
+        "methods": false,
+        "state": "fxpcgkAssetsList",
+        "name": "fxpcgkAssetsList"
+      },
+      {
+        "title": "风险排查管控-实物资产信息添加",
+        "path": "fxpcgk/assets/save",
+        "methods": false,
+        "state": "fxpcgkAssetsSave",
+        "name": "fxpcgkAssetsSave"
+      },
+      {
+        "title": "风险排查管控-实物资产信息删除",
+        "path": "fxpcgk/assets/delete",
+        "methods": false,
+        "state": "fxpcgkAssetsDelete",
+        "name": "fxpcgkAssetsDelete"
+      },
+      {
+        "title": "风险排查管控-实物资产信息更新",
+        "path": "fxpcgk/assets/update",
+        "methods": false,
+        "state": "fxpcgkAssetsUpdate",
+        "name": "fxpcgkAssetsUpdate"
+      },
+      {
+        "title": "风险排查管控-实物资产信息查询",
+        "path": "fxpcgk/assets/info",
+        "methods": false,
+        "state": "fxpcgkAssetsInfo",
+        "name": "fxpcgkAssetsInfo"
+      },
+      {
+        "title": "风险排查管控-无形资产信息列表",
+        "path": "fxpcgk/unassets/list",
+        "methods": false,
+        "state": "fxpcgkUnassetsList",
+        "name": "fxpcgkUnassetsList"
+      },
+      {
+        "title": "风险排查管控-无形资产信息添加",
+        "path": "fxpcgk/unassets/save",
+        "methods": false,
+        "state": "fxpcgkUnassetsSave",
+        "name": "fxpcgkUnassetsSave"
+      },
+      {
+        "title": "风险排查管控-无形资产信息删除",
+        "path": "fxpcgk/unassets/delete",
+        "methods": false,
+        "state": "fxpcgkUnassetsDelete",
+        "name": "fxpcgkUnassetsDelete"
+      },
+      {
+        "title": "风险排查管控-无形资产信息更新",
+        "path": "fxpcgk/unassets/update",
+        "methods": false,
+        "state": "fxpcgkUnassetsUpdate",
+        "name": "fxpcgkUnassetsUpdate"
+      },
+      {
+        "title": "风险排查管控-无形资产信息查询",
+        "path": "fxpcgk/unassets/info",
+        "methods": false,
+        "state": "fxpcgkUnassetsInfo",
+        "name": "fxpcgkUnassetsInfo"
+      },
+      {
+        "title": "风险排查管控-违法违规信息列表",
+        "path": "fxpcgk/unlaw/list",
+        "methods": false,
+        "state": "fxpcgkUnlawList",
+        "name": "fxpcgkUnlawList"
+      },
+      {
+        "title": "风险排查管控-违法违规信息添加",
+        "path": "fxpcgk/unlaw/save",
+        "methods": false,
+        "state": "fxpcgkUnlawSave",
+        "name": "fxpcgkUnlawSave"
+      },
+      {
+        "title": "风险排查管控-违法违规信息删除",
+        "path": "fxpcgk/unlaw/delete",
+        "methods": false,
+        "state": "fxpcgkUnlawDelete",
+        "name": "fxpcgkUnlawDelete"
+      },
+      {
+        "title": "风险排查管控-违法违规信息更新",
+        "path": "fxpcgk/unlaw/update",
+        "methods": false,
+        "state": "fxpcgkUnlawUpdate",
+        "name": "fxpcgkUnlawUpdate"
+      },
+      {
+        "title": "风险排查管控-违法违规信息查询",
+        "path": "fxpcgk/unlaw/info",
+        "methods": false,
+        "state": "fxpcgkUnlawInfo",
+        "name": "fxpcgkUnlawInfo"
+      },
+      {
+        "title": "风险排查管控-处罚处分信息列表",
+        "path": "fxpcgk/punish/list",
+        "methods": false,
+        "state": "fxpcgkPunishList",
+        "name": "fxpcgkPunishList"
+      },
+      {
+        "title": "风险排查管控-处罚处分信息添加",
+        "path": "fxpcgk/punish/save",
+        "methods": false,
+        "state": "fxpcgkPunishSave",
+        "name": "fxpcgkPunishSave"
+      },
+      {
+        "title": "风险排查管控-处罚处分信息删除",
+        "path": "fxpcgk/punish/delete",
+        "methods": false,
+        "state": "fxpcgkPunishDelete",
+        "name": "fxpcgkPunishDelete"
+      },
+      {
+        "title": "风险排查管控-处罚处分信息更新",
+        "path": "fxpcgk/punish/update",
+        "methods": false,
+        "state": "fxpcgkPunishUpdate",
+        "name": "fxpcgkPunishUpdate"
+      },
+      {
+        "title": "风险排查管控-处罚处分信息查询",
+        "path": "fxpcgk/punish/info",
+        "methods": false,
+        "state": "fxpcgkPunishInfo",
+        "name": "fxpcgkPunishInfo"
+      },
+      {
+        "title": "风险排查管控-涉军人员历史上访信息列表",
+        "path": "fxpcgk/solpethis/list",
+        "methods": false,
+        "state": "fxpcgkSolpethisList",
+        "name": "fxpcgkSolpethisList"
+      },
+      {
+        "title": "风险排查管控-涉军人员历史上访信息添加",
+        "path": "fxpcgk/solpethis/save",
+        "methods": false,
+        "state": "fxpcgkSolpethisSave",
+        "name": "fxpcgkSolpethisSave"
+      },
+      {
+        "title": "风险排查管控-涉军人员历史上访信息删除",
+        "path": "fxpcgk/solpethis/delete",
+        "methods": false,
+        "state": "fxpcgkSolpethisDelete",
+        "name": "fxpcgkSolpethisDelete"
+      },
+      {
+        "title": "风险排查管控-涉军人员历史上访信息更新",
+        "path": "fxpcgk/solpethis/update",
+        "methods": false,
+        "state": "fxpcgkSolpethisUpdate",
+        "name": "fxpcgkSolpethisUpdate"
+      },
+      {
+        "title": "风险排查管控-涉军人员历史上访信息查询",
+        "path": "fxpcgk/solpethis/info",
+        "methods": false,
+        "state": "fxpcgkSolpethisInfo",
+        "name": "fxpcgkSolpethisInfo"
+      },
+      {
+        "title": "风险排查管控-涉军人员上访反馈内容列表",
+        "path": "fxpcgk/solpetback/list",
+        "methods": false,
+        "state": "fxpcgkSolpetbackList",
+        "name": "fxpcgkSolpetbackList"
+      },
+      {
+        "title": "风险排查管控-涉军人员上访反馈内容添加",
+        "path": "fxpcgk/solpetback/save",
+        "methods": false,
+        "state": "fxpcgkSolpetbackSave",
+        "name": "fxpcgkSolpetbackSave"
+      },
+      {
+        "title": "风险排查管控-涉军人员上访反馈内容删除",
+        "path": "fxpcgk/solpetback/delete",
+        "methods": false,
+        "state": "fxpcgkSolpetbackDelete",
+        "name": "fxpcgkSolpetbackDelete"
+      },
+      {
+        "title": "风险排查管控-涉军人员上访反馈内容更新",
+        "path": "fxpcgk/solpetback/update",
+        "methods": false,
+        "state": "fxpcgkSolpetbackUpdate",
+        "name": "fxpcgkSolpetbackUpdate"
+      },
+      {
+        "title": "风险排查管控-涉军人员上访反馈内容查询",
+        "path": "fxpcgk/solpetback/info",
+        "methods": false,
+        "state": "fxpcgkSolpetbackInfo",
+        "name": "fxpcgkSolpetbackInfo"
+      },
+      {
+        "title": "风险排查管控-工作信息列表",
+        "path": "fxpcgk/anjxx/list",
+        "methods": false,
+        "state": "fxpcgkAnjxxList",
+        "name": "fxpcgkAnjxxList"
+      },
+      {
+        "title": "风险排查管控-工作信息添加",
+        "path": "fxpcgk/anjxx/save",
+        "methods": false,
+        "state": "fxpcgkAnjxxSave",
+        "name": "fxpcgkAnjxxSave"
+      },
+      {
+        "title": "风险排查管控-工作信息删除",
+        "path": "fxpcgk/anjxx/delete",
+        "methods": false,
+        "state": "fxpcgkAnjxxDelete",
+        "name": "fxpcgkAnjxxDelete"
+      },
+      {
+        "title": "风险排查管控-工作信息更新",
+        "path": "fxpcgk/anjxx/update",
+        "methods": false,
+        "state": "fxpcgkAnjxxUpdate",
+        "name": "fxpcgkAnjxxUpdate"
+      },
+      {
+        "title": "风险排查管控-工作信息查询",
+        "path": "fxpcgk/anjxx/info",
+        "methods": false,
+        "state": "fxpcgkAnjxxInfo",
+        "name": "fxpcgkAnjxxInfo"
+      },
+      {
+        "title": "风险排查管控-吸毒人员列表",
+        "path": "fxpcgk/druger/list",
+        "methods": false,
+        "state": "fxpcgkDrugerList",
+        "name": "fxpcgkDrugerList"
+      },
+      {
+        "title": "风险排查管控-吸毒人员添加",
+        "path": "fxpcgk/druger/save",
+        "methods": false,
+        "state": "fxpcgkDrugerSave",
+        "name": "fxpcgkDrugerSave"
+      },
+      {
+        "title": "风险排查管控-吸毒人员删除",
+        "path": "fxpcgk/druger/delete",
+        "methods": false,
+        "state": "fxpcgkDrugerDelete",
+        "name": "fxpcgkDrugerDelete"
+      },
+      {
+        "title": "风险排查管控-吸毒人员更新",
+        "path": "fxpcgk/druger/update",
+        "methods": false,
+        "state": "fxpcgkDrugerUpdate",
+        "name": "fxpcgkDrugerUpdate"
+      },
+      {
+        "title": "风险排查管控-吸毒人员查询",
+        "path": "fxpcgk/druger/info",
+        "methods": false,
+        "state": "fxpcgkDrugerInfo",
+        "name": "fxpcgkDrugerInfo"
+      },
+      {
+        "title": "风险排查管控-脱管失控吸毒人员列表",
+        "path": "fxpcgk/druguncon/list",
+        "methods": false,
+        "state": "fxpcgkDrugunconList",
+        "name": "fxpcgkDrugunconList"
+      },
+      {
+        "title": "风险排查管控-脱管失控吸毒人员添加",
+        "path": "fxpcgk/druguncon/save",
+        "methods": false,
+        "state": "fxpcgkDrugunconSave",
+        "name": "fxpcgkDrugunconSave"
+      },
+      {
+        "title": "风险排查管控-脱管失控吸毒人员删除",
+        "path": "fxpcgk/druguncon/delete",
+        "methods": false,
+        "state": "fxpcgkDrugunconDelete",
+        "name": "fxpcgkDrugunconDelete"
+      },
+      {
+        "title": "风险排查管控-脱管失控吸毒人员更新",
+        "path": "fxpcgk/druguncon/update",
+        "methods": false,
+        "state": "fxpcgkDrugunconUpdate",
+        "name": "fxpcgkDrugunconUpdate"
+      },
+      {
+        "title": "风险排查管控-脱管失控吸毒人员查询",
+        "path": "fxpcgk/druguncon/info",
+        "methods": false,
+        "state": "fxpcgkDrugunconInfo",
+        "name": "fxpcgkDrugunconInfo"
+      },
+      {
+        "title": "风险排查管控-个人极端行为列表",
+        "path": "fxpcgk/ext/list",
+        "methods": false,
+        "state": "fxpcgkExtList",
+        "name": "fxpcgkExtList"
+      },
+      {
+        "title": "风险排查管控-个人极端行为添加",
+        "path": "fxpcgk/ext/save",
+        "methods": false,
+        "state": "fxpcgkExtSave",
+        "name": "fxpcgkExtSave"
+      },
+      {
+        "title": "风险排查管控-个人极端行为删除",
+        "path": "fxpcgk/ext/delete",
+        "methods": false,
+        "state": "fxpcgkExtDelete",
+        "name": "fxpcgkExtDelete"
+      },
+      {
+        "title": "风险排查管控-个人极端行为更新",
+        "path": "fxpcgk/ext/update",
+        "methods": false,
+        "state": "fxpcgkExtUpdate",
+        "name": "fxpcgkExtUpdate"
+      },
+      {
+        "title": "风险排查管控-个人极端行为查询",
+        "path": "fxpcgk/ext/info",
+        "methods": false,
+        "state": "fxpcgkExtInfo",
+        "name": "fxpcgkExtInfo"
+      },
+      {
+        "title": "风险排查管控-精神病人安保登记列表",
+        "path": "fxpcgk/spi/list",
+        "methods": false,
+        "state": "fxpcgkSpiList",
+        "name": "fxpcgkSpiList"
+      },
+      {
+        "title": "风险排查管控-精神病人安保登记添加",
+        "path": "fxpcgk/spi/save",
+        "methods": false,
+        "state": "fxpcgkSpiSave",
+        "name": "fxpcgkSpiSave"
+      },
+      {
+        "title": "风险排查管控-精神病人安保登记删除",
+        "path": "fxpcgk/spi/delete",
+        "methods": false,
+        "state": "fxpcgkSpiDelete",
+        "name": "fxpcgkSpiDelete"
+      },
+      {
+        "title": "风险排查管控-精神病人安保登记更新",
+        "path": "fxpcgk/spi/update",
+        "methods": false,
+        "state": "fxpcgkSpiUpdate",
+        "name": "fxpcgkSpiUpdate"
+      },
+      {
+        "title": "风险排查管控-精神病人安保登记查询",
+        "path": "fxpcgk/spi/info",
+        "methods": false,
+        "state": "fxpcgkSpiInfo",
+        "name": "fxpcgkSpiInfo"
+      },
+      {
+        "title": "风险排查管控-命案逃犯列表",
+        "path": "fxpcgk/crime/list",
+        "methods": false,
+        "state": "fxpcgkCrimeList",
+        "name": "fxpcgkCrimeList"
+      },
+      {
+        "title": "风险排查管控-命案逃犯添加",
+        "path": "fxpcgk/crime/save",
+        "methods": false,
+        "state": "fxpcgkCrimeSave",
+        "name": "fxpcgkCrimeSave"
+      },
+      {
+        "title": "风险排查管控-命案逃犯删除",
+        "path": "fxpcgk/crime/delete",
+        "methods": false,
+        "state": "fxpcgkCrimeDelete",
+        "name": "fxpcgkCrimeDelete"
+      },
+      {
+        "title": "风险排查管控-命案逃犯更新",
+        "path": "fxpcgk/crime/update",
+        "methods": false,
+        "state": "fxpcgkCrimeUpdate",
+        "name": "fxpcgkCrimeUpdate"
+      },
+      {
+        "title": "风险排查管控-命案逃犯查询",
+        "path": "fxpcgk/crime/info",
+        "methods": false,
+        "state": "fxpcgkCrimeInfo",
+        "name": "fxpcgkCrimeInfo"
+      },
+      {
+        "title": "风险排查管控-涉警上访列表",
+        "path": "fxpcgk/policesafe/list",
+        "methods": false,
+        "state": "fxpcgkPolicesafeList",
+        "name": "fxpcgkPolicesafeList"
+      },
+      {
+        "title": "风险排查管控-涉警上访添加",
+        "path": "fxpcgk/policesafe/save",
+        "methods": false,
+        "state": "fxpcgkPolicesafeSave",
+        "name": "fxpcgkPolicesafeSave"
+      },
+      {
+        "title": "风险排查管控-涉警上访删除",
+        "path": "fxpcgk/policesafe/delete",
+        "methods": false,
+        "state": "fxpcgkPolicesafeDelete",
+        "name": "fxpcgkPolicesafeDelete"
+      },
+      {
+        "title": "风险排查管控-涉警上访更新",
+        "path": "fxpcgk/policesafe/update",
+        "methods": false,
+        "state": "fxpcgkPolicesafeUpdate",
+        "name": "fxpcgkPolicesafeUpdate"
+      },
+      {
+        "title": "风险排查管控-涉警上访查询",
+        "path": "fxpcgk/policesafe/info",
+        "methods": false,
+        "state": "fxpcgkPolicesafeInfo",
+        "name": "fxpcgkPolicesafeInfo"
+      },
+      {
+        "title": "风险排查管控-非正常上访列表",
+        "path": "fxpcgk/casepetition/list",
+        "methods": false,
+        "state": "fxpcgkCasepetitionList",
+        "name": "fxpcgkCasepetitionList"
+      },
+      {
+        "title": "风险排查管控-非正常上访添加",
+        "path": "fxpcgk/casepetition/save",
+        "methods": false,
+        "state": "fxpcgkCasepetitionSave",
+        "name": "fxpcgkCasepetitionSave"
+      },
+      {
+        "title": "风险排查管控-非正常上访删除",
+        "path": "fxpcgk/casepetition/delete",
+        "methods": false,
+        "state": "fxpcgkCasepetitionDelete",
+        "name": "fxpcgkCasepetitionDelete"
+      },
+      {
+        "title": "风险排查管控-非正常上访更新",
+        "path": "fxpcgk/casepetition/update",
+        "methods": false,
+        "state": "fxpcgkCasepetitionUpdate",
+        "name": "fxpcgkCasepetitionUpdate"
+      },
+      {
+        "title": "风险排查管控-非正常上访查询",
+        "path": "fxpcgk/casepetition/info",
+        "methods": false,
+        "state": "fxpcgkCasepetitionInfo",
+        "name": "fxpcgkCasepetitionInfo"
+      },
+      {
+        "title": "风险排查管控-涉交通事故信访登记列表",
+        "path": "fxpcgk/traffic/list",
+        "methods": false,
+        "state": "fxpcgkTrafficnList",
+        "name": "fxpcgkTrafficnList"
+      },
+      {
+        "title": "风险排查管控-涉交通事故信访登记添加",
+        "path": "fxpcgk/traffic/save",
+        "methods": false,
+        "state": "fxpcgkTrafficnSave",
+        "name": "fxpcgkTrafficnSave"
+      },
+      {
+        "title": "风险排查管控-涉交通事故信访登记删除",
+        "path": "fxpcgk/traffic/delete",
+        "methods": false,
+        "state": "fxpcgkTrafficnDelete",
+        "name": "fxpcgkTrafficnDelete"
+      },
+      {
+        "title": "风险排查管控-涉交通事故信访登记更新",
+        "path": "fxpcgk/traffic/update",
+        "methods": false,
+        "state": "fxpcgkTrafficnUpdate",
+        "name": "fxpcgkTrafficnUpdate"
+      },
+      {
+        "title": "风险排查管控-涉交通事故信访登记查询",
+        "path": "fxpcgk/traffic/info",
+        "methods": false,
+        "state": "fxpcgkTrafficnInfo",
+        "name": "fxpcgkTrafficnInfo"
+      },
+      {
+        "title": "风险排查管控-涉众经济犯排查表（问卷）列表",
+        "path": "fxpcgk/economicrime/list",
+        "methods": false,
+        "state": "fxpcgkEconomicrimeList",
+        "name": "fxpcgkEconomicrimeList"
+      },
+      {
+        "title": "风险排查管控-涉众经济犯排查表（问卷）添加",
+        "path": "fxpcgk/economicrime/save",
+        "methods": false,
+        "state": "fxpcgkEconomicrimeSave",
+        "name": "fxpcgkEconomicrimeSave"
+      },
+      {
+        "title": "风险排查管控-涉众经济犯排查表（问卷）删除",
+        "path": "fxpcgk/economicrime/delete",
+        "methods": false,
+        "state": "fxpcgkEconomicrimeDelete",
+        "name": "fxpcgkEconomicrimeDelete"
+      },
+      {
+        "title": "风险排查管控-涉众经济犯排查表（问卷）更新",
+        "path": "fxpcgk/economicrime/update",
+        "methods": false,
+        "state": "fxpcgkEconomicrimeUpdate",
+        "name": "fxpcgkEconomicrimeUpdate"
+      },
+      {
+        "title": "风险排查管控-涉众经济犯排查表（问卷）查询",
+        "path": "fxpcgk/economicrime/info",
+        "methods": false,
+        "state": "fxpcgkEconomicrimeInfo",
+        "name": "fxpcgkEconomicrimeInfo"
+      },
+      {
+        "title": "风险排查管控-涉军人员基本信息列表",
+        "path": "fxpcgk/soldiers/list",
+        "methods": false,
+        "state": "fxpcgkSoldiersList",
+        "name": "fxpcgkSoldiersList"
+      },
+      {
+        "title": "风险排查管控-涉军人员基本信息添加",
+        "path": "fxpcgk/soldiers/save",
+        "methods": false,
+        "state": "fxpcgkSoldiersSave",
+        "name": "fxpcgkSoldiersSave"
+      },
+      {
+        "title": "风险排查管控-涉军人员基本信息删除",
+        "path": "fxpcgk/soldiers/delete",
+        "methods": false,
+        "state": "fxpcgkSoldiersDelete",
+        "name": "fxpcgkSoldiersDelete"
+      },
+      {
+        "title": "风险排查管控-涉军人员基本信息更新",
+        "path": "fxpcgk/soldiers/update",
+        "methods": false,
+        "state": "fxpcgkSoldiersUpdate",
+        "name": "fxpcgkSoldiersUpdate"
+      },
+      {
+        "title": "风险排查管控-涉军人员基本信息查询",
+        "path": "fxpcgk/soldiers/info",
+        "methods": false,
+        "state": "fxpcgkSoldiersInfo",
+        "name": "fxpcgkSoldiersInfo"
+      },
+      {
+        "title": "风险排查管控-涉军人员上访列表",
+        "path": "fxpcgk/solpet/list",
+        "methods": false,
+        "state": "fxpcgkSolpetList",
+        "name": "fxpcgkSolpetList"
+      },
+      {
+        "title": "风险排查管控-涉军人员上访添加",
+        "path": "fxpcgk/solpet/save",
+        "methods": false,
+        "state": "fxpcgkSolpetSave",
+        "name": "fxpcgkSolpetSave"
+      },
+      {
+        "title": "风险排查管控-涉军人员上访删除",
+        "path": "fxpcgk/solpet/delete",
+        "methods": false,
+        "state": "fxpcgkSolpetDelete",
+        "name": "fxpcgkSolpetDelete"
+      },
+      {
+        "title": "风险排查管控-涉军人员上访更新",
+        "path": "fxpcgk/solpet/update",
+        "methods": false,
+        "state": "fxpcgkSolpetUpdate",
+        "name": "fxpcgkSolpetUpdate"
+      },
+      {
+        "title": "风险排查管控-涉军人员上访查询",
+        "path": "fxpcgk/solpet/info",
+        "methods": false,
+        "state": "fxpcgkSolpetInfo",
+        "name": "fxpcgkSolpetInfo"
+      },
+      {
+        "title": "风险排查管控-涉军人员上访管控列表",
+        "path": "fxpcgk/solpetctrl/list",
+        "methods": false,
+        "state": "fxpcgkSolpetctrlList",
+        "name": "fxpcgkSolpetctrlList"
+      },
+      {
+        "title": "风险排查管控-涉军人员上访管控添加",
+        "path": "fxpcgk/solpetctrl/save",
+        "methods": false,
+        "state": "fxpcgkSolpetctrlSave",
+        "name": "fxpcgkSolpetctrlSave"
+      },
+      {
+        "title": "风险排查管控-涉军人员上访管控删除",
+        "path": "fxpcgk/solpetctrl/delete",
+        "methods": false,
+        "state": "fxpcgkSolpetctrlDelete",
+        "name": "fxpcgkSolpetctrlDelete"
+      },
+      {
+        "title": "风险排查管控-涉军人员上访管控更新",
+        "path": "fxpcgk/solpetctrl/update",
+        "methods": false,
+        "state": "fxpcgkSolpetctrlUpdate",
+        "name": "fxpcgkSolpetctrlUpdate"
+      },
+      {
+        "title": "风险排查管控-涉军人员上访管控查询",
+        "path": "fxpcgk/solpetctrl/info",
+        "methods": false,
+        "state": "fxpcgkSolpetctrlInfo",
+        "name": "fxpcgkSolpetctrlInfo"
+      },
+      {
+        "title": "风险排查管控-涉军人员多表单更新",
+        "path": "fxpcgk/soldiersall/update",
+        "methods": false,
+        "state": "fxpcgkSoldiersallUpdate",
+        "name": "fxpcgkSoldiersallUpdate"
+      },
+      {
+        "title": "风险排查管控-涉军人员多表单新增",
+        "path": "fxpcgk/soldiersall/save",
+        "methods": false,
+        "state": "fxpcgkSoldiersallSave",
+        "name": "fxpcgkSoldiersallSave"
+      },
+      {
+        "title": "风险排查管控-涉军人员多表单查询",
+        "path": "fxpcgk/soldiersall/info",
+        "methods": false,
+        "state": "fxpcgkSoldiersallInfo",
+        "name": "fxpcgkSoldiersallInfo"
+      },
+      {
+        "title": "风险排查管控-无人机生产厂商列表",
+        "path": "uav/manufacturer/list",
+        "methods": false,
+        "state": "uavManufacturerList",
+        "name": "uavManufacturerList"
+      },
+      {
+        "title": "风险排查管控-无人机生产厂商添加",
+        "path": "uav/manufacturer/save",
+        "methods": false,
+        "state": "uavManufacturerSave",
+        "name": "uavManufacturerSave"
+      },
+      {
+        "title": "风险排查管控-无人机生产厂商删除",
+        "path": "uav/manufacturer/delete",
+        "methods": false,
+        "state": "uavManufacturerDelete",
+        "name": "uavManufacturerDelete"
+      },
+      {
+        "title": "风险排查管控-无人机生产厂商更新",
+        "path": "uav/manufacturer/update",
+        "methods": false,
+        "state": "uavManufacturerUpdate",
+        "name": "uavManufacturerUpdate"
+      },
+      {
+        "title": "风险排查管控-无人机生产厂商查询",
+        "path": "uav/manufacturer/info",
+        "methods": false,
+        "state": "uavManufacturerInfo",
+        "name": "uavManufacturerInfo"
+      },
+      {
+        "title": "风险排查管控-无人机生产厂商待我审批列表",
+        "path": "uav/manufacturer/approvallist",
+        "methods": false,
+        "state": "uavManufacturerApprovallist",
+        "name": "uavManufacturerApprovallist"
+      },
+      {
+        "title": "风险排查管控-无人机生产厂商获取页签数据条数",
+        "path": "uav/manufacturer/tabcount",
+        "methods": false,
+        "state": "uavManufacturerTabcount",
+        "name": "uavManufacturerTabcount"
+      },
+      {
+        "title": "风险排查管控-无人机爱好者列表",
+        "path": "uav/hobbyer/list",
+        "methods": false,
+        "state": "uavHobbyerList",
+        "name": "uavHobbyerList"
+      },
+      {
+        "title": "风险排查管控-无人机爱好者添加",
+        "path": "uav/hobbyer/save",
+        "methods": false,
+        "state": "uavHobbyerSave",
+        "name": "uavHobbyerSave"
+      },
+      {
+        "title": "风险排查管控-无人机爱好者删除",
+        "path": "uav/hobbyer/delete",
+        "methods": false,
+        "state": "uavHobbyerDelete",
+        "name": "uavHobbyerDelete"
+      },
+      {
+        "title": "风险排查管控-无人机爱好者更新",
+        "path": "uav/hobbyer/update",
+        "methods": false,
+        "state": "uavHobbyerUpdate",
+        "name": "uavHobbyerUpdate"
+      },
+      {
+        "title": "风险排查管控-无人机爱好者查询",
+        "path": "uav/hobbyer/info",
+        "methods": false,
+        "state": "uavHobbyerInfo",
+        "name": "uavHobbyerInfo"
+      },
+      {
+        "title": "风险排查管控-无人机爱好者待我审批列表",
+        "path": "uav/hobbyer/approvallist",
+        "methods": false,
+        "state": "uavHobbyerApprovallist",
+        "name": "uavHobbyerApprovallist"
+      },
+      {
+        "title": "风险排查管控-无人机爱好者获取页签数据条数",
+        "path": "uav/hobbyer/tabcount",
+        "methods": false,
+        "state": "uavHobbyerTabcount",
+        "name": "uavHobbyerTabcount"
+      },
+      {
+        "title": "风险排查管控-无人机生产信息列表",
+        "path": "uav/production/list",
+        "methods": false,
+        "state": "uavProductionList",
+        "name": "uavProductionList"
+      },
+      {
+        "title": "风险排查管控-无人机生产信息添加",
+        "path": "uav/production/save",
+        "methods": false,
+        "state": "uavProductionSave",
+        "name": "uavProductionSave"
+      },
+      {
+        "title": "风险排查管控-无人机生产信息删除",
+        "path": "uav/production/delete",
+        "methods": false,
+        "state": "uavProductionDelete",
+        "name": "uavProductionDelete"
+      },
+      {
+        "title": "风险排查管控-无人机生产信息更新",
+        "path": "uav/production/update",
+        "methods": false,
+        "state": "uavProductionUpdate",
+        "name": "uavProductionUpdate"
+      },
+      {
+        "title": "风险排查管控-无人机生产信息查询",
+        "path": "uav/production/info",
+        "methods": false,
+        "state": "uavProductionInfo",
+        "name": "uavProductionInfo"
+      },
+      {
+        "title": "风险排查管控-无人机生产信息待我审批列表",
+        "path": "uav/production/approvallist",
+        "methods": false,
+        "state": "uavProductionApprovallist",
+        "name": "uavProductionApprovallist"
+      },
+      {
+        "title": "风险排查管控-无人机生产信息获取页签数据条数",
+        "path": "uav/production/tabcount",
+        "methods": false,
+        "state": "uavProductionTabcount",
+        "name": "uavProductionTabcount"
+      },
+      {
+        "title": "风险排查管控-无人机销售商列表",
+        "path": "uav/seller/list",
+        "methods": false,
+        "state": "uavSellerList",
+        "name": "uavSellerList"
+      },
+      {
+        "title": "风险排查管控-无人机销售商添加",
+        "path": "uav/seller/save",
+        "methods": false,
+        "state": "uavSellerSave",
+        "name": "uavSellerSave"
+      },
+      {
+        "title": "风险排查管控-无人机销售商删除",
+        "path": "uav/seller/delete",
+        "methods": false,
+        "state": "uavSellerDelete",
+        "name": "uavSellerDelete"
+      },
+      {
+        "title": "风险排查管控-无人机销售商更新",
+        "path": "uav/seller/update",
+        "methods": false,
+        "state": "uavSellerUpdate",
+        "name": "uavSellerUpdate"
+      },
+      {
+        "title": "风险排查管控-无人机销售商查询",
+        "path": "uav/seller/info",
+        "methods": false,
+        "state": "uavSellerInfo",
+        "name": "uavSellerInfo"
+      },
+      {
+        "title": "风险排查管控-无人机销售商待我审批列表",
+        "path": "uav/seller/approvallist",
+        "methods": false,
+        "state": "uavSellerApprovallist",
+        "name": "uavSellerApprovallist"
+      },
+      {
+        "title": "风险排查管控-无人机销售商获取页签数据条数",
+        "path": "uav/seller/tabcount",
+        "methods": false,
+        "state": "uavSellerTabcount",
+        "name": "uavSellerTabcount"
+      },
+      {
+        "title": "风险排查管控-无人机培训机构列表",
+        "path": "uav/training/list",
+        "methods": false,
+        "state": "uavTrainingList",
+        "name": "uavTrainingList"
+      },
+      {
+        "title": "风险排查管控-无人机培训机构添加",
+        "path": "uav/training/save",
+        "methods": false,
+        "state": "uavTrainingSave",
+        "name": "uavTrainingSave"
+      },
+      {
+        "title": "风险排查管控-无人机培训机构删除",
+        "path": "uav/training/delete",
+        "methods": false,
+        "state": "uavTrainingDelete",
+        "name": "uavTrainingDelete"
+      },
+      {
+        "title": "风险排查管控-无人机培训机构更新",
+        "path": "uav/training/update",
+        "methods": false,
+        "state": "uavTrainingUpdate",
+        "name": "uavTrainingUpdate"
+      },
+      {
+        "title": "风险排查管控-无人机培训机构查询",
+        "path": "uav/training/info",
+        "methods": false,
+        "state": "uavTrainingInfo",
+        "name": "uavTrainingInfo"
+      },
+      {
+        "title": "风险排查管控-无人机培训机构待我审核列表",
+        "path": "uav/training/approvallist",
+        "methods": false,
+        "state": "uavTrainingApprovallist",
+        "name": "uavTrainingApprovallist"
+      },
+      {
+        "title": "风险排查管控-无人机培训机构获取页签数据条数",
+        "path": "uav/training/tabcount",
+        "methods": false,
+        "state": "uavTrainingTabcount",
+        "name": "uavTrainingTabcount"
+      },
+      {
+        "title": "风险排查管控-重点场所基本信息列表",
+        "path": "fxpcgk/baseplace/list",
+        "methods": false,
+        "state": "fxpcgkBaseplaceList",
+        "name": "fxpcgkBaseplaceList"
+      },
+      {
+        "title": "风险排查管控-重点场所基本信息添加",
+        "path": "fxpcgk/baseplace/save",
+        "methods": false,
+        "state": "fxpcgkBaseplaceSave",
+        "name": "fxpcgkBaseplaceSave"
+      },
+      {
+        "title": "风险排查管控-重点场所基本信息删除",
+        "path": "fxpcgk/baseplace/delete",
+        "methods": false,
+        "state": "fxpcgkBaseplaceDelete",
+        "name": "fxpcgkBaseplaceDelete"
+      },
+      {
+        "title": "风险排查管控-重点场所基本信息更新",
+        "path": "fxpcgk/baseplace/update",
+        "methods": false,
+        "state": "fxpcgkBaseplaceUpdate",
+        "name": "fxpcgkBaseplaceUpdate"
+      },
+      {
+        "title": "风险排查管控-重点场所基本信息查询",
+        "path": "fxpcgk/baseplace/info",
+        "methods": false,
+        "state": "fxpcgkBaseplaceInfo",
+        "name": "fxpcgkBaseplaceInfo"
+      },
+      {
+        "title": "风险排查管控-获取待我审批的重点场所部位",
+        "path": "fxpcgk/baseplace/approvallist",
+        "methods": false,
+        "state": "fxpcgkBaseplaceApprovallist",
+        "name": "fxpcgkBaseplaceApprovallist"
+      },
+      {
+        "title": "风险排查管控-获取页签初始化分页大小",
+        "path": "fxpcgk/baseplace/tabcount",
+        "methods": false,
+        "state": "fxpcgkBaseplaceTabcount",
+        "name": "fxpcgkBaseplaceTabcount"
+      },
+      {
+        "title": "风险排查管控-隐患排查信息",
+        "path": "fxpcgk/troubledict/list",
+        "methods": false,
+        "state": "troubledictList",
+        "name": "troubledictList"
+      },
+      {
+        "title": "风险排查管控-新增隐患字典",
+        "path": "fxpcgk/troubledict/save",
+        "methods": false,
+        "state": "troubledictSave",
+        "name": "troubledictSave"
+      },
+      {
+        "title": "风险排查管控-修改隐患字典",
+        "path": "fxpcgk/troubledict/update",
+        "methods": false,
+        "state": "troubledictUpdate",
+        "name": "troubledictUpdate"
+      },
+      {
+        "title": "风险排查管控-删除隐患字典",
+        "path": "fxpcgk/troubledict/delete",
+        "methods": false,
+        "state": "troubledictDelete",
+        "name": "troubledictDelete"
+      },
+      {
+        "title": "风险排查管控-查询隐患字典",
+        "path": "fxpcgk/troubledict/info",
+        "methods": false,
+        "state": "troubledictInfo",
+        "name": "troubledictInfo"
+      },
+      {
+        "title": "风险排查管控-查询隐患模板列表",
+        "path": "fxpcgk/troubletemplate/list",
+        "methods": false,
+        "state": "troubletemplateList",
+        "name": "troubletemplateList"
+      },
+      {
+        "title": "风险排查管控-新增隐患模板列表",
+        "path": "fxpcgk/troubletemplate/save",
+        "methods": false,
+        "state": "troubletemplateSave",
+        "name": "troubletemplateSave"
+      },
+      {
+        "title": "风险排查管控-修改隐患模板列表",
+        "path": "fxpcgk/troubletemplate/update",
+        "methods": false,
+        "state": "troubletemplateUpdate",
+        "name": "troubletemplateUpdate"
+      },
+      {
+        "title": "风险排查管控-删除隐患模板列表",
+        "path": "fxpcgk/troubletemplate/delete",
+        "methods": false,
+        "state": "troubletemplateDelete",
+        "name": "troubletemplateDelete"
+      },
+      {
+        "title": "风险排查管控-查询隐患模板内容",
+        "path": "fxpcgk/troubletemplate/info",
+        "methods": false,
+        "state": "troubletemplateInfo",
+        "name": "troubletemplateInfo"
+      },
+      {
+        "title": "风险排查管控-隐患排查业务信息",
+        "path": "fxpcgk/placeCheck/list",
+        "methods": false,
+        "state": "placeChecklist",
+        "name": "placeChecklist"
+      },
+      {
+        "title": "风险排查管控-新增隐患排查业务信息",
+        "path": "fxpcgk/placeCheck/save",
+        "methods": false,
+        "state": "placeChecksave",
+        "name": "placeChecksave"
+      }
+    ],
+    "personVisit": [
+      {
+        "title": "人员走访记录查询",
+        "path": "FocusObject/GetPersonVisitInfo",
+        "methods": false,
+        "method": "fetch",
+        "name": "GetPersonVisitInfo"
+      },
+      {
+        "title": "添加人员走访记录",
+        "path": "FocusObject/AddPersonVisit",
+        "methods": false,
+        "method": "add",
+        "name": "AddPersonVisit"
+      },
+      {
+        "title": "编辑人员走访记录",
+        "path": "FocusObject/EditPersonVisit",
+        "methods": false,
+        "method": "update",
+        "name": "EditPersonVisit"
+      },
+      {
+        "title": "删除人员走访信息",
+        "path": "FocusObject/DelPersonVisit",
+        "methods": false,
+        "method": "remove",
+        "name": "DelPersonVisit"
+      }
+    ],
+    "focusCar": [
+      {
+        "title": "根据车牌号检测重点车辆是否存在",
+        "path": "FocusObject/CheckCarByNo",
+        "methods": false,
+        "state": "getCheckCarByNo",
+        "name": "getCheckCarByNo"
+      },
+      {
+        "title": "新增重点车辆",
+        "path": "FocusObject/AddFocusCar",
+        "methods": false,
+        "method": "add",
+        "name": "AddFocusCar"
+      },
+      {
+        "title": "编辑车辆信息",
+        "path": "FocusObject/EditFocusCar",
+        "methods": false,
+        "method": "update",
+        "name": "EditFocusCar"
+      },
+      {
+        "title": "查询单条重点车辆信息",
+        "path": "FocusObject/GetFocusCarById",
+        "methods": false,
+        "method": "get",
+        "name": "GetFocusCarById"
+      },
+      {
+        "title": "依条件分页查询重点车辆列表",
+        "path": "FocusObject/GetFocusCarsByCond",
+        "methods": false,
+        "state": "fetchCarsByCond",
+        "name": "fetchCarsByCond"
+      },
+      {
+        "title": "依条件分页查询重点车辆列表[待我审核]",
+        "path": "FocusObject/GetFocusCarsByCond",
+        "methods": false,
+        "state": "fetchAuditCarsByCond",
+        "name": "fetchAuditCarsByCond"
+      },
+      {
+        "title": "依条件分页查询重点车辆列表[待通过]",
+        "path": "FocusObject/GetFocusCarsByCond",
+        "methods": false,
+        "state": "fetchPendingCarsByCond",
+        "name": "fetchPendingCarsByCond"
+      },
+      {
+        "title": "依条件分页查询重点车辆列表[待我签收]",
+        "path": "FocusObject/GetFocusCarsByCond",
+        "methods": false,
+        "state": "fetchMySingCarsByCond",
+        "name": "fetchMySingCarsByCond"
+      },
+      {
+        "title": "依条件分页查询重点车辆列表[待他签收]",
+        "path": "FocusObject/GetFocusCarsByCond",
+        "methods": false,
+        "state": "fetchHeSingCarsByCond",
+        "name": "fetchHeSingCarsByCond"
+      },
+      {
+        "title": "违章记录查询",
+        "path": "FocusObject/GetCarIllegalHisData",
+        "methods": false,
+        "method": false,
+        "state": "GetCarIllegalHisData",
+        "name": "GetCarIllegalHisData"
+      },
+      {
+        "title": "删除车辆信息（支持批量操作）",
+        "path": "FocusObject/DeleteFocusCar",
+        "methods": false,
+        "method": "remove",
+        "name": "DeleteFocusCar"
+      },
+      {
+        "title": "车辆加入研判（支持批量操作）",
+        "path": "FocusObject/CarToCase",
+        "methods": false,
+        "method": "add",
+        "name": "CarToCase"
+      },
+      {
+        "title": "风险排查管控-重点车辆基本信息列表",
+        "path": "fxpcgk/casecar/list",
+        "methods": false,
+        "state": "fxpcgkCasecarList",
+        "name": "fxpcgkCasecarList"
+      },
+      {
+        "title": "风险排查管控-重点车辆基本信息添加",
+        "path": "fxpcgk/casecar/save",
+        "methods": false,
+        "state": "fxpcgkCasecarSave",
+        "name": "fxpcgkCasecarSave"
+      },
+      {
+        "title": "风险排查管控-重点车辆基本信息删除",
+        "path": "fxpcgk/casecar/delete",
+        "methods": false,
+        "state": "fxpcgkCasecarDelete",
+        "name": "fxpcgkCasecarDelete"
+      },
+      {
+        "title": "风险排查管控-重点车辆基本信息更新",
+        "path": "fxpcgk/casecar/update",
+        "methods": false,
+        "state": "fxpcgkCasecarUpdate",
+        "name": "fxpcgkCasecarUpdate"
+      },
+      {
+        "title": "风险排查管控-重点车辆基本信息查询",
+        "path": "fxpcgk/casecar/info",
+        "methods": false,
+        "state": "fxpcgkCasecarInfo",
+        "name": "fxpcgkCasecarInfo"
+      },
+      {
+        "title": "风险排查管控-获取待我审批的重点车辆",
+        "path": "fxpcgk/casecar/approvallist",
+        "methods": false,
+        "state": "fxpcgkCasecarApprovallist",
+        "name": "fxpcgkCasecarApprovallist"
+      },
+      {
+        "title": "风险排查管控-获取重点车辆页签初始化分页大小",
+        "path": "fxpcgk/casecar/tabcount",
+        "methods": false,
+        "state": "fxpcgkCasecarTabcount",
+        "name": "fxpcgkCasecarTabcount"
+      }
+    ],
+    "focusOrg": [
+      {
+        "title": "风险排查管控-重点行业单位基本信息列表",
+        "path": "fxpcgk/indorg/list",
+        "methods": false,
+        "state": "fxpcgkIndorgList",
+        "name": "fxpcgkIndorgList"
+      },
+      {
+        "title": "风险排查管控-重点行业单位基本信息添加",
+        "path": "fxpcgk/indorg/save",
+        "methods": false,
+        "state": "fxpcgkIndorgSave",
+        "name": "fxpcgkIndorgSave"
+      },
+      {
+        "title": "风险排查管控-重点行业单位基本信息删除",
+        "path": "fxpcgk/indorg/delete",
+        "methods": false,
+        "state": "fxpcgkIndorgDelete",
+        "name": "fxpcgkIndorgDelete"
+      },
+      {
+        "title": "风险排查管控-重点行业单位基本信息更新",
+        "path": "fxpcgk/indorg/update",
+        "methods": false,
+        "state": "fxpcgkIndorgUpdate",
+        "name": "fxpcgkIndorgUpdate"
+      },
+      {
+        "title": "风险排查管控-重点行业单位基本信息查询",
+        "path": "fxpcgk/indorg/info",
+        "methods": false,
+        "state": "fxpcgkIndorgInfo",
+        "name": "fxpcgkIndorgInfo"
+      },
+      {
+        "title": "风险排查管控-获取待我审批的重点行业部位",
+        "path": "fxpcgk/indorg/approvallist",
+        "methods": false,
+        "state": "fxpcgkIndorgApprovallist",
+        "name": "fxpcgkIndorgApprovallist"
+      },
+      {
+        "title": "风险排查管控-获取页签初始化分页大小",
+        "path": "fxpcgk/indorg/tabcount",
+        "methods": false,
+        "state": "fxpcgkIndorgTabcount",
+        "name": "fxpcgkIndorgTabcount"
+      }
+    ],
+    "focusPersonAndCar": [
+      {
+        "title": "撤销管控（支持批量操作）",
+        "path": "FocusObject/RevokedFocus",
+        "methods": false,
+        "method": "remove",
+        "name": "removeRevokedFocus"
+      },
+      {
+        "title": "查询流转记录",
+        "path": "FocusObject/GetFocusTransfer",
+        "methods": false,
+        "method": "fetch",
+        "name": "fetchFocusTransfer"
+      },
+      {
+        "title": "新增流转",
+        "path": "FocusObject/AddFocusTransfer",
+        "methods": false,
+        "method": "add",
+        "name": "addFocusTransfer"
+      },
+      {
+        "title": "新增流转--人员",
+        "path": "FocusObject/AddFocusTransferPerson",
+        "methods": false,
+        "state": "AddFocusTransferPerson",
+        "name": "AddFocusTransferPerson"
+      },
+      {
+        "title": "新增流转--车辆",
+        "path": "FocusObject/AddFocusTransferCar",
+        "methods": false,
+        "state": "AddFocusTransferCar",
+        "name": "AddFocusTransferCar"
+      },
+      {
+        "title": "签收/拒签（支持批量操作）",
+        "path": "FocusObject/AcceptTransfer",
+        "methods": false,
+        "method": "update",
+        "name": "updateAcceptTransfer"
+      }
+    ],
+    "focusChart": [
+      {
+        "title": "风控首页图表",
+        "path": "fxpcgk/chart/main",
+        "methods": false,
+        "state": "fxpcgkMainPageList",
+        "name": "fxpcgkMainPageList"
+      },
+      {
+        "title": "风控统计分析图表",
+        "path": "fxpcgk/tjfx/pageDate",
+        "methods": false,
+        "state": "tjfxPageDate",
+        "name": "tjfxPageDate"
+      },
+      {
+        "title": "风控统计报表-重点人员",
+        "path": "fxpcgk/count/peo",
+        "methods": false,
+        "state": "peopleCountData",
+        "name": "peopleCountData"
+      }
+    ],
+    "caseClues": [
+      {
+        "title": "案件线索-列表",
+        "path": "ajgl/clue/list",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchCaseCluesList"
+      },
+      {
+        "title": "案件线索-基本信息",
+        "path": "ajgl/clue/info",
+        "methods": false,
+        "method": "get",
+        "name": "GetCaseCluesInfo"
+      },
+      {
+        "title": "案件线索-新增",
+        "path": "ajgl/clue/save",
+        "methods": false,
+        "method": "add",
+        "name": "AddCaseClues"
+      },
+      {
+        "title": "案件线索-更新",
+        "path": "ajgl/clue/update",
+        "methods": false,
+        "method": "update",
+        "name": "updateCaseClues"
+      },
+      {
+        "title": "案件线索-删除",
+        "path": "ajgl/clue/delete",
+        "methods": false,
+        "method": "remove",
+        "name": "RemoveCaseClues"
+      }
+    ],
+    "suspectCasePeople": [
+      {
+        "title": "嫌疑人-【超级列表】包含嫌疑人各类相关信息",
+        "path": "ajgl/suspect/listall",
+        "methods": false,
+        "name": "FetchSuspectCasePeopleListAll",
+        "state": "FetchSuspectCasePeopleListAll"
+      },
+      {
+        "title": "嫌疑人-列表",
+        "path": "ajgl/suspect/list",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchSuspectCasePeopleList",
+        "state": "FetchSuspectCasePeopleList"
+      },
+      {
+        "title": "嫌疑人-基本信息",
+        "path": "ajgl/suspect/info",
+        "methods": false,
+        "method": "get",
+        "name": "GetSuspectCasePeopleInfo"
+      },
+      {
+        "title": "嫌疑人-新增",
+        "path": "ajgl/suspect/save",
+        "methods": false,
+        "method": "add",
+        "name": "AddSuspectCasePeople"
+      },
+      {
+        "title": "嫌疑人-更新",
+        "path": "ajgl/suspect/update",
+        "methods": false,
+        "method": "update",
+        "name": "updateSuspectCasePeople"
+      },
+      {
+        "title": "嫌疑人-删除",
+        "path": "ajgl/suspect/delete",
+        "methods": false,
+        "method": "remove",
+        "name": "RemoveSuspectCasePeople"
+      }
+    ],
+    "involvedCasePeople": [
+      {
+        "title": "涉案人员-列表",
+        "path": "ajgl/personnel/list",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchInvolvedCasePeopleList"
+      },
+      {
+        "title": "涉案人员-基本信息",
+        "path": "ajgl/personnel/info",
+        "methods": false,
+        "method": "get",
+        "name": "GetInvolvedCasePeopleInfo"
+      },
+      {
+        "title": "涉案人员-新增",
+        "path": "ajgl/personnel/save",
+        "methods": false,
+        "method": "add",
+        "name": "AddInvolvedCasePeople"
+      },
+      {
+        "title": "涉案人员-更新",
+        "path": "ajgl/personnel/update",
+        "methods": false,
+        "method": "update",
+        "name": "updateInvolvedCasePeople"
+      },
+      {
+        "title": "涉案人员-删除",
+        "path": "ajgl/personnel/delete",
+        "methods": false,
+        "method": "remove",
+        "name": "RemoveInvolvedCasePeople"
+      },
+      {
+        "title": "团伙同住人员-列表",
+        "path": "ajgl/suspect/ganglive",
+        "methods": false,
+        "name": "fetchGangliveList",
+        "state": "fetchGangliveList"
+      },
+      {
+        "title": "团伙同行人员-列表",
+        "path": "ajgl/suspect/gang",
+        "methods": false,
+        "name": "fetchGangList",
+        "state": "fetchGangList"
+      },
+      {
+        "title": "团伙（多人）交易记录-列表",
+        "path": "Zdfx/GetDRJYMXList",
+        "methods": false,
+        "name": "fetchGangTransactList",
+        "state": "fetchGangTransactList"
+      },
+      {
+        "title": "团伙（多人）通话记录-列表",
+        "path": "Hdfx/GetDRTHMXList",
+        "methods": false,
+        "name": "fetchGangCallList",
+        "state": "fetchGangCallList"
+      }
+    ],
+    "process": [
+      {
+        "title": "流程-获取单个流程轨迹明细",
+        "path": "Lcgl/GetLcgjmx",
+        "methods": false,
+        "name": "getProcessDetail",
+        "state": "processDetail"
+      },
+      {
+        "title": "流程-审批",
+        "path": "Lcgl/GoNext",
+        "methods": false,
+        "name": "postProcessExamine",
+        "state": "processExamine"
+      }
+    ],
+    "processBus": [
+      {
+        "title": "获取单笔流程主表信息",
+        "path": "Lcgl/GetLcglData",
+        "methods": false,
+        "name": "GetProcessInfo",
+        "state": "GetProcessInfo"
+      },
+      {
+        "title": "流程业务-列表",
+        "path": "Lcgl/GetYwbList",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchProcessBusList"
+      },
+      {
+        "title": "流程业务-基本信息",
+        "path": "Lcgl/GetYwb",
+        "methods": false,
+        "method": "get",
+        "name": "GetProcessBusInfo"
+      },
+      {
+        "title": "流程业务-新增",
+        "path": "Lcgl/AddYwb",
+        "methods": false,
+        "method": "add",
+        "name": "AddProcessBus"
+      },
+      {
+        "title": "流程业务-更新",
+        "path": "Lcgl/UpdateYwb",
+        "methods": false,
+        "method": "update",
+        "name": "updateProcessBus"
+      },
+      {
+        "title": "流程业务-删除",
+        "path": "Lcgl/DeleteYwb",
+        "methods": false,
+        "method": "remove",
+        "name": "RemoveProcessBus"
+      }
+    ],
+    "processFlowchart": [
+      {
+        "title": "流程流程图-分页列表",
+        "path": "Lcgl/GetFlowchartList",
+        "methods": false,
+        "method": "fetch",
+        "name": "FetchProcessFlowchartList"
+      },
+      {
+        "title": "流程流程图-全部列表",
+        "path": "Lcgl/GetFlowchartAllList",
+        "methods": false,
+        "name": "FetchProcessFlowchartAllList",
+        "state": "FlowchartList"
+      },
+      {
+        "title": "流程流程图-基本信息",
+        "path": "Lcgl/GetFlowchart",
+        "methods": false,
+        "method": "get",
+        "name": "GetProcessFlowchartInfo"
+      },
+      {
+        "title": "流程流程图-新增",
+        "path": "Lcgl/AddFlowchart",
+        "methods": false,
+        "method": "add",
+        "name": "AddProcessFlowchart"
+      },
+      {
+        "title": "流程流程图-更新",
+        "path": "Lcgl/UpdateFlowchart",
+        "methods": false,
+        "method": "update",
+        "name": "updateProcessFlowchart"
+      },
+      {
+        "title": "流程流程图-删除",
+        "path": "Lcgl/DeleteFlowchart",
+        "methods": false,
+        "method": "remove",
+        "name": "removeProcessFlowchart"
+      }
+    ],
+    "unionStatistics": [
+      {
+        "title": "协同-总览(新)",
+        "path": "xtbg/xtbgnew/statistics",
+        "methods": false,
+        "name": "xtStatistics",
+        "state": "xtStatistics"
+      },
+      {
+        "title": "协同办公-列表统计",
+        "path": "xtbg/xtbgnew/statisticsOne",
+        "methods": false,
+        "name": "statisticsOne",
+        "state": "statisticsOne"
+      },
+      {
+        "title": "协同办公-紧急程度统计",
+        "path": "xtbg/xtbgnew/statisticsTwo",
+        "methods": false,
+        "name": "statisticsTwo",
+        "state": "statisticsTwo"
+      },
+      {
+        "title": "协同办公-柱状图统计",
+        "path": "xtbg/xtbgnew/statisticsThree",
+        "methods": false,
+        "name": "statisticsThree",
+        "state": "statisticsThree"
+      },
+      {
+        "title": "协同办公-时间维度统计",
+        "path": "xtbg/xtbgnew/statisticsFour",
+        "methods": false,
+        "name": "statisticsFour",
+        "state": "statisticsFour"
+      },
+      {
+        "title": "协同办公-四大中心维度统计",
+        "path": "xtbg/xtbgnew/statisticsFive",
+        "methods": false,
+        "name": "statisticsFive",
+        "state": "statisticsFive"
+      },
+      {
+        "title": "协同-总览",
+        "path": "Xtbg/GetXtbgZlList",
+        "methods": false,
+        "name": "fetchUunionStatisticsOverview",
+        "state": "overview"
+      },
+      {
+        "title": "协同-获取地区协查信息",
+        "path": "Xtbg/GetAreaXtList",
+        "methods": false,
+        "name": "fetchUunionStatisticsArea",
+        "state": "area"
+      },
+      {
+        "title": "协同-时间维度(月季度统计)报表",
+        "path": "Xtbg/GetXtMonthBBList",
+        "methods": false,
+        "name": "fetchUunionStatisticsTime",
+        "state": "time"
+      },
+      {
+        "title": "协同-中心统计报表",
+        "path": "Xtbg/GetXtCenterBBList",
+        "methods": false,
+        "name": "fetchUunionStatisticsCenter",
+        "state": "center"
+      },
+      {
+        "title": "协同-紧急程度报表",
+        "path": "Xtbg/GetXtJJCDBBList",
+        "methods": false,
+        "name": "fetchUunionStatisticsLev",
+        "state": "lev"
+      },
+      {
+        "title": "协同-个人协同信息统计",
+        "path": "Xtbg/GetXtPersonList",
+        "methods": false,
+        "name": "fetchUunionStatisticsPersonCount",
+        "state": "personCount"
+      }
+    ],
+    "union": [
+      {
+        "title": "协同办公-获取当前部门协办人列表",
+        "path": "xtbg/xtbgnew/getXbrlist",
+        "methods": false,
+        "name": "getXbrlist",
+        "state": "getXbrlist"
+      },
+      {
+        "title": "我的申请列表",
+        "path": "xtbg/xtbgnew/listDraft",
+        "methods": false,
+        "name": "fetchUnionListDraft",
+        "state": "listDraft"
+      },
+      {
+        "title": "指定办理人代签收、代办理，已办理列表查看",
+        "path": "xtbg/xtbgnew/handleList",
+        "methods": false,
+        "name": "xtHandleList",
+        "state": "xtHandleList"
+      },
+      {
+        "title": "办理人签收",
+        "path": "xtbg/xtbgnew/sign",
+        "methods": false,
+        "name": "xtSign",
+        "state": "xtSign"
+      },
+      {
+        "title": "办理人办理",
+        "path": "xtbg/xtbgnew/handle",
+        "methods": false,
+        "name": "xtHandle",
+        "state": "xtHandle"
+      },
+      {
+        "title": "不同受理（待签收、待反馈，已办理）状态统计",
+        "path": "xtbg/xtbgnew/signCount",
+        "methods": false,
+        "name": "xtSignCount",
+        "state": "xtSignCount"
+      },
+      {
+        "title": "申请人评价",
+        "path": "xtbg/xtbgnew/evaluation",
+        "methods": false,
+        "name": "xtEvaluation",
+        "state": "xtEvaluation"
+      },
+      {
+        "title": "协同办公-审批人提交审批",
+        "path": "xtbg/xtbgnew/approval",
+        "methods": false,
+        "name": "xtApproval",
+        "state": "xtApproval"
+      },
+      {
+        "title": "协同办公-审批人待审、已审列表查看",
+        "path": "xtbg/xtbgnew/approvalList",
+        "methods": false,
+        "name": "xtApprovalList",
+        "state": "xtApprovalList"
+      },
+      {
+        "title": "不同审批（待审、已审）状态统计",
+        "path": "xtbg/xtbgnew/approvalCount",
+        "methods": false,
+        "name": "xtApprovalCount",
+        "state": "xtApprovalCount"
+      },
+      {
+        "title": "查看详情",
+        "path": "xtbg/xtbgnew/viewDetail",
+        "methods": false,
+        "name": "xtViewDetail",
+        "state": "xtViewDetail"
+      },
+      {
+        "title": "根据id查询草稿",
+        "path": "xtbg/xtbgnew/getDraftById",
+        "methods": false,
+        "name": "getDraftById",
+        "state": "getDraftById"
+      },
+      {
+        "title": "申请列表总数",
+        "path": "xtbg/xtbgnew/applyCount",
+        "methods": false,
+        "name": "xtApplyCount",
+        "state": "xtApplyCount"
+      },
+      {
+        "title": "获取我的案件列表",
+        "path": "gjfx/sjz/getCurUserCaseList",
+        "methods": false,
+        "name": "getCurUserCaseList",
+        "state": "userCaseList"
+      },
+      {
+        "title": "获取申请人",
+        "path": "xtbg/xtbgnew/getApplyPersonInfo",
+        "methods": false,
+        "name": "getApplyPersonInfo",
+        "state": "getApplyPersonInfo"
+      },
+      {
+        "title": "获取案件信息",
+        "path": "xtbg/xtbgnew/getCaseInfo",
+        "methods": false,
+        "name": "xtGetCaseInfo",
+        "state": "xtGetCaseInfo"
+      },
+      {
+        "title": "保存草稿、提交申请",
+        "path": "xtbg/xtbgnew/apply",
+        "methods": false,
+        "name": "getApply",
+        "state": "getApply"
+      },
+      {
+        "title": "保存草稿、提交申请",
+        "path": "xtbg/xtbgnew/draftToApply",
+        "methods": false,
+        "name": "xtDraftToApply",
+        "state": "xtDraftToApply"
+      },
+      {
+        "title": "草稿修改",
+        "path": "xtbg/xtbgnew/updateDraft",
+        "methods": false,
+        "name": "xtUpdateDraft",
+        "state": "xtUpdateDraft"
+      },
+      {
+        "title": "草稿删除",
+        "path": "xtbg/xtbgnew/deleteDraft",
+        "methods": false,
+        "name": "xtDeleteDraft",
+        "state": "xtDeleteDraft"
+      },
+      {
+        "title": "获取我的申请列表",
+        "path": "Xtbg/GetListMyApply",
+        "methods": false,
+        "name": "fetchUnionMyApply",
+        "state": "myApplyList"
+      },
+      {
+        "title": "获取我的受理列表GetListMyAccept",
+        "path": "Xtbg/GetListMyAccept",
+        "methods": false,
+        "name": "fetchUnionMyAccept",
+        "state": "myAcceptList"
+      },
+      {
+        "title": "获取待我审批列表GetListMyApprove",
+        "path": "Xtbg/GetListMyApprove",
+        "methods": false,
+        "name": "fetchUnionMyApprove",
+        "state": "myApproveList"
+      },
+      {
+        "title": "获取协同办公模板列表GetMbList",
+        "path": "Xtbg/GetMbList",
+        "methods": false,
+        "name": "fetchUnionTemp",
+        "state": "unionTempList"
+      },
+      {
+        "title": "获取我的草稿列表GetListMyDraft",
+        "path": "Xtbg/GetListMyDraft",
+        "methods": false,
+        "name": "fetchUnionApplyDraft",
+        "state": "applyDraftList"
+      },
+      {
+        "title": "新增申请协查Add",
+        "path": "Xtbg/Add",
+        "methods": false,
+        "name": "addUnion",
+        "state": "addUnion"
+      },
+      {
+        "title": "获取单笔数据记录GetJbxxData",
+        "path": "Xtbg/GetJbxxData",
+        "methods": false,
+        "name": "getUnionDetail",
+        "state": "unionDetail"
+      },
+      {
+        "title": "获取单笔协查信息数据GetXcxxData",
+        "path": "Xtbg/GetXcxxData",
+        "methods": false,
+        "name": "getUnionAssistDetail",
+        "state": "assistDetail"
+      },
+      {
+        "title": "删除协查Delete",
+        "path": "Xtbg/Delete",
+        "methods": false,
+        "name": "removeUnion",
+        "state": "removeUnion"
+      },
+      {
+        "title": "存草稿协查Draft",
+        "path": "Xtbg/Draft",
+        "methods": false,
+        "name": "postUnionDraft",
+        "state": "saveDraft"
+      },
+      {
+        "title": "指派Assign",
+        "path": "Xtbg/Assign",
+        "methods": false,
+        "name": "postUnionAssign",
+        "state": "assign"
+      },
+      {
+        "title": "反馈Feedback",
+        "path": "Xtbg/Feedback",
+        "methods": false,
+        "name": "postUnionFeedback",
+        "state": "feedback"
+      },
+      {
+        "title": "签收/拒绝SignReject",
+        "path": "Xtbg/SignReject",
+        "methods": false,
+        "name": "postUnionSignReject",
+        "state": "signReject"
+      },
+      {
+        "title": "评论Evaluate",
+        "path": "Xtbg/Evaluate",
+        "methods": false,
+        "name": "postUnionComment",
+        "state": "commentres"
+      },
+      {
+        "title": "我的申请页面的各数量",
+        "path": "Xtbg/GetListMyApplyPageCount",
+        "methods": false,
+        "name": "GetUnionMyApplyCount",
+        "state": "myApplyCount"
+      },
+      {
+        "title": "待我审批页面的各数量",
+        "path": "Xtbg/GetListMyApprovePageCount",
+        "methods": false,
+        "name": "GetUnionMyApproveCount",
+        "state": "myApproveCount"
+      },
+      {
+        "title": "我的受理页面的各数量",
+        "path": "Xtbg/GetListMyAcceptPageCount",
+        "methods": false,
+        "name": "GetUnionMyAcceptCount",
+        "state": "myAcceptCount"
+      },
+      {
+        "title": "获取地区统计逾期信息",
+        "path": "Xtbg/GetAreaOverDulList",
+        "methods": false,
+        "name": "GetAreaOverDulList",
+        "state": "AreaOverDulList"
+      },
+      {
+        "title": "获取单笔协查数据记录",
+        "path": "Xtbg/GetXcxxData",
+        "methods": false,
+        "name": "GetUnionXcxxData",
+        "state": "XcxxData"
+      },
+      {
+        "title": "获取协同总览列表",
+        "path": "Xtbg/GetXtInfoList",
+        "methods": false,
+        "name": "GetUnionAllList",
+        "state": "AllList"
+      },
+      {
+        "title": "获取协同地区",
+        "path": "Xtbg/GetAreaList",
+        "methods": false,
+        "name": "GetUnionAreaList",
+        "state": "areaList"
+      },
+      {
+        "title": "保存督导意见",
+        "path": "Xtbg/SendMessage",
+        "methods": false,
+        "name": "saveUnionSteeringOpinion",
+        "state": "unionSteeringOpinion"
+      },
+      {
+        "title": "获取督导意见及其回复信息",
+        "path": "Xtbg/GetXtbgSuggList",
+        "methods": false,
+        "name": "getUnionSteering",
+        "state": "unionSteeringList"
+      }
+    ],
+    "brainmap": [
+      {
+        "title": "获取侦查导图列表",
+        "path": "ajgl/reconnaissancemap/list",
+        "methods": false,
+        "name": "fetchBrainmap",
+        "state": "list"
+      },
+      {
+        "title": "新增侦查导图",
+        "path": "ajgl/reconnaissancemap/save",
+        "methods": false,
+        "name": "postBrainmap",
+        "state": "postRes"
+      },
+      {
+        "title": "修改侦查导图",
+        "path": "ajgl/reconnaissancemap/update",
+        "methods": false,
+        "name": "updateBrainmap",
+        "state": "updateRes"
+      },
+      {
+        "title": "获取侦查导图信息",
+        "path": "ajgl/reconnaissancemap/info",
+        "methods": false,
+        "name": "getBrainmap",
+        "state": "detail"
+      },
+      {
+        "title": "删除侦查导图",
+        "path": "ajgl/reconnaissancemap/delete",
+        "methods": false,
+        "name": "removeBrainmap",
+        "state": "removeRes"
+      }
+    ],
+    "tactics": [
+      {
+        "title": "获取战法库列表",
+        "path": "zfsc/library/getzflist",
+        "methods": false,
+        "name": "fetchTacticsList",
+        "state": "list"
+      },
+      {
+        "title": "获取战法库列表折叠",
+        "path": "zfsc/library/getTacticsListGroupByType",
+        "methods": false,
+        "name": "zfscTypelist",
+        "state": "zfscTypelist"
+      },
+      {
+        "title": "获取战法详情",
+        "path": "zfsc/library/getinfo",
+        "methods": false,
+        "name": "getTacticsDetail",
+        "state": "detail"
+      },
+      {
+        "title": "获取战法应用条件",
+        "path": "zfsc/library/zfyytj",
+        "methods": false,
+        "name": "getTacticsQuery",
+        "state": "query"
+      },
+      {
+        "title": "战法启动",
+        "path": "zfsc/library/qdzf",
+        "methods": false,
+        "name": "fetchTacticsResult",
+        "state": "result"
+      },
+      {
+        "title": "战法启动-GP分页",
+        "path": "zfsc/library/callGpForTb",
+        "methods": false,
+        "name": "fetchTacticsGpPageList",
+        "state": "gpPageList"
+      },
+      {
+        "title": "战法使用数据量及抽取时间",
+        "path": "zfsc/library/dataInfo",
+        "methods": false,
+        "name": "fetchTacticsDataInfo",
+        "state": "dataInfo"
+      },
+      {
+        "title": "战法启动-详情",
+        "path": "zfsc/library/callgp",
+        "methods": false,
+        "name": "fetchTacticsResultDetail",
+        "state": "resultDetail"
+      },
+      {
+        "title": "战法点赞收藏",
+        "path": "zfsc/dzsc/handle",
+        "methods": false,
+        "name": "tacticsPraiseCollection",
+        "state": "praiseCollection"
+      },
+      {
+        "title": "战法收藏列表",
+        "path": "zfsc/dzsc/sclist",
+        "methods": false,
+        "name": "fetchTacticsCollectionList",
+        "state": "collectionList"
+      },
+      {
+        "title": "战法评论列表",
+        "path": "zfsc/comment/list",
+        "methods": false,
+        "name": "fetchTacticsCommentList",
+        "state": "commentList"
+      },
+      {
+        "title": "战法评论新增",
+        "path": "zfsc/comment/save",
+        "methods": false,
+        "name": "addTacticsComment",
+        "state": "addComment"
+      },
+      {
+        "title": "战法评论删除",
+        "path": "zfsc/comment/delete",
+        "methods": false,
+        "name": "removeTacticsComment",
+        "state": "removeComment"
+      }
+    ],
+    "survey": [
+      {
+        "title": "战法概况-战法分类使用情况",
+        "path": "zfsc/library/zfflsyqk",
+        "methods": false,
+        "name": "fetchClassificationUsage",
+        "state": "classificationUsage"
+      },
+      {
+        "title": "战法概况-战法分布情况",
+        "path": "zfsc/library/zfqyfbqk",
+        "methods": false,
+        "name": "fetchClassificationDistribution",
+        "state": "classificationDistribution"
+      },
+      {
+        "title": "战法概况-战法分月使用情况",
+        "path": "zfsc/library/zfsyts",
+        "methods": false,
+        "name": "fetchClassificationMonthlyUsage",
+        "state": "classificationMonthlyUsage"
+      },
+      {
+        "title": "战法概况-战法点赞排行",
+        "path": "zfsc/library/zfdzph",
+        "methods": false,
+        "name": "fetchPointRanking",
+        "state": "pointRanking"
+      },
+      {
+        "title": "战法概况-战法使用排行",
+        "path": "zfsc/library/zfsyph",
+        "methods": false,
+        "name": "fetchUseRanking",
+        "state": "UseRanking"
+      },
+      {
+        "title": "战法概况-战法警种排行",
+        "path": "zfsc/library/zfjzph",
+        "methods": false,
+        "name": "fetchPoliceRanking",
+        "state": "policeRanking"
+      },
+      {
+        "title": "战法概况-获取战法收藏次数排行",
+        "path": "zfsc/library/zfscph",
+        "methods": false,
+        "name": "fetchCollectRanking",
+        "state": "collectRanking"
+      },
+      {
+        "title": "战法概况-战法单位排行",
+        "path": "zfsc/library/getDwPh",
+        "methods": false,
+        "name": "fetchUnitRanking",
+        "state": "UnitRanking"
+      },
+      {
+        "title": "战法概况-战法单人创建排行",
+        "path": "zfsc/library/singleCreateRanking",
+        "methods": false,
+        "name": "singleCreateRanking",
+        "state": "singleCreateRanking"
+      },
+      {
+        "title": "战法概况-战法单人使用排行",
+        "path": "zfsc/library/singleUseRanking",
+        "methods": false,
+        "name": "singleUseRanking",
+        "state": "singleUseRanking"
+      },
+      {
+        "title": "战法概况-查询区划下单位含有战法数量",
+        "path": "zfsc/library/unitTacticsNumber",
+        "methods": false,
+        "name": "unitTacticsNumber",
+        "state": "unitTacticsNumber"
+      },
+      {
+        "title": "战法概况-概况描述",
+        "path": "zfsc/library/getZfgk",
+        "methods": false,
+        "name": "fetchGeneralDescription",
+        "state": "GeneralDescription"
+      }, {
+        "title": "战法概况-保存战法结果",
+        "path": "zfsc/library/saveResult",
+        "methods": false,
+        "name": "saveTactics",
+        "state": "saveTacticsResult"
+      }, {
+        "title": "战法概况-研判报告查看战法条件",
+        "path": "zfsc/library/searchResult",
+        "methods": false,
+        "name": "searchTacticsSaveList",
+        "state": "searchTacticsSaveListResult"
+      }, {
+        "title": "战法概况-查找对应战法保存结果",
+        "path": "zfsc/library/searchListByTimeAndId",
+        "methods": false,
+        "name": "fecthSaveTacticsList",
+        "state": "fecthSaveTacticsListResult"
+      }, {
+        "title": "战法概况-删除保存结果",
+        "path": "zfsc/library/deleteResult",
+        "methods": false,
+        "name": "deleteSaveTactics",
+        "state": "deleteSaveTacticsResult"
+      }
+    ],
+    "folder": [
+      {
+        "title": "资料夹-列表",
+        "path": "ajgl/folder/list",
+        "methods": false,
+        "name": "FetchFoldersList",
+        "state": "FetchFoldersList"
+      },
+      {
+        "title": "资料夹-基本信息",
+        "path": "ajgl/folder/info",
+        "methods": false,
+        "method": "get",
+        "name": "GetFolderInfo"
+      },
+      {
+        "title": "资料夹-文件-基本信息",
+        "path": "ajgl/folder/infofile",
+        "methods": false,
+        "name": "GetFolderFileInfo",
+        "state": "GetFolderFileInfo"
+      },
+      {
+        "title": "资料夹-新增",
+        "path": "ajgl/folder/save",
+        "methods": false,
+        "method": "add",
+        "name": "AddFolder"
+      },
+      {
+        "title": "资料夹-文件-新增",
+        "path": "ajgl/folder/savefile",
+        "methods": false,
+        "name": "AddFolderFile",
+        "state": "AddFolderFile"
+      },
+      {
+        "title": "资料夹-文件-批量新增",
+        "path": "ajgl/folder/saveBatchfile",
+        "methods": false,
+        "name": "batchAdditionFile",
+        "state": "batchAdditionFileResult"
+      },
+      {
+        "title": "资料夹-更新",
+        "path": "ajgl/folder/update",
+        "methods": false,
+        "method": "update",
+        "name": "UpdateFolder"
+      },
+      {
+        "title": "资料夹-文件-更新",
+        "path": "ajgl/folder/updatefile",
+        "methods": false,
+        "name": "UpdateFolderFile",
+        "state": "UpdateFolderFile"
+      },
+      {
+        "title": "资料夹-删除",
+        "path": "ajgl/folder/delete",
+        "methods": false,
+        "method": "remove",
+        "name": "RemoveFolder"
+      },
+      {
+        "title": "资料夹-文件-删除",
+        "path": "ajgl/folder/deletefile",
+        "methods": false,
+        "name": "RemoveFolderFile",
+        "state": "RemoveFolderFile"
+      }
+    ],
+    "share": [
+      {
+        "title": "分享",
+        "path": "Notice/AddShare",
+        "methods": false,
+        "name": "postShare",
+        "state": "postShareRes"
+      }
+    ],
+    "surveillance": [
+      {
+        "title": "布控预警新增",
+        "path": "bkyj/warn/save",
+        "methods": false,
+        "name": "postDispatch",
+        "state": "addRes"
+      },
+      {
+        "title": "布控预警列表",
+        "path": "bkyj/warn/list",
+        "methods": false,
+        "name": "fetchDispatch",
+        "state": "list"
+      },
+      {
+        "title": "布控预警分享",
+        "path": "bkyj/warn/share",
+        "methods": false,
+        "name": "postDispatchShare",
+        "state": "shareRes"
+      },
+      {
+        "title": "获取布控预警信息",
+        "path": "bkyj/warn/info",
+        "methods": false,
+        "name": "getDispatch",
+        "state": "detail"
+      },
+      {
+        "title": "修改布控预警草稿",
+        "path": "bkyj/warn/update",
+        "methods": false,
+        "name": "updateDispatch",
+        "state": "updateRes"
+      },
+      {
+        "title": "删除布控预警草稿",
+        "path": "bkyj/warn/delete",
+        "methods": false,
+        "name": "deleteDispatch",
+        "state": "deleteRes"
+      },
+      {
+        "title": "布控策略-列表",
+        "path": "bkyj/warn/listcl",
+        "methods": false,
+        "name": "fetchSurveillanceTacticsList",
+        "state": "surveillanceTacticsList"
+      },
+      {
+        "title": "布控策略-申请",
+        "path": "bkyj/warn/savecelue",
+        "methods": false,
+        "name": "applyTactics",
+        "state": "applyRes"
+      },
+      {
+        "title": "布控策略-编辑",
+        "path": "bkyj/warn/saveClbk",
+        "methods": false,
+        "name": "applyEdit",
+        "state": "applyEditResult"
+      }, {
+        "title": "布控策略-编辑草稿修改",
+        "path": "bkyj/warn/updateClbkInfo",
+        "methods": false,
+        "name": "updateDraft",
+        "state": "updateDraftResult"
+      },
+      {
+        "title": "布控策略-添加到草稿",
+        "path": "bkyj/warn/saveClbk",
+        "methods": false,
+        "name": "addToDraft",
+        "state": "addToDraftResult"
+      },
+
+      {
+        "title": "布控策略-条件",
+        "path": "bkyj/warn/zfyytj",
+        "methods": false,
+        "name": "getSurveillanceTacticsQuery",
+        "state": "tacticsQuery"
+      },
+      {
+        "title": "布控策略-历史数据",
+        "path": "zfsc/library/getResultById",
+        "methods": false,
+        "name": "getSurveillanceTacticsResultById",
+        "state": "result"
+      },
+      {
+        "title": "布控策略-布控预警策略是否启动",
+        "path": "bkyj/warn/clsfqy",
+        "methods": false,
+        "name": "postSurveillanceActive",
+        "state": "postSurveillanceActiveRes"
+      },
+      {
+        "title": "布控策略-策略布控删除功能",
+        "path": "bkyj/warn/delete",
+        "methods": false,
+        "name": "postSurveillanceDelete",
+        "state": "postSurveillanceDeletes"
+      },
+      {
+        "title": "布控策略-策略布控单条详情 ",
+        "path": "bkyj/warn/selectBkyjDeail",
+        "methods": false,
+        "name": "surveillanceDetails",
+        "state": "surveillanceDetailsResult"
+      },
+      {
+        "title": "布控策略-布控预警策略总数",
+        "path": "bkyj/warn/cltotal",
+        "methods": false,
+        "name": "getSurveillanceCount",
+        "state": "surveillanceCount"
+      },
+      {
+        "title": "布控策略-布控预警策略结果简要内容",
+        "path": "bkyj/warn/clresulttips",
+        "methods": false,
+        "name": "getSurveillanceContent",
+        "state": "surveillanceContent"
+      },
+      {
+        "title": "布控策略-布控预警策略-搜索条件",
+        "path": "zfsc/library/bktj",
+        "methods": false,
+        "name": "getLibraryCondition",
+        "state": "libraryCondition"
+      },
+      {
+        "title": "布控策略-布控预警策略-查询策略申请列表",
+        "path": "bkyj/warn/listcelue",
+        "methods": false,
+        "name": "getWarnList",
+        "state": "getWarnListResult"
+      },
+      {
+        "title": "布控策略-布控预警策略-统计申请数量",
+        "path": "bkyj/warn/listcelueCount",
+        "methods": false,
+        "name": "fetchSurveillanceCount",
+        "state": "fetchSurveillanceCountResult"
+      },
+      {
+        "title": "布控策略-布控预警策略-搜索结果",
+        "path": "zfsc/library/resultSearch",
+        "methods": false,
+        "name": "libraryResultSearch",
+        "state": "libraryResultSearch"
+      },
+      {
+        "title": "获取布控预警待我审批列表2018-10-16",
+        "path": "EarlyWarn/approvallist",
+        "methods": false,
+        "name": "fetchApprovalList",
+        "state": "fetchApprovalListResult"
+      },
+      {
+        "title": "获取布控预警待我审批列表2018-11-2",
+        "path": "EarlyWarn/gaik",
+        "methods": false,
+        "name": "fetchGaik",
+        "state": "fetchGaik"
+      },
+      {
+        "title": "获取布控预警待我审批列表总数2018-10-16",
+        "path": "EarlyWarn/approvallistcount",
+        "methods": false,
+        "name": "fetchApprovalListCount",
+        "state": "fetchApprovalListCountResult"
+      },
+      {
+        "title": "车辆布控列表",
+        "path": "EarlyWarn/list",
+        "methods": false,
+        "name": "getCarListControl",
+        "state": "getCarListControl"
+      },
+      {
+        "title": "获取添加布控人员对象时的选择列表",
+        "path": "EarlyWarn/PeopleKeyByChoosed",
+        "methods": false,
+        "name": "getPeopleKeys",
+        "state": "getPeopleKeysResult"
+      },
+      {
+        "title": "获取布控列表tap标签的列表数值",
+        "path": "EarlyWarn/listcount",
+        "methods": false,
+        "name": "getCarCoutControl",
+        "state": "getCarCoutControl"
+      },
+      {
+        "title": "根据布控ID 获取布控预警的信息",
+        "path": "EarlyWarn/info",
+        "methods": false,
+        "name": "getCarInfoControl",
+        "state": "getCarInfoControl"
+      }, {
+        "title": "获取预警管理列表",
+        "path": "EarlyWarn/resultList",
+        "methods": false,
+        "name": "fetchResultList",
+        "state": "fetchResultList"
+      },
+      {
+        "title": "根据布控预警ID 删除对应数据（只有草稿可删除）",
+        "path": "EarlyWarn/delete",
+        "methods": false,
+        "name": "getCardeleteControl",
+        "state": "getCardeleteControl"
+      },
+      {
+        "title": "保存布控申请数据",
+        "path": "EarlyWarn/save",
+        "methods": false,
+        "name": "getCarSaveControl",
+        "state": "getCarSaveControl"
+      },
+      {
+        "title": "撤控（未开始进行中可撤控）",
+        "path": "EarlyWarn/revoke",
+        "methods": false,
+        "name": "getCarrevokeControl",
+        "state": "getCarrevokeControl"
+      },
+      {
+        "title": "根据布控ID查看布控结果 list",
+        "path": "EarlyWarn/resultListByBkid",
+        "methods": false,
+        "name": "getCarresultListByBkidControl",
+        "state": "getCarresultListByBkidControl"
+      },
+      {
+        "title": "续控",
+        "path": "EarlyWarn/renewWarn",
+        "methods": false,
+        "name": "getCarrenewWarnControl",
+        "state": "getCarrenewWarnControl"
+      },
+      {
+        "title": "根据车牌号码和机动车车辆类型获取机动车信息续控",
+        "path": "EarlyWarn/getCarInfo",
+        "methods": false,
+        "name": "getCarInfoList",
+        "state": "getCarInfoList"
+      }
+    ],
+    "dossier": [
+      {
+        "title": "新增自定义档案",
+        "path": "Archives/NewArchives",
+        "methods": false,
+        "name": "NewArchives",
+        "state": "NewArchives"
+      },
+      {
+        "title": "删除自定义档案",
+        "path": "Archives/DeleteArchives",
+        "methods": false,
+        "name": "DeleteArchives",
+        "state": "DeleteArchives"
+      },
+      {
+        "title": "查询对象自定义档案",
+        "path": "Archives/GetCustomArchives",
+        "methods": false,
+        "name": "CustomArchives",
+        "state": "CustomArchives"
+      },
+      {
+        "title": "获取人员基础信息",
+        "path": "Person/GetPersonInfo",
+        "methods": false,
+        "name": "PersonInfo",
+        "state": "PersonInfo"
+      },
+      {
+        "title": "获取人员基础信息",
+        "path": "jwy/pesonnelfiles/getpersoninfo",
+        "methods": false,
+        "name": "getPersonInfo",
+        "state": "getPersonInfo"
+      },
+      {
+        "title": "获取人员电话号码",
+        "path": "jwy/pesonnelfiles/getPhoneNumer",
+        "methods": false,
+        "name": "getPhoneNumer",
+        "state": "getPhoneNumer"
+      },
+      {
+        "title": "查询人员信息",
+        "path": "Person/GetPersonArchives",
+        "methods": false,
+        "name": "PersonArchives",
+        "state": "PersonArchives"
+      },
+      {
+        "title": "查询人员关联资源表",
+        "path": "Person/GetReleteSource",
+        "methods": false,
+        "name": "ReleteSource",
+        "state": "ReleteSource"
+      },
+      {
+        "title": "查询人员亲属",
+        "path": "Person/GetPersonFamily",
+        "methods": false,
+        "name": "PersonFamily",
+        "state": "PersonFamily"
+      },
+      {
+        "title": "查询人员亲属",
+        "path": "jwy/pesonnelfiles/getpersonfamilyinfo",
+        "methods": false,
+        "name": "getpersonfamilyinfo",
+        "state": "getpersonfamilyinfo"
+      },
+      {
+        "title": "添加自定义人员亲属信息",
+        "path": "jwy/pesonnelfiles/addfamilyinfo",
+        "methods": false,
+        "name": "addFamilyInfo",
+        "state": "addFamilyInfo"
+      },
+      {
+        "title": "查询人员证件信息",
+        "path": "Person/GetPersonCertificate",
+        "methods": false,
+        "name": "PersonCertificate",
+        "state": "PersonCertificate"
+      },
+      {
+        "title": "查询人员证件信息",
+        "path": "jwy/pesonnelfiles/getPersonCertificateInfo",
+        "methods": false,
+        "name": "getPersonCertificateInfo",
+        "state": "getPersonCertificateInfo"
+      },
+      {
+        "title": "添加人员自定义证件信息",
+        "path": "jwy/pesonnelfiles/addPersonCertificateInfo",
+        "methods": false,
+        "name": "addPersonCertificateInfo",
+        "state": "addPersonCertificateInfo"
+      },
+      {
+        "title": "查询人员通讯号码",
+        "path": "Person/GetCommunicateNum",
+        "methods": false,
+        "name": "CommunicateNum",
+        "state": "CommunicateNum"
+      },
+      {
+        "title": "获取人员通信信息",
+        "path": "jwy/pesonnelfiles/getPersonCommunicationInfo",
+        "methods": false,
+        "name": "getPersonCommunicationInfo",
+        "state": "getPersonCommunicationInfo"
+      },
+      {
+        "title": "添加人员通信信息",
+        "path": "jwy/pesonnelfiles/addPersonCommunicationInfo",
+        "methods": false,
+        "name": "addPersonCommunicationInfo",
+        "state": "addPersonCommunicationInfo"
+      },
+      {
+        "title": "查询人员虚拟帐号",
+        "path": "Person/GetVirtualAccounts",
+        "methods": false,
+        "name": "VirtualAccounts",
+        "state": "VirtualAccounts"
+      },
+      {
+        "title": "获取虚拟账号信息",
+        "path": "jwy/pesonnelfiles/getVirtualInfo",
+        "methods": false,
+        "name": "getVirtualInfo",
+        "state": "getVirtualInfo"
+      },
+      {
+        "title": "添加虚拟账号信息",
+        "path": "jwy/pesonnelfiles/addVirtualInfo",
+        "methods": false,
+        "name": "addVirtualInfo",
+        "state": "addVirtualInfo"
+      },
+      {
+        "title": "人员财产信息",
+        "path": "jwy/pesonnelfiles/getpropertyinfo",
+        "methods": false,
+        "name": "getpropertyinfo",
+        "state": "getpropertyinfo"
+      },
+      {
+        "title": "新增人员财产信息",
+        "path": "jwy/pesonnelfiles/addpropertyinfo",
+        "methods": false,
+        "name": "addpropertyinfo",
+        "state": "addpropertyinfo"
+      },
+      {
+        "title": "获取人员人事社保信息",
+        "path": "jwy/pesonnelfiles/getsocialsecurityinfo",
+        "methods": false,
+        "name": "getsocialsecurityinfo",
+        "state": "getsocialsecurityinfo"
+      },
+      {
+        "title": "新增人员人事社保信息",
+        "path": "jwy/pesonnelfiles/addsocialsecurityinfo",
+        "methods": false,
+        "name": "addsocialsecurityinfo",
+        "state": "addsocialsecurityinfo"
+      },
+      {
+        "title": "获取社会关系信息",
+        "path": "jwy/pesonnelfiles/getsocialrelationshipsinfo",
+        "methods": false,
+        "name": "getsocialrelationshipsinfo",
+        "state": "getsocialrelationshipsinfo"
+      },
+      {
+        "title": "新增社会关系信息",
+        "path": "jwy/pesonnelfiles/addsocialrelationshipsinfo",
+        "methods": false,
+        "name": "addsocialrelationshipsinfo",
+        "state": "addsocialrelationshipsinfo"
+      },
+      {
+        "title": "获取人员关联线索信息",
+        "path": "jwy/pesonnelfiles/getassociatedcuesinfo",
+        "methods": false,
+        "name": "getassociatedcuesinfo",
+        "state": "getassociatedcuesinfo"
+      },
+      {
+        "title": "新增人员关联线索信息",
+        "path": "jwy/pesonnelfiles/addassociatedcuesinfo",
+        "methods": false,
+        "name": "addassociatedcuesinfo",
+        "state": "addassociatedcuesinfo"
+      },
+      {
+        "title": "获取人员照片和视频信息",
+        "path": "jwy/pesonnelfiles/getpicandvideoinfo",
+        "methods": false,
+        "name": "getpicandvideoinfo",
+        "state": "getpicandvideoinfo"
+      },
+      {
+        "title": "新增照片和视频信息",
+        "path": "jwy/pesonnelfiles/addpicandvideoinfo",
+        "methods": false,
+        "name": "addpicandvideoinfo",
+        "state": "addpicandvideoinfo"
+      },
+      {
+        "title": "查询车辆档案",
+        "path": "Person/GetCarArchives",
+        "methods": false,
+        "name": "CarArchives",
+        "state": "CarArchives"
+      },
+      {
+        "title": "查询车辆基础信息",
+        "path": "Car/GetCarInfo",
+        "path2": "Car/GetCarInfo【历史接口,隐藏】",
+        "methods": false,
+        "name": "CarInfo",
+        "state": "CarInfo"
+      },
+      {
+        "title": "查询车辆基础信息SB",
+        "path": "jwy/vehicleFile/getCarInfo",
+        "path2": "Car/GetCarInfo【历史接口,隐藏】",
+        "methods": false,
+        "name": "CarInfoSB",
+        "state": "CarInfoSB"
+      },
+      {
+        "title": "车辆关联资源表",
+        "path": "Car/GetReleteSource",
+        "methods": false,
+        "name": "carReleteSource",
+        "state": "carReleteSource"
+      },
+      {
+        "title": "车辆关系人群查询",
+        "path": "Car/GetRelatePersons",
+        "methods": false,
+        "name": "carRelatePersons",
+        "state": "carRelatePersons"
+      },
+      {
+        "title": "查询车牌曾挂车辆",
+        "path": "Car/GetPlateNoRelateCars",
+        "methods": false,
+        "name": "PlateNoRelateCars",
+        "state": "PlateNoRelateCars"
+      },
+      {
+        "title": "查询机动车曾挂车牌",
+        "path": "Car/GetCarRelatePlateNos",
+        "methods": false,
+        "name": "CarRelatePlateNos",
+        "state": "CarRelatePlateNos"
+      },
+      {
+        "title": "获取车辆违法信息",
+        "path": "jwy/vehicleFile/getclwzxx",
+        "methods": false,
+        "name": "getclwzxx",
+        "state": "getclwzxx"
+      },
+      {
+        "title": "获取车主信息",
+        "path": "jwy/vehicleFile/getCheZhuInfo",
+        "methods": false,
+        "name": "getCheZhuInfo",
+        "state": "getCheZhuInfo"
+      },
+      {
+        "title": "导出车辆档案信息",
+        "path": "jwy/vehicleFile/exportword",
+        "methods": false,
+        "name": "exportCarWord",
+        "state": "exportCarWordResult"
+      },
+      {
+        "title": "自定义添加车主信息",
+        "path": "jwy/vehicleFile/addCheZhuInfo",
+        "methods": false,
+        "name": "addCheZhuInfo",
+        "state": "addCheZhuInfo"
+      },
+      {
+        "title": "获取活动区域",
+        "path": "jwy/vehicleFile/getAreaList",
+        "methods": false,
+        "name": "getAreaList",
+        "state": "getAreaList"
+      },
+      {
+        "title": "获取车辆违章信息",
+        "path": "jwy/vehicleFile/getWzInfoList",
+        "methods": false,
+        "name": "getWzInfoList",
+        "state": "getWzInfoList"
+      },
+      {
+        "title": "获取车曾挂牌信息",
+        "path": "jwy/vehicleFile/getCCGPList",
+        "methods": false,
+        "name": "getCCGPList",
+        "state": "getCCGPList"
+      },
+      {
+        "title": "获取牌曾挂车信息",
+        "path": "jwy/vehicleFile/getPCGCList",
+        "methods": false,
+        "name": "getPCGCList",
+        "state": "getPCGCList"
+      },
+      {
+        "title": "获取车辆涉案信息",
+        "path": "jwy/vehicleFile/getSheAnInfo",
+        "methods": false,
+        "name": "getSheAnInfo",
+        "state": "getSheAnInfo"
+      },
+      {
+        "title": "获取人员轨迹规律信息",
+        "path": "topic/gjfx/getgjgl",
+        "methods": false,
+        "name": "getGJGL",
+        "state": "getGJGL"
+      },
+      {
+        "title": "人员档案-自定义列表数据-删除",
+        "path": "jwy/pesonnelfiles/delinfo",
+        "methods": false,
+        "name": "removeDossierInfo",
+        "state": "removeDossierInfo"
+      },
+      {
+        "title": "人员档案-高频基站信息",
+        "path": "jwy/pesonnelfiles/getgpjz",
+        "methods": false,
+        "name": "getGpjz",
+        "state": "getGpjz"
+      },
+      {
+        "title": "人员档案-卡口信息",
+        "path": "jwy/vehicleFile/getkako",
+        "methods": false,
+        "name": "getKaKo",
+        "state": "getKaKo"
+      }
+    ],
+    "talentPool": [
+      {
+        "title": "获取警务人才列表",
+        "path": "Jwrc/GetRcxxList",
+        "methods": false,
+        "method": "fetch",
+        "name": "fetchTalentPoolList"
+      },
+      {
+        "title": "获取警务人才单笔记录",
+        "path": "Jwrc/GetRcxx",
+        "methods": false,
+        "method": "get",
+        "name": "getTalentDetail"
+      },
+      {
+        "title": "新增警务人才",
+        "path": "Jwrc/AddRcxx",
+        "methods": false,
+        "method": "add",
+        "name": "addTalentPool"
+      }
+    ],
+    "dataPool": [
+      {
+        "title": "数据池-移入案件资料池-添加案件池数据",
+        "path": "Ajgl/AddDataToAj",
+        "methods": false,
+        "name": "postDataPool",
+        "state": "postDataPoolRes"
+      },
+      {
+        "title": "数据池-获取关键字列表",
+        "path": "Ajgl/GetAjglSjcByAjId",
+        "methods": false,
+        "name": "fetchDataPoolList",
+        "state": "fetchDataPoolList"
+      },
+      {
+        "title": "数据池-获取关键字指定表名数据分页列表",
+        "path": "Ajgl/GetAjglSjcData",
+        "methods": false,
+        "name": "fetchDataPoolByTableList",
+        "state": "fetchDataPoolByTableList"
+      }
+    ],
+    "analysisRelation": [
+      {
+        "title": "关系分析-获取对象类型字典",
+        "path": "topic/gxfx/getcolumn",
+        "methods": false,
+        "name": "fetchResultObjectTypeList",
+        "state": "resultObjectTypeList"
+      },
+      {
+        "title": "关系分析-搜索对象",
+        "path": "topic/gxfx/getresult",
+        "methods": false,
+        "name": "fetchResultObject",
+        "state": "resultObjectList"
+      },
+      {
+        "title": "关系分析-关联分析",
+        "path": "topic/gxfx/getrelation",
+        "methods": false,
+        "name": "fetchResultFromObject",
+        "state": "ListForResultFromObject"
+      },
+      {
+        "title": "关系分析-获取关系类型, type为1时为对象类型，type为2时为关系类型",
+        "path": "topic/gxfx/getrelationtype",
+        "methods": false,
+        "name": "getRelationType",
+        "state": "relationType"
+      },
+      {
+        "title": "关系分析-获取关系类型, type为1时为对象类型，type为2时为关系类型",
+        "path": "topic/gxfx/getrelationtype",
+        "methods": false,
+        "name": "getRelationNodeType",
+        "state": "relationNodeType"
+      },
+      {
+        "title": "关系分析-新增节点",
+        "path": "topic/gxfx/addnode",
+        "methods": false,
+        "name": "postResultNode",
+        "state": "postResultNodeRes"
+      },
+      {
+        "title": "关系分析-新增关系",
+        "path": "topic/gxfx/addrelation",
+        "methods": false,
+        "name": "postResultRelation",
+        "state": "postResultRelationRes"
+      },
+      {
+        "title": "关系分析-新增节点关系",
+        "path": "topic/gxfx/addnodeandrela",
+        "methods": false,
+        "name": "postResultNodeAndRelation",
+        "state": "postResultNodeAndRelationRes"
+      },
+      {
+        "title": "关系分析-删除节点",
+        "path": "topic/gxfx/delnode",
+        "methods": false,
+        "name": "removeResultNode",
+        "state": "removeResultNodeRes"
+      },
+      {
+        "title": "关系分析-删除关系",
+        "path": "topic/gxfx/delrela",
+        "methods": false,
+        "name": "removeResultRelation",
+        "state": "removeResultRelationRes"
+      },
+      {
+        "title": "关系分析-关联分析-检索专用",
+        "path": "topic/gxfx/getrelaforsearch",
+        "methods": false,
+        "name": "fetchResultFromObjectForSearch",
+        "state": "ListForResultFromObjectForSearch"
+      },
+      {
+        "title": "关系分析-保存到案件",
+        "path": "topic/gxfx/save",
+        "methods": false,
+        "name": "postRelationToCase",
+        "state": "postRelationToCaseRes"
+      },
+      {
+        "title": "关系分析-删除案件相关的关系图",
+        "path": "topic/gxfx/delete",
+        "methods": false,
+        "name": "deleteCaseRelation",
+        "state": "deleteCaseRelationRes"
+      },
+      {
+        "title": "关系分析-案件相关的关系图列表",
+        "path": "topic/gxfx/list",
+        "methods": false,
+        "name": "fetchCaseRelationList",
+        "state": "caseRelationList"
+      },
+      {
+        "title": "关系分析-详情",
+        "path": "topic/gxfx/reladetail",
+        "methods": false,
+        "name": "fetchCaseReladetail",
+        "state": "caseReladetail"
+      }
+    ],
+    "analysisTelList": [
+      {
+        "title": "获取手机信息详情-弹窗",
+        "path": "ztfx/hmfx/list",
+        "methods": false,
+        "name": "getNumbetDetail",
+        "state": "numbetDetail"
+      },
+      {
+        "title": "分析工具-话单分析-获取话单信息树",
+        "path": "Hdfx/GetHdxxTreeList2",
+        "methods": false,
+        "name": "fetchTellistTree",
+        "state": "tree"
+      },
+      {
+        "title": "分析工具-话单分析-获取话单管理树",
+        "path": "HDFX/GetHdfxSJGLTreeList",
+        "methods": false,
+        "name": "fetchTelmlistTree",
+        "state": "mListTree"
+      },
+      {
+        "title": "分析工具-话单分析-获取话单详单信息",
+        "path": "Hdfx/GetTHMXList",
+        "methods": false,
+        "name": "fetchTellistDetailList",
+        "state": "detailList"
+      },
+      {
+        "title": "分析工具-话单分析-获取话单号码通话记录",
+        "path": "HDFX/GetHdfxSJGLDetailList",
+        "methods": false,
+        "name": "fetchPersonCommunicateList",
+        "state": "communicateList"
+      },
+      {
+        "title": "分析工具-话单分析-删除话单号码通话记录",
+        "path": "HDFX/SJGLDel",
+        "methods": false,
+        "name": "deleteCommunicateList",
+        "state": "deleteList"
+      },
+      {
+        "title": "分析工具-话单分析-获取通话频率分析列表",
+        "path": "Hdfx/GetTHPLList",
+        "methods": false,
+        "name": "fetchTellistFrequencyList",
+        "state": "frequencyList"
+      },
+      {
+        "title": "分析工具-话单分析-获取通话规律分析列表",
+        "path": "Hdfx/GetTHGLList",
+        "methods": false,
+        "name": "fetchTellistLawList",
+        "state": "lawList"
+      },
+      {
+        "title": "分析工具-话单分析-获取通话归属地分析列表",
+        "path": "Hdfx/GetTHGSDList",
+        "methods": false,
+        "name": "fetchTellistAttributionList",
+        "state": "attributionList"
+      },
+      {
+        "title": "分析工具-话单分析-获取相互通话分析列表",
+        "path": "Hdfx/GetXHTHList",
+        "methods": false,
+        "name": "fetchTellistConverseList",
+        "state": "converseList"
+      },
+      {
+        "title": "分析工具-话单分析-获取共同联系人分析列表",
+        "path": "Hdfx/GetGTLXRList",
+        "methods": false,
+        "name": "fetchTellistContactsList",
+        "state": "contactsList"
+      },
+      {
+        "title": "分析工具-话单分析-获取碰面分析列表",
+        "path": "Hdfx/GetPMFXList",
+        "methods": false,
+        "name": "fetchTellistMeetingList",
+        "state": "meetingList"
+      },
+      {
+        "title": "分析工具-话单分析-获取碰面分析明细列表",
+        "path": "Hdfx/GetPMFXDetailList",
+        "methods": false,
+        "name": "fetchTellistMeetingDetailList",
+        "state": "meetingDetailList"
+      },
+      {
+        "title": "分析工具-话单分析-获取居驻地分析列表",
+        "path": "Hdfx/GetJZDList",
+        "methods": false,
+        "name": "fetchTellistResidenceList",
+        "state": "residenceList"
+      },
+      {
+        "title": "分析工具-话单分析-获取居住地分析明细列表",
+        "path": "Hdfx/GetJZDMXList",
+        "methods": false,
+        "name": "fetchTellistResidenceDetailList",
+        "state": "residenceDetailList"
+      },
+      {
+        "title": "分析工具-话单分析-获取可疑点分析列表",
+        "path": "Hdfx/GetKYDFXList",
+        "methods": false,
+        "name": "fetchTellistSuspiciousList",
+        "state": "suspiciousList"
+      },
+      {
+        "title": "分析工具-话单分析-获取通话基站分析列表",
+        "path": "Hdfx/GetJZFXList",
+        "methods": false,
+        "name": "fetchTellistStationList",
+        "state": "stationList"
+      },
+      {
+        "title": "分析工具-话单分析-获取关联分析列表",
+        "path": "Hdfx/GetGLFXList",
+        "methods": false,
+        "name": "fetchTellistRelationList",
+        "state": "relationList"
+      },
+      {
+        "title": "分析工具-话单分析-获取关联分析明细列表",
+        "path": "Hdfx/GetGLFXDetailList",
+        "methods": false,
+        "name": "fetchTellistRelationDetailList",
+        "state": "relationDetailList"
+      },
+      {
+        "title": "分析工具-话单分析-获取团伙通话记录",
+        "path": "Hdfx/GetDRTHMXList",
+        "methods": false,
+        "name": "fetchTellistGangList",
+        "state": "gangList"
+      }
+    ],
+    "analysisBill": [
+      {
+        "title": "分析工具-账单分析-获取账单树",
+        "path": "Zdfx/GetZdxxTreeList2",
+        "methods": false,
+        "name": "fetchBillTreeList",
+        "state": "treeList"
+      },
+      {
+        "title": "分析工具-账单分析-获取基本账户分析列表",
+        "path": "Zdfx/GetJBZHFXList",
+        "methods": false,
+        "name": "fetchBillBasicList",
+        "state": "basicList"
+      },
+      {
+        "title": "分析工具-账单分析-获取基本账户分析明细列表",
+        "path": "Zdfx/GetJBZHFXDetailList",
+        "methods": false,
+        "name": "fetchBillBasicDetailList",
+        "state": "basicDetailList"
+      },
+      {
+        "title": "分析工具-账单分析-获取收支分类统计列表",
+        "path": "Zdfx/GetSZFLList",
+        "methods": false,
+        "name": "fetchBillBPCatList",
+        "state": "bpCatList"
+      },
+      {
+        "title": "分析工具-账单分析-获取累计收入支出统计列表",
+        "path": "Zdfx/GetLJSRZCList",
+        "methods": false,
+        "name": "fetchBillBPCountList",
+        "state": "bpCountList"
+      },
+      {
+        "title": "分析工具-账单分析-获取交易频度分析列表",
+        "path": "Zdfx/GetJYPDList",
+        "methods": false,
+        "name": "fetchBillFrequencyList",
+        "state": "frequencyList"
+      },
+      {
+        "title": "分析工具-账单分析-获取交易频度分析明细列表",
+        "path": "Zdfx/GetJYPDDetailList",
+        "methods": false,
+        "name": "fetchBillFrequencyDetailList",
+        "state": "frequencyDetailList"
+      },
+      {
+        "title": "分析工具-账单分析-获取交易日期规律分析列表",
+        "path": "Zdfx/GetJYRQGLList",
+        "methods": false,
+        "name": "fetchBillDatePatternList",
+        "state": "datePatternList"
+      },
+      {
+        "title": "分析工具-账单分析-获取交易日期规律分析明细列表",
+        "path": "Zdfx/GetJYRQGLDetailList",
+        "methods": false,
+        "name": "fetchBillDatePatternDetailList",
+        "state": "datePatternDetailList"
+      },
+      {
+        "title": "分析工具-账单分析-获取交易网点分析列表",
+        "path": "Zdfx/GetJYWDList",
+        "methods": false,
+        "name": "fetchBillNetDotList",
+        "state": "netDotList"
+      },
+      {
+        "title": "分析工具-账单分析-获取交易网点分析明细列表",
+        "path": "Zdfx/GetJYWDDetailList",
+        "methods": false,
+        "name": "fetchBillNetDotDetailList",
+        "state": "netDotDetailList"
+      },
+      {
+        "title": "分析工具-账单分析-获取资金流向分析列表",
+        "path": "Zdfx/GetZJLXList",
+        "methods": false,
+        "name": "fetchBillFlowToList",
+        "state": "flowToList"
+      },
+      {
+        "title": "分析工具-账单分析-获取资金流向分析明细列表",
+        "path": "Zdfx/GetZJLXDetailList",
+        "methods": false,
+        "name": "fetchBillFlowToDetailList",
+        "state": "flowToDetailList"
+      },
+      {
+        "title": "分析工具-账单分析-获取共同账号分析列表",
+        "path": "Zdfx/GetGTZHList",
+        "methods": false,
+        "name": "fetchBillCommonList",
+        "state": "commonList"
+      },
+      {
+        "title": "分析工具-账单分析-获取共同账号分析明细列表",
+        "path": "Zdfx/GetGTZHDetailList",
+        "methods": false,
+        "name": "fetchBillCommonDetailList",
+        "state": "commonDetailList"
+      },
+      {
+        "title": "分析工具-账单分析-获取交叉频度分析列表",
+        "path": "Zdfx/GetJCPDList",
+        "methods": false,
+        "name": "fetchBillOverlappingList",
+        "state": "overlappingList"
+      },
+      {
+        "title": "分析工具-账单分析-获取交叉频度分析明细列表",
+        "path": "Zdfx/GetJCPDDetailList",
+        "methods": false,
+        "name": "fetchBillOverlappingDetailList",
+        "state": "overlappingDetailList"
+      },
+      {
+        "title": "分析工具-账单分析-获取关联分析列表",
+        "path": "Zdfx/GetGLFXList",
+        "methods": false,
+        "name": "fetchBillRelationList",
+        "state": "relationList"
+      },
+      {
+        "title": "分析工具-账单分析-获取关联分析明细列表",
+        "path": "Zdfx/GetGLFXDetailList",
+        "methods": false,
+        "name": "fetchBillRelationDetailList",
+        "state": "relationDetailList"
+      },
+      {
+        "title": "分析工具-账单分析-获取对比分析列表",
+        "path": "Zdfx/GetDBFXList",
+        "methods": false,
+        "name": "fetchBillContrastList",
+        "state": "contrastList"
+      },
+      {
+        "title": "分析工具-账单分析-获取对比分析明细列表",
+        "path": "Zdfx/GetDBFXDetailList",
+        "methods": false,
+        "name": "fetchBillContrastDetailList",
+        "state": "contrastDetailList"
+      },
+      {
+        "title": "分析工具-账单分析-身份类型编辑标注",
+        "path": "Zdfx/SFLXBJBZ",
+        "methods": false,
+        "name": "postIdenLabel",
+        "state": "postIdenLabelRes"
+      },
+      {
+        "title": "分析工具-账单分析-获取团伙交易记录",
+        "path": "Zdfx/GetDRJYMXList",
+        "methods": false,
+        "name": "fetchBillGangRecordList",
+        "state": "gangRecordList"
+      },
+      {
+        "title": "分析工具-账单分析-可疑点分析列表",
+        "path": "Zdfx/GetKYDList",
+        "methods": false,
+        "name": "fetchBillDoubtfulList",
+        "state": "doubtfulList"
+      },
+      {
+        "title": "分析工具-账单分析-可疑点分析详情列表",
+        "path": "Zdfx/GetKYDDetailList",
+        "methods": false,
+        "name": "fetchBillDoubtfulDetailList",
+        "state": "doubtfulDetailList"
+      },
+      {
+        "title": "分析工具-账单分析-获取管理账单树",
+        "path": "Zdfx/GetZdfxSJGLTreeList",
+        "methods": false,
+        "name": "fetchManageBillTreeList",
+        "state": "manageBillTreeList"
+      },
+      {
+        "title": "分析工具-账单分析-获取个人账单明细",
+        "path": "Zdfx/GetZdfxSJGLDetailList",
+        "methods": false,
+        "name": "fetchBillPersonList",
+        "state": "billPersonList"
+      },
+      {
+        "title": "分析工具-账单分析-个人账单删除",
+        "path": "Zdfx/SJGLDel",
+        "methods": false,
+        "name": "deletePersonBill",
+        "state": "personBill"
+      }
+    ],
+    "analysisLocus": [
+      {
+        "title": "分析工具-轨迹分析-活动规律",
+        "path": "topic/gjfx/listgl",
+        "methods": false,
+        "name": "fetchLocus",
+        "state": "list"
+      },
+      {
+        "title": "分析工具-轨迹分析-旅店",
+        "path": "topic/gjfx/listld",
+        "methods": false,
+        "name": "fetchLocusHotelList",
+        "state": "hotelList"
+      },
+      {
+        "title": "分析工具-轨迹分析-网吧",
+        "path": "topic/gjfx/listwb",
+        "methods": false,
+        "name": "fetchLocusInternetBarList",
+        "state": "internetBarList"
+      },
+      {
+        "title": "分析工具-轨迹分析-铁路",
+        "path": "topic/gjfx/listtl",
+        "methods": false,
+        "name": "fetchLocusRailList",
+        "state": "railList"
+      },
+      {
+        "title": "分析工具-轨迹分析-航班离港",
+        "path": "topic/gjfx/listhb",
+        "methods": false,
+        "name": "fetchLocusFlightList",
+        "state": "flightList"
+      },
+      {
+        "title": "分析工具-轨迹分析-找人列表",
+        "path": "topic/gjfx/listzr",
+        "methods": false,
+        "name": "fetchLocusPersonList",
+        "state": "personList"
+      },
+      {
+        "title": "分析工具-轨迹分析-找人详情",
+        "path": "topic/gjfx/zrdetail",
+        "methods": false,
+        "name": "getLocusPersonDetail",
+        "state": "personDetail"
+      },
+      {
+        "title": "分析工具-轨迹分析-人员最近活动记录",
+        "path": "topic/gjfx/recently",
+        "methods": false,
+        "name": "fetchLocusPersonRecord",
+        "state": "personRecordList"
+      },
+      {
+        "title": "分析工具-轨迹分析-车辆最近活动记录",
+        "path": "topic/gjfx/gjcar",
+        "methods": false,
+        "name": "fetchLocusCarRecord",
+        "state": "carRecordList"
+      },
+      {
+        "title": "分析工具-轨迹分析-根据类型获取地点",
+        "path": "topic/gjfx/listfldd",
+        "methods": false,
+        "name": "fetchLocusAddressByPlace",
+        "state": "fetchLocusAddressByPlace"
+      },
+      {
+        "title": "分析工具-轨迹分析-轨迹基本分析",
+        "path": "topic/gjfx/basefx",
+        "methods": false,
+        "name": "fetchLocusBaseAnalyze",
+        "state": "baseAnalyze"
+      },
+      {
+        "title": "分析工具-轨迹分析-轨迹基本分析数据详情",
+        "path": "topic/gjfx/basefxdetail",
+        "methods": false,
+        "name": "fetchLocusBaseAnalyzeDetail",
+        "state": "baseAnalyzeDetail"
+      },
+      {
+        "title": "分析工具-轨迹分析-右侧栏树",
+        "path": "ajgl/suspect/listbyuser",
+        "methods": false,
+        "name": "fetchAnalyzeListByUser",
+        "state": "tree"
+      },
+      {
+        "title": "分析工具-轨迹分析-同住分析",
+        "path": "topic/gjfx/tzfx",
+        "methods": false,
+        "name": "fetchAnalyzeCohabitList",
+        "state": "cohabitList"
+      },
+      {
+        "title": "分析工具-轨迹分析-同行分析",
+        "path": "topic/gjfx/txfx",
+        "methods": false,
+        "name": "fetchAnalyzeTogetherList",
+        "state": "togetherList"
+      },
+      {
+        "title": "分析工具-轨迹分析-轨迹规律分析列表",
+        "path": "topic/gjfx/glfx",
+        "methods": false,
+        "name": "fetchAnalyzeRuleList",
+        "state": "ruleList"
+      },
+      {
+        "title": "分析工具-轨迹分析-轨迹规律分析列表详情",
+        "path": "topic/gjfx/glfxdetail",
+        "methods": false,
+        "name": "fetchAnalyzeRuleDetailList",
+        "state": "detailList"
+      },
+      {
+        "title": "分析工具-轨迹分析-轨迹规律分析图形",
+        "path": "topic/gjfx/glfxtx",
+        "methods": false,
+        "name": "fetchAnalyzeRuleGraphData",
+        "state": "ruleGraphData"
+      },
+      {
+        "title": "分析工具-轨迹分析-特定轨迹分析",
+        "path": "topic/gjfx/gjfx",
+        "methods": false,
+        "name": "fetchAnalyzeSpecificList",
+        "state": "specificList"
+      },
+      {
+        "title": "分析工具-轨迹分析-特定轨迹分析-详情",
+        "path": "topic/gjfx/gjfxdetail",
+        "methods": false,
+        "name": "fetchAnalyzeSpecificInfo",
+        "state": "specificInfo"
+      },
+      {
+        "title": "分析工具-轨迹分析-特定轨迹分析-通过地址在基站信息中加载相应的经纬度",
+        "path": "topic/gjfx/gjfxjwd",
+        "methods": false,
+        "name": "fetchAnalyzeSpecificPosition",
+        "state": "specificPosition"
+      },
+      {
+        "title": "分析工具-轨迹分析-轨迹比对分析",
+        "path": "topic/gjfx/bdfx",
+        "methods": false,
+        "name": "fetchAnalyzeContrastList",
+        "state": "contrastList"
+      },
+      {
+        "title": "分析工具-轨迹分析-轨迹比对分析-详情",
+        "path": "topic/gjfx/bdfxdetail",
+        "methods": false,
+        "name": "fetchAnalyzeContrastInfo",
+        "state": "contrastInfo"
+      },
+      {
+        "title": "分析工具-轨迹分析-轨迹地图展示分析",
+        "path": "topic/gjfx/mapsfx",
+        "methods": false,
+        "name": "fetchAnalyzeMapData",
+        "state": "mapData"
+      },
+      {
+        "title": "分析工具-轨迹分析-轨迹基本分析时间轴",
+        "path": "topic/gjfx/basefxsjz",
+        "methods": false,
+        "name": "fetchAnalyzeBasicTimeData",
+        "state": "TimeData"
+      },
+      {
+        "title": "分析工具-轨迹分析-轨迹基本分析列表条数",
+        "path": "topic/gjfx/baseFxDetailCount",
+        "methods": false,
+        "name": "fetchDetailCount",
+        "state": "detailCount"
+      }
+    ],
+    "analysisTimeline": [
+      {
+        "title": "分析工具-时光轴-获取时间轴分析列表数据",
+        "path": "gjfx/sjz/list",
+        "methods": false,
+        "name": "fetchAnalysisTimeline",
+        "state": "list"
+      },
+      {
+        "title": "分析工具-时光轴-案件列表",
+        "path": "gjfx/sjz/getPersonTree",
+        "methods": false,
+        "name": "getTimelinePersonTree",
+        "state": "anjianList"
+      },
+      {
+        "title": "分析工具-时光轴-我的时光轴-新增",
+        "path": "gjfx/sjz/addTimeline",
+        "methods": false,
+        "name": "addTimeline",
+        "state": "addTimeline"
+      }, {
+        "title": "分析工具-时光轴-我的时光轴-删除管理列表数据",
+        "path": "gjfx/sjz/delete",
+        "methods": false,
+        "name": "deleteManageList",
+        "state": "deleteManageListResult"
+      }, {
+        "title": "分析工具-时光轴-我的时光轴-保存到管理列表",
+        "path": "gjfx/sjz/addMySjzManage",
+        "methods": false,
+        "name": "saveToManageList",
+        "state": "saveToManageListResult"
+      }, {
+        "title": "分析工具-时光轴-我的时光轴-获取时光轴保存名称列表",
+        "path": "gjfx/sjz/listSaveName",
+        "methods": false,
+        "name": "fetchSaveNameList",
+        "state": "fetchSaveNameListResult"
+      }, {
+        "title": "分析工具-时光轴-我的时光轴-查看时光轴管理",
+        "path": "gjfx/sjz/listMySjzManage",
+        "methods": false,
+        "name": "lookTimelineManage",
+        "state": "lookTimelineManageResult"
+      }, {
+        "title": "分析工具-时光轴-我的时光轴-保存时光轴到案件",
+        "path": "gjfx/sjz/addMySjzManageToCase",
+        "methods": false,
+        "name": "saveTimelineToCase",
+        "state": "saveTimelineToCaseResult"
+      }, {
+        "title": "分析工具-时光轴-我的时光轴-根据时光轴名称,案件名称查询时光轴详情",
+        "path": "gjfx/sjz/getSjzDataBySaveName",
+        "methods": false,
+        "name": "getSaveTimelineDetail",
+        "state": "getSaveTimelineDetailResult"
+      }, {
+        "title": "分析工具-时光轴-我的时光轴-根据时光轴名称,案件名删除该条数据",
+        "path": "gjfx/sjz/deleteSjzOfCase",
+        "methods": false,
+        "name": "deleteTimelineClassify",
+        "state": "deleteTimelineClassifyResult"
+
+      }
+
+    ],
+    "analysisImage": [
+      {
+        "title": "分析工具-图片比对-图片分析",
+        "path": "topic/piccompare/getresult",
+        "methods": false,
+        "name": "fetchAnalysisImage",
+        "state": "list"
+      },
+      {
+        "title": "分析工具-图片详情",
+        "path": "topic/piccompare/getpicinfo",
+        "methods": false,
+        "name": "fetchAnalysisImageDetails",
+        "state": "detail"
+      },
+      {
+        "title": "分析工具-历史图片",
+        "path": "topic/piccompare/list",
+        "methods": false,
+        "name": "fetchAnalysisImageHistory",
+        "state": "historyList"
+      },
+      {
+        "title": "分析工具-删除历史图片",
+        "path": "topic/piccompare/delete",
+        "methods": false,
+        "name": "removeAnalysisImageHistory",
+        "state": "removeAnalysisImageHistoryRes"
+      }
+    ],
+    "controlManage": [
+      {
+        "title": "获取布控预警总览",
+        "path": "bkyj/warn/gaik",
+        "methods": false,
+        "name": "GetControlManageAllPicList",
+        "state": "allPicList"
+      },
+      {
+        "title": "获取布控预警列表",
+        "path": "bkyj/warn/list",
+        "methods": false,
+        "method": "fetch",
+        "name": "GetControlManageList"
+      },
+      {
+        "title": "获取布控预警列表数据总量统计",
+        "path": "bkyj/warn/listcount",
+        "methods": false,
+        "name": "GetControlListCount",
+        "state": "ListCount"
+      },
+      {
+        "titel": "新增布控预警",
+        "path": "bkyj/warn/save",
+        "methods": false,
+        "method": "add",
+        "name": "addControlManage"
+      },
+      {
+        "titel": "删除布控预警草稿",
+        "path": "bkyj/warn/delete",
+        "methods": false,
+        "method": "remove",
+        "name": "removeControlManageDraft"
+      },
+      {
+        "titel": "修改布控预警草稿",
+        "path": "bkyj/warn/update",
+        "methods": false,
+        "method": "update",
+        "name": "updateControlManageDraft"
+      },
+      {
+        "title": "获取布控预警待我审批列表",
+        "path": "bkyj/warn/approvallist",
+        "methods": false,
+        "method": "fetch",
+        "name": "GetApprovalList"
+      },
+      {
+        "title": "获取布控预警待我审批列表数量统计",
+        "path": "bkyj/warn/approvallistcount",
+        "methods": false,
+        "name": "getApprovalListCount",
+        "state": "ApprovalCount"
+      },
+      {
+        "title": "布控预警续控",
+        "path": "bkyj/warn/add",
+        "methods": false,
+        "method": "update",
+        "name": "addApproval"
+      },
+      {
+        "title": "布控预警撤控",
+        "path": "bkyj/warn/revoke",
+        "methods": false,
+        "method": "update",
+        "name": "revokeApproval"
+      },
+      {
+        "title": "布控特征结果",
+        "path": "Bkyj/GetTzJgByTzidAndLybid",
+        "methods": false,
+        "name": "fetchGetTzjgList",
+        "state": "tzList"
+      },
+      {
+        "title": "获取布控预警特征表",
+        "path": "Bkyj/GetTableCountByTzId",
+        "methods": false,
+        "name": "fetchFeatureCount",
+        "state": "count"
+      },
+      {
+        "title": "布控结果特征列表",
+        "path": "bkyj/warn/feature",
+        "methods": false,
+        "name": "fetchFeatureList",
+        "state": "list"
+      },
+      {
+        "title": "布控预警重点人员",
+        "path": "zddx/people/list",
+        "methods": false,
+        "name": "importantPersonList",
+        "state": "impPList"
+      },
+      {
+        "title": "布控预警-关键词布控-获取被选的人员列表",
+        "path": "bkyj/tool/queryPeopleList",
+        "methods": false,
+        "name": "fetchQueryPeopleList",
+        "state": "queryPeopleList"
+      },
+      {
+        "title": "布控预警-关键词布控-获取被选的人员关键字列表",
+        "path": "bkyj/tool/queryPeopleKeywordList",
+        "methods": false,
+        "name": "fetchPeopleKeywordList",
+        "state": "fetchPeopleKeywordList"
+      }, {
+        "title": "布控预警-关键词布控-获取被选的车辆列表",
+        "path": "bkyj/tool/queryCarList",
+        "methods": false,
+        "name": "fetchQueryCarList",
+        "state": "queryCarList"
+      }
+    ],
+    "userSelector": [
+      {
+        "title": "选择联系人-单位组织",
+        "path": "system/org/findbyjz",
+        "methods": false,
+        "name": "fetchUserSelectorCompany",
+        "state": "companyList"
+      },
+      {
+        "title": "选择联系人-单位组织-联系人",
+        "path": "system/user/findbyorgid",
+        "methods": false,
+        "name": "fetchUserSelectorCompanyContacts",
+        "state": "contacts"
+      }
+    ],
+    "trajectory": [
+      {
+        "title": "获取人员最近轨迹",
+        "path": "topic/gjfx/recently",
+        "methods": false,
+        "name": "getRecentlyById",
+        "state": "getRecentlyById"
+      },
+      {
+        "title": "获取车辆最近轨迹",
+        "path": "topic/gjfx/gjcar",
+        "methods": false,
+        "name": "getgjcarById",
+        "state": "getgjcarById"
+      }
+    ],
+    "talentPoolSkill": [
+      {
+        "title": "获取警务人才技能列表",
+        "path": "Jwrc/GetJnList",
+        "methods": false,
+        "name": "GetTalentPoolSkillList",
+        "state": "sysSkillList"
+      },
+      {
+        "title": "获取单笔技能记录",
+        "path": "Jwrc/GetJn",
+        "methods": false,
+        "name": "GetSysSkillInfo",
+        "state": "sysSkillInfo"
+      },
+      {
+        "title": "新增技能",
+        "path": "Jwrc/AddJn",
+        "methods": false,
+        "name": "AddSkill",
+        "state": "addSkill"
+      },
+      {
+        "title": "编辑技能",
+        "path": "Jwrc/EditJn",
+        "methods": false,
+        "name": "UpdateSkill",
+        "state": "updateSkill"
+      },
+      {
+        "title": "删除技能",
+        "path": "Jwrc/DeleteJn",
+        "methods": false,
+        "name": "DeleteSkill",
+        "state": "deleteSkill"
+      }
+    ],
+    "familyMenbers": [
+      {
+        "title": "研判报告-家庭成员-获取列表",
+        "path": "ajgl/family/list",
+        "methods": false,
+        "state": "fetchFamilyMenbersList",
+        "name": "fetchFamilyMenbersList"
+      },
+      {
+        "title": "研判报告-家庭成员-添加",
+        "path": "ajgl/family/addfamilymember",
+        "methods": false,
+        "state": "addFamilyMenbers",
+        "name": "addFamilyMenbers"
+      },
+      {
+        "title": "研判报告-家庭成员-修改",
+        "path": "ajgl/family/updatefamilymember",
+        "methods": false,
+        "state": "updateFamilyMenbers",
+        "name": "updateFamilyMenbers"
+      },
+      {
+        "title": "研判报告-家庭成员-删除",
+        "path": "ajgl/family/delfamilymember",
+        "methods": false,
+        "state": "updateFamilyMenbers",
+        "name": "removeFamilyMenbers"
+      },
+      {
+        "title": "研判报告-生成报告-获取办案人员",
+        "path": "ajgl/police/queryBaryList",
+        "methods": false,
+        "name": "fecthQueryBaryList",
+        "state": "fecthQueryBaryListResult"
+      }
+    ],
+    "statistics": [
+      {
+        "title": "案件概况-获取近三年同比案发数量",
+        "path": "ajgl/lawcase/anly",
+        "methods": false,
+        "name": "fetchLawcaseAnly",
+        "state": "lawcaseAnly"
+      },
+      {
+        "title": "案件概况-获取区域案发数量",
+        "path": "ajgl/lawcase/area",
+        "methods": false,
+        "name": "fetchLawcaseArea",
+        "state": "lawcaseArea"
+      },
+      {
+        "title": "案件概况-获取各时段案件数量",
+        "path": "ajgl/lawcase/time",
+        "methods": false,
+        "name": "fetchLawcaseTime",
+        "state": "lawcaseTime"
+      },
+      {
+        "title": "案件概况-获取案件类型数量",
+        "path": "ajgl/lawcase/type",
+        "methods": false,
+        "name": "fetchLawcaseType",
+        "state": "lawcaseType"
+      }
+    ],
+    "flightRelate": [
+      {
+        "title": "研判报告-同航班-获取列表",
+        "path": "ajgl/flight/list",
+        "methods": false,
+        "state": "fetchFlightRelateList",
+        "name": "fetchFlightRelateList"
+      },
+      {
+        "title": "研判报告-同航班-获取详情",
+        "path": "ajgl/flight/info",
+        "methods": false,
+        "state": "getFlightRelate",
+        "name": "getFlightRelate"
+      },
+      {
+        "title": "研判报告-同航班-添加",
+        "path": "ajgl/flight/save",
+        "methods": false,
+        "state": "addFlightRelate",
+        "name": "addFlightRelate"
+      },
+      {
+        "title": "研判报告-同航班-修改",
+        "path": "ajgl/flight/update",
+        "methods": false,
+        "state": "updateFlightRelate",
+        "name": "updateFlightRelate"
+      },
+      {
+        "title": "研判报告-同航班-删除",
+        "path": "ajgl/flight/delete",
+        "methods": false,
+        "state": "removeFlightRelate",
+        "name": "removeFlightRelate"
+      }
+    ],
+    "railwayRelate": [
+      {
+        "title": "研判报告-同铁路-获取列表",
+        "path": "ajgl/railway/list",
+        "methods": false,
+        "state": "fetchRailwayRelateList",
+        "name": "fetchRailwayRelateList"
+      },
+      {
+        "title": "研判报告-同铁路-获取详情",
+        "path": "ajgl/railway/info",
+        "methods": false,
+        "state": "getRailwayRelate",
+        "name": "getRailwayRelate"
+      },
+      {
+        "title": "研判报告-同铁路-添加",
+        "path": "ajgl/railway/save",
+        "methods": false,
+        "state": "addRailwayRelate",
+        "name": "addRailwayRelate"
+      },
+      {
+        "title": "研判报告-同铁路-修改",
+        "path": "ajgl/railway/update",
+        "methods": false,
+        "state": "updateRailwayRelate",
+        "name": "updateRailwayRelate"
+      },
+      {
+        "title": "研判报告-同铁路-删除",
+        "path": "ajgl/railway/delete",
+        "methods": false,
+        "state": "removeRailwayRelate",
+        "name": "removeRailwayRelate"
+      }
+    ],
+    "hostelRelate": [
+      {
+        "title": "研判报告-同旅店-获取列表",
+        "path": "ajgl/hostel/list",
+        "methods": false,
+        "state": "fetchHostelRelateList",
+        "name": "fetchHostelRelateList"
+      },
+      {
+        "title": "研判报告-同旅店-详情",
+        "path": "ajgl/hostel/info",
+        "methods": false,
+        "state": "getHostelRelate",
+        "name": "getHostelRelate"
+      },
+      {
+        "title": "研判报告-同旅店-添加",
+        "path": "ajgl/hostel/save",
+        "methods": false,
+        "state": "addHostelRelate",
+        "name": "addHostelRelate"
+      },
+      {
+        "title": "研判报告-同旅店-修改",
+        "path": "ajgl/hostel/update",
+        "methods": false,
+        "state": "updateHostelRelate",
+        "name": "updateHostelRelate"
+      },
+      {
+        "title": "研判报告-同旅店-删除",
+        "path": "ajgl/hostel/delete",
+        "methods": false,
+        "state": "removeHostelRelate",
+        "name": "removeHostelRelate"
+      }
+    ],
+    "cohabitRelate": [
+      {
+        "title": "研判报告-同暂住-获取列表",
+        "path": "ajgl/cohabit/list",
+        "methods": false,
+        "state": "fetchCohabitRelateList",
+        "name": "fetchCohabitRelateList"
+      },
+      {
+        "title": "研判报告-同暂住-详情",
+        "path": "ajgl/cohabit/info",
+        "methods": false,
+        "state": "getCohabitRelate",
+        "name": "getCohabitRelate"
+      },
+      {
+        "title": "研判报告-同暂住-添加",
+        "path": "ajgl/cohabit/addtz",
+        "methods": false,
+        "state": "addCohabitRelate",
+        "name": "addCohabitRelate"
+      },
+      {
+        "title": "研判报告-同暂住-修改",
+        "path": "ajgl/cohabit/updatetz",
+        "methods": false,
+        "state": "updateCohabitRelate",
+        "name": "updateCohabitRelate"
+      },
+      {
+        "title": "研判报告-同暂住-删除",
+        "path": "ajgl/cohabit/deltz",
+        "methods": false,
+        "state": "removeCohabitRelate",
+        "name": "removeCohabitRelate"
+      }
+    ],
+    "cyberbarRelate": [
+      {
+        "title": "研判报告-同网吧-获取列表",
+        "path": "ajgl/cyberbar/list",
+        "methods": false,
+        "state": "fetchCyberbarRelateList",
+        "name": "fetchCyberbarRelateList"
+      },
+      {
+        "title": "研判报告-同网吧-详情",
+        "path": "ajgl/cyberbar/info",
+        "methods": false,
+        "state": "getCyberbarRelate",
+        "name": "getCyberbarRelate"
+      },
+      {
+        "title": "研判报告-同网吧-添加",
+        "path": "ajgl/cyberbar/save",
+        "methods": false,
+        "state": "addCyberbarRelate",
+        "name": "addCyberbarRelate"
+      },
+      {
+        "title": "研判报告-同网吧-修改",
+        "path": "ajgl/cyberbar/update",
+        "methods": false,
+        "state": "updateCyberbarRelate",
+        "name": "updateCyberbarRelate"
+      },
+      {
+        "title": "研判报告-同网吧-删除",
+        "path": "ajgl/cyberbar/delete",
+        "methods": false,
+        "state": "removeCyberbarRelate",
+        "name": "removeCyberbarRelate"
+      }
+    ],
+    "samecaseRelate": [
+      {
+        "title": "研判报告-同案-获取列表",
+        "path": "ajgl/samecase/list",
+        "methods": false,
+        "state": "fetchSamecaseRelateList",
+        "name": "fetchSamecaseRelateList"
+      },
+      {
+        "title": "研判报告-同案-详情",
+        "path": "ajgl/samecase/info",
+        "methods": false,
+        "state": "getSamecaseRelate",
+        "name": "getSamecaseRelate"
+      },
+      {
+        "title": "研判报告-同案-添加",
+        "path": "ajgl/samecase/addxyr",
+        "methods": false,
+        "state": "addSamecaseRelate",
+        "name": "addSamecaseRelate"
+      },
+      {
+        "title": "研判报告-同案-修改",
+        "path": "ajgl/samecase/updatexyr",
+        "methods": false,
+        "state": "updateSamecaseRelate",
+        "name": "updateSamecaseRelate"
+      },
+      {
+        "title": "研判报告-同案-删除",
+        "path": "ajgl/samecase/delxyr",
+        "methods": false,
+        "state": "removeSamecaseRelate",
+        "name": "removeSamecaseRelate"
+      }
+    ],
+    "samehouseholdRelate": [
+      {
+        "title": "研判报告-同户-获取列表",
+        "path": "ajgl/samehousehold/list",
+        "methods": false,
+        "state": "fetchSamehouseholdRelateList",
+        "name": "fetchSamehouseholdRelateList"
+      },
+      {
+        "title": "研判报告-同户-详情",
+        "path": "ajgl/samehousehold/info",
+        "methods": false,
+        "state": "getSamehouseholdRelate",
+        "name": "getSamehouseholdRelate"
+      },
+      {
+        "title": "研判报告-同户-添加",
+        "path": "ajgl/samehousehold/addth",
+        "methods": false,
+        "state": "addSamehouseholdRelate",
+        "name": "addSamehouseholdRelate"
+      },
+      {
+        "title": "研判报告-同户-修改",
+        "path": "ajgl/samehousehold/updateth",
+        "methods": false,
+        "state": "updateSamehouseholdRelate",
+        "name": "updateSamehouseholdRelate"
+      },
+      {
+        "title": "研判报告-同户-删除",
+        "path": "ajgl/samehousehold/delth",
+        "methods": false,
+        "state": "removeSamehouseholdRelate",
+        "name": "removeSamehouseholdRelate"
+      }
+    ],
+    "suspectHouse": [
+      {
+        "title": "研判报告-房产-获取列表",
+        "path": "ajgl/suspect/houselist",
+        "methods": false,
+        "state": "fetchSuspectHouseList",
+        "name": "fetchSuspectHouseList"
+      },
+      {
+        "title": "研判报告-房产-详情",
+        "path": "ajgl/suspect/houseinfo",
+        "methods": false,
+        "state": "getSuspectHouse",
+        "name": "getSuspectHouse"
+      },
+      {
+        "title": "研判报告-房产-添加",
+        "path": "ajgl/suspect/houseadd",
+        "methods": false,
+        "state": "addSuspectHouse",
+        "name": "addSuspectHouse"
+      },
+      {
+        "title": "研判报告-房产-修改",
+        "path": "ajgl/suspect/houseupdate",
+        "methods": false,
+        "state": "updateSuspectHouse",
+        "name": "updateSuspectHouse"
+      },
+      {
+        "title": "研判报告-房产-删除",
+        "path": "ajgl/suspect/housedel",
+        "methods": false,
+        "state": "removeSuspectHouse",
+        "name": "removeSuspectHouse"
+      }
+    ],
+    "suspectCar": [
+      {
+        "title": "研判报告-车辆-获取列表",
+        "path": "ajgl/suspect/carlist",
+        "methods": false,
+        "state": "fetchSuspectCarList",
+        "name": "fetchSuspectCarList"
+      },
+      {
+        "title": "研判报告-车辆-详情",
+        "path": "ajgl/suspect/carinfo",
+        "methods": false,
+        "state": "getSuspectCar",
+        "name": "getSuspectCar"
+      },
+      {
+        "title": "研判报告-车辆-添加",
+        "path": "ajgl/suspect/caradd",
+        "methods": false,
+        "state": "addSuspectCar",
+        "name": "addSuspectCar"
+      },
+      {
+        "title": "研判报告-车辆-修改",
+        "path": "ajgl/suspect/carupdate",
+        "methods": false,
+        "state": "updateSuspectCar",
+        "name": "updateSuspectCar"
+      },
+      {
+        "title": "研判报告-车辆-删除",
+        "path": "ajgl/suspect/cardel",
+        "methods": false,
+        "state": "removeSuspectCar",
+        "name": "removeSuspectCar"
+      }
+    ],
+    "gangsTra": [
+      {
+        "title": "研判报告-团伙交易-获取列表",
+        "path": "ajgl/bill/list",
+        "methods": false,
+        "state": "fetchGangsTraList",
+        "name": "fetchGangsTraList"
+      },
+      {
+        "title": "研判报告-团伙交易-详情",
+        "path": "ajgl/bill/info",
+        "methods": false,
+        "state": "getGangsTra",
+        "name": "getGangsTra"
+      },
+      {
+        "title": "研判报告-团伙交易-添加",
+        "path": "ajgl/bill/save",
+        "methods": false,
+        "state": "addGangsTra",
+        "name": "addGangsTra"
+      },
+      {
+        "title": "研判报告-团伙交易-修改",
+        "path": "ajgl/bill/update",
+        "methods": false,
+        "state": "updateGangsTra",
+        "name": "updateGangsTra"
+      },
+      {
+        "title": "研判报告-团伙交易-删除",
+        "path": "ajgl/bill/delete",
+        "methods": false,
+        "state": "removeGangsTra",
+        "name": "removeGangsTra"
+      }
+    ],
+    "gangsCall": [
+      {
+        "title": "研判报告-团伙通讯-获取列表",
+        "path": "ajgl/tel/list",
+        "methods": false,
+        "state": "fetchGangsCallList",
+        "name": "fetchGangsCallList"
+      },
+      {
+        "title": "研判报告-团伙通讯-详情",
+        "path": "ajgl/tel/info",
+        "methods": false,
+        "state": "getGangsCall",
+        "name": "getGangsCall"
+      },
+      {
+        "title": "研判报告-团伙通讯-添加",
+        "path": "ajgl/tel/save",
+        "methods": false,
+        "state": "addGangsCall",
+        "name": "addGangsCall"
+      },
+      {
+        "title": "研判报告-团伙通讯-修改",
+        "path": "ajgl/tel/update",
+        "methods": false,
+        "state": "updateGangsCall",
+        "name": "updateGangsCall"
+      },
+      {
+        "title": "研判报告-团伙通讯-删除",
+        "path": "ajgl/tel/delete",
+        "methods": false,
+        "state": "removeGangsCall",
+        "name": "removeGangsCall"
+      }
+    ],
+    "penRecord": [
+      {
+        "title": "案件笔录-启动笔录客户端",
+        "path": "ajgl/bilu/open",
+        "methods": false,
+        "state": "getPenRecordClient",
+        "name": "getPenRecordClient"
+      },
+      {
+        "title": "案件笔录-根据身份证获取笔录列表",
+        "path": "ajgl/bilu/listbyzjhm",
+        "methods": false,
+        "state": "fetchPenRecordListByIdcard",
+        "name": "fetchPenRecordListByIdcard"
+      },
+      {
+        "title": "案件笔录-根据案件编号获取笔录列表",
+        "path": "ajgl/bilu/listbyajbh",
+        "methods": false,
+        "state": "fetchPenRecordListByCasenum",
+        "name": "fetchPenRecordListByCasenum"
+      },
+      {
+        "title": "案件笔录-根据笔录ID获取笔录信息",
+        "path": "ajgl/bilu/detail",
+        "methods": false,
+        "state": "fetchPenRecordListByID",
+        "name": "fetchPenRecordListByID"
+      }
+    ],
+    "caseReportVersion": [
+      {
+        "title": "研判报告-版本-获取列表",
+        "path": "ajgl/rep/list",
+        "methods": false,
+        "state": "fetchCaseReportVersion",
+        "name": "fetchCaseReportVersion"
+      },
+      {
+        "title": "研判报告-版本-详情",
+        "path": "ajgl/rep/info",
+        "methods": false,
+        "state": "getCaseReportVersion",
+        "name": "getCaseReportVersion"
+      },
+      {
+        "title": "研判报告-版本-添加",
+        "path": "ajgl/rep/save",
+        "methods": false,
+        "state": "addCaseReportVersion",
+        "name": "addCaseReportVersion"
+      },
+      {
+        "title": "研判报告-版本-修改",
+        "path": "ajgl/rep/update",
+        "methods": false,
+        "state": "updateCaseReportVersion",
+        "name": "updateCaseReportVersion"
+      },
+      {
+        "title": "研判报告-版本-删除",
+        "path": "ajgl/rep/delete",
+        "methods": false,
+        "state": "removeCaseReportVersion",
+        "name": "removeCaseReportVersion"
+      }, {
+        "title": "研判报告-导出word",
+        "path": "ajgl/rep/exportword",
+        "methods": false,
+        "state": "reportExportWord",
+        "name": "reportExportWord"
+      }
+    ],
+    "centerEnter": [
+      {
+        "title": "警务云-警情消息",
+        "path": "jwy/warnMessage/listByCenterId",
+        "methods": false,
+        "state": "fetchlistByCenterId",
+        "name": "listByCenterId"
+      },
+      {
+        "title": "警务云-警情消息-更多",
+        "path": "jwy/warnMessage/recentListByCenterId",
+        "methods": false,
+        "state": "recentListByCenterId",
+        "name": "recentListByCenterId"
+      },
+      {
+        "title": "警务云-警情消息-修改读取状态",
+        "path": "jwy/warnMessage/changeStatus",
+        "methods": false,
+        "state": "changeStatus",
+        "name": "changeStatus"
+      },
+      {
+        "title": "警务云-数据异常预警",
+        "path": "jwy/warnMessage/queryDetail",
+        "methods": false,
+        "state": "queryDetail",
+        "name": "queryDetail"
+      }
+    ],
+    "analysisDataQuery": [
+      {
+        "title": "研判工具-全国数据查询-常住人口信息",
+        "path": "query/getperson/info",
+        "methods": false,
+        "name": "fetchPersonList",
+        "state": "personList"
+      },
+      {
+        "title": "研判工具-全国数据查询-在逃人员信息",
+        "path": "query/getperson/escapeinfo",
+        "methods": false,
+        "name": "fetchEscapeList",
+        "state": "escapeList"
+      },
+      {
+        "title": "研判工具-全国数据查询-机动车信息",
+        "path": "query/getperson/carinfo",
+        "methods": false,
+        "name": "fetchCarList",
+        "state": "carList"
+      },
+      {
+        "title": "研判工具-全国数据查询-吸贩毒人员信息",
+        "path": "query/getperson/druginfo",
+        "methods": false,
+        "name": "fetchDrugList",
+        "state": "drugList"
+      },
+      {
+        "title": "研判工具-全国数据查询-违法犯罪人员信息",
+        "path": "query/getperson/criminalinfo",
+        "methods": false,
+        "name": "fetchCriminalList",
+        "state": "criminalList"
+      },
+      {
+        "title": "研判工具-全国数据查询-警员信息",
+        "path": "query/getperson/policeinfo",
+        "methods": false,
+        "name": "fetchPoliceList",
+        "state": "policeList"
+      },
+      {
+        "title": "研判工具-全国数据查询-驾驶证信息",
+        "path": "query/getperson/driverinfo",
+        "methods": false,
+        "name": "fetchDriverList",
+        "state": "driverList"
+      }
+    ],
+    "dataComparison": [
+      {
+        "title": "数据比对-保存我的数据比对",
+        "path": "Sjbd/SaveWdbd",
+        "methods": false,
+        "name": "saveMyData",
+        "state": "saveMyDataResult"
+      },
+      {
+        "title": "数据比对-获取我的比对列表",
+        "path": "Sjbd/GetMySjbd",
+        "methods": false,
+        "name": "fetchMyDataList",
+        "state": "myDataList"
+      },
+      {
+        "title": "数据比对-获取资源目录",
+        "path": "Sjbd/GetZyml",
+        "methods": false,
+        "name": "fetchGetZyml",
+        "state": "GetZyml"
+      },
+      {
+        "title": "数据比对-获取资源详细结构信息",
+        "path": "Sjbd/GetTableInfo",
+        "methods": false,
+        "name": "fetchGetTableInfol",
+        "state": "GetTableInfo"
+      },
+      {
+        "title": "数据比对-删除我的比对数据源",
+        "path": "Sjbd/DeleteMySjbd",
+        "methods": false,
+        "name": "deleteMySjbd",
+        "state": "DeleteMySjbd"
+      },
+      {
+        "title": "数据比对-获取我的比对数据源详细信息",
+        "path": "Sjbd/GetWdbdDataDetail",
+        "methods": false,
+        "name": "fetchWdbdDataDetail",
+        "state": "GetWdbdDataDetail"
+      },
+      {
+        "title": "数据比对-查看我的比对数据",
+        "path": "Sjbd/ViewWdbdData",
+        "methods": false,
+        "name": "fetchViewWdbdData",
+        "state": "ViewWdbdData"
+      },
+      {
+        "title": "数据比对-查看实时比对结果",
+        "path": "Sjbd/ViewSsbdWdbdData",
+        "methods": false,
+        "name": "fetchViewSsbdWdbdData",
+        "state": "ViewSsbdWdbdData"
+      },
+      {
+        "title": "数据比对-查看实时比对结果条数",
+        "path": "Sjbd/ViewSsbdWdbdCount",
+        "methods": false,
+        "name": "fetchViewSsbdWdbdCount",
+        "state": "ViewSsbdWdbdCount"
+      }
+    ],
+    "brief": [
+      {
+        "title": "系统功能简介列表",
+        "path": "sys/brief/list",
+        "methods": false,
+        "name": "sysBriefList",
+        "state": "sysBriefList"
+      },
+      {
+        "title": "系统功能简介新增",
+        "path": "sys/brief/save",
+        "methods": false,
+        "name": "sysBriefSave",
+        "state": "sysBriefSave"
+      },
+      {
+        "title": "系统功能简介修改",
+        "path": "sys/brief/update",
+        "methods": false,
+        "name": "sysBriefUpdate",
+        "state": "sysBriefUpdate"
+      },
+      {
+        "title": "系统功能简介删除",
+        "path": "sys/brief/delete",
+        "methods": false,
+        "name": "sysBriefDelete",
+        "state": "sysBriefDelete"
+      },
+      {
+        "title": "系统功能简介查询",
+        "path": "sys/brief/info",
+        "methods": false,
+        "name": "sysBriefInfo",
+        "state": "sysBriefInfo"
+      }
+    ],
+    "question": [
+      {
+        "title": "系统模块下拉列表（接口已实现）",
+        "path": "mycommon/application/getApplicationList",
+        "methods": false,
+        "name": "qgetApplicationList",
+        "state": "qgetApplicationList"
+      },
+      {
+        "title": "问题反馈-提交问题",
+        "path": "feedback/major/submitQuestion",
+        "methods": false,
+        "name": "submitQuestion",
+        "state": "submitQuestion"
+      },
+      {
+        "title": "问题反馈-获取反馈历史",
+        "path": "feedback/major/getFeedbackList",
+        "methods": false,
+        "name": "getFeedbackList",
+        "state": "getFeedbackList"
+      },
+      {
+        "title": "问题反馈-点赞（一个用户只能点赞一次）",
+        "path": "feedback/major/like",
+        "methods": false,
+        "name": "qLike",
+        "state": "qLike"
+      },
+      {
+        "title": "问题反馈-管理员回复",
+        "path": "feedback/major/reply",
+        "methods": false,
+        "name": "qReply",
+        "state": "qReply"
+      },
+      {
+        "title": "问题反馈-判断管理员是否已回复",
+        "path": "feedback/major/judgment",
+        "methods": false,
+        "name": "qJudgment",
+        "state": "qJudgment"
+      },
+      {
+        "title": "问题反馈-区分管理员与普通用户",
+        "path": "feedback/major/distinctAdmin",
+        "methods": false,
+        "name": "qDistinctAdmin",
+        "state": "qDistinctAdmin"
+      }
+    ],
+    "version": [
+      {
+        "title": "版本更新-新增",
+        "path": "version/major/add",
+        "methods": false,
+        "name": "versionAdd",
+        "state": "versionAdd"
+      },
+      {
+        "title": "版本更新-列表查看",
+        "path": "version/major/list",
+        "methods": false,
+        "name": "versionList",
+        "state": "versionList"
+      },
+      {
+        "title": "版本更新-登录用户查看更新内容",
+        "path": "version/major/lookVersion",
+        "methods": false,
+        "name": "lookVersion",
+        "state": "lookVersion"
+      },
+      {
+        "title": "版本更新-修改阅读状态",
+        "path": "version/major/updateReadStatus",
+        "methods": false,
+        "name": "updateReadStatus",
+        "state": "updateReadStatus"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+</div>
+</div>
+</section>
+<footer>
+  <!-- 新德汇前端团队出品 -->
+</footer>
+</div>
+<script>
+  $(document).ready(function() {
+    // set the active tab
+    var currentHref = document.location.pathname.substr(1);
+    if (currentHref) {
+      $('.docNav').find('a[href^="' + currentHref + '"]').addClass('activeNavElem typeEmphasize');
+    } else {
+      $('.docNav').find('a').eq(0).addClass('activeNavElem typeEmphasize');
+    }
+  });
+</script>
+</body>
+
+</html>

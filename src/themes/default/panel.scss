@@ -1,0 +1,67 @@
+@import "vars";
+
+.el-draggable__handle {
+  cursor: move;
+}
+
+.el-panel {
+  border: 1px solid #d1dbe5;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+  overflow: hidden;
+
+}
+
+.el-panel--transition {
+  transition: width 0.3s, height 0.3s, left 0.3s, top 0.3s;
+}
+
+.el-panel__header {
+  height: 36px;
+  line-height: 36px;
+  background: #fbfdff;
+  margin: 0;
+  padding: 0 10px;
+  border-bottom: 1px solid #d1dbe5;
+  box-sizing: border-box;
+  color: #1f2d3d;
+  position: relative;
+}
+
+.el-panel__content {
+  padding: 10px;
+}
+
+.el-panel__tools {
+  position: absolute;
+  right: 5px;
+  top: 0;
+  font-size: 0;
+  line-height: 23px;
+}
+
+.el-panel__tool {
+  cursor: pointer;
+  text-underline: none;
+  color: #666;
+  height: 24px;
+  width: 25px;
+  text-align: center;
+  font-size: 16px;
+  -webkit-user-select: none;
+  display: inline-block;
+  margin-top: 6px;
+  margin-left: 2px;
+  vertical-align: middle;
+
+}
+
+.el-panel__tool:hover {
+  background: #eaeaea;
+  border-radius: 5px;
+}
+
+.el-menu-item, .el-submenu__title{
+  height: 42px;
+  line-height: 42px;
+}

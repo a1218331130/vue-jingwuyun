@@ -1,0 +1,387 @@
+.control-box_div {
+  background-color: #F5F5F5;
+  flex-grow: 1;
+
+  .top-bar-tool_div {
+    background: #fff;
+    height: 39px;
+    border-bottom: 1px solid #D7D7D7;
+
+    > .el-tabs {
+      float: left;
+      margin-top: -2px;
+      margin-bottom: 0;
+    }
+  }
+
+  .app-toolbar {
+    background: transparent;
+    border: none;
+    padding: 4px 15px;
+
+    &.footer {
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+      position: fixed;
+      bottom: 0;
+      width: calc(100% - 230px);
+      z-index: 3;
+      height: 34px;
+
+      .pagenav {
+        position: fixed;
+        right: 0;
+      }
+    }
+  }
+
+  .app-content-box {
+    padding: 0;
+    //overflow-y: auto;
+    height: calc(100% - 140px);
+  }
+
+  .active {
+    padding: 0;
+    overflow-y: auto;
+    height: calc(100% - 108px);
+  }
+
+  .header-box_div {
+    overflow: hidden;
+
+    > .el-checkbox {
+      background-color: #B2D5F9;
+      padding: 4px 10px;
+      float: left;
+    }
+
+    .header-handle_dl {
+      float: right;
+      margin: 0;
+
+      > dd {
+        float: left;
+        border: 1px solid #e4e4e4;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 10px;
+        background-color: #fff;
+        cursor: pointer;
+        margin-left: 0;
+        margin-right: 5px;
+
+        > i.iconfont {
+          margin-right: 5px;
+        }
+
+        &:hover {
+          background-color: #6FB6EA;
+          color: #fff;
+        }
+      }
+
+      > dd.color-orange {
+        > i.iconfont {
+          color: #F97136;
+        }
+
+        &:hover {
+          background-color: rgba(249, 113, 54, 0.6);
+        }
+      }
+
+      > dd.color-blue {
+        > i.iconfont {
+          color: #1296DB;
+        }
+
+        &:hover {
+          background-color: rgba(18, 150, 219, 0.6);
+        }
+      }
+
+      > dd.color-green {
+        > i.iconfont {
+          color: #39D293;
+        }
+
+        &:hover {
+          background-color: rgba(57, 210, 147, 0.6);
+        }
+      }
+    }
+  }
+
+  .checked-select-list {
+    padding: 0;
+    list-style: none;
+    background-color: #fff;
+    margin: 0 13px;
+
+    > li {
+      border: 1px solid #D7D7D7;
+      overflow: hidden;
+      border-bottom: none;
+
+      &:last-child {
+        border-bottom: 1px solid #D7D7D7;
+        margin-bottom: 54px;
+      }
+
+      > .el-checkbox {
+        padding: 15px 10px;
+        float: left;
+      }
+
+      > .list-info-box_div {
+        float: left;
+        border-left: 1px solid #D7D7D7;
+        padding: 15px 10px 12px;
+        width: calc(100% - 72px);
+        position: relative;
+
+        .list-info-user-img_div {
+          border: 1px solid #eaeaea;
+          width: calc(100% - 8px);
+          padding: 3px;
+          background-color: #f1f1f1;
+          position: relative;
+
+          > img {
+            width: 100%;
+            min-height: 100%;
+          }
+
+          > .people-tag {
+            position: absolute;
+            background-color: #cd2941;
+            padding: 0 10px;
+            color: #fff;
+            top: 0;
+            left: 0;
+            font-size: 12px;
+            line-height: 18px;
+          }
+        }
+
+        .people-button_div {
+          background-color: rgba(84, 168, 231, 0.8);
+          color: #fff;
+          width: 100%;
+          margin: 5px auto;
+          line-height: 24px;
+          font-size: 12px;
+          text-align: center;
+          border-radius: 2px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #54A8E7;
+          }
+        }
+
+        .name-box_elcol {
+          margin-bottom: 5px;
+
+          .name-text {
+            color: #1e1e1e;
+            font-size: 16px;
+            font-weight: bold;
+          }
+
+          .people-label {
+            font-size: 12px;
+            background-color: #FFC323;
+            color: #fff;
+            padding: 0 6px;
+            border-radius: 3px;
+            margin-left: 2px;
+          }
+
+          .info-source {
+            font-size: 12px;
+            margin-left: 2px;
+          }
+        }
+
+        .tool-list_box {
+          background-color: rgba(0, 0, 0, 0.2);
+          position: absolute;
+          z-index: 5;
+          width: calc(100% + 12px);
+          left: 0;
+          top: 0;
+          padding-right: 10px;
+        }
+
+        .info-list-handle_dl {
+          display: none;
+          float: right;
+          /* margin-top: -10px; */
+          margin-right: -17px;
+          font-size: 12px;
+          margin: 8px;
+
+          > dd {
+            float: left;
+            height: 24px;
+            line-height: 24px;
+            padding: 0 10px;
+            background-color: #fff;
+            cursor: pointer;
+            margin-left: 0;
+            margin-right: 5px;
+
+            > i {
+              margin-right: 2px;
+            }
+
+            > i.iconfont {
+              margin-right: 5px;
+            }
+
+            &:hover {
+              background-color: #6FB6EA;
+              color: #fff;
+            }
+          }
+
+          > dd.color-orange {
+            > i.iconfont {
+              color: #F97136;
+            }
+
+            &:hover {
+              background-color: rgba(249, 113, 54, 0.2);
+            }
+          }
+
+          > dd.color-blue {
+            > i.iconfont {
+              color: #1296DB;
+            }
+
+            &:hover {
+              background-color: rgba(18, 150, 219, 0.2);
+            }
+          }
+
+          > dd.color-green {
+            > i.iconfont {
+              color: #39D293;
+            }
+
+            &:hover {
+              background-color: rgba(57, 210, 147, 0.2);
+            }
+          }
+        }
+
+        .user-info-box_elrow {
+          > .el-col {
+            margin: 2px auto;
+
+            > label {
+              float: left;
+              color: #a6a6a6;
+              margin-right: 10px;
+            }
+
+            > span {
+              float: left;
+              color: #333;
+              font-weight: 400;
+            }
+
+            > span.ID-card-text_span {
+              color: #54A8E7;
+            }
+
+            > span.label-box-list_dl {
+              background-color: #5b9ed2;
+              color: #fff;
+              padding: 0 15px 0 10px;
+              font-size: 12px;
+              border-radius: 2px;
+              position: relative;
+              overflow: hidden;
+              margin-right: 15px;
+
+              .label-box-list-dl_after {
+                width: 14px;
+                height: 14px;
+                display: block;
+                background-color: #fff;
+                position: absolute;
+                right: -8px;
+                top: 2px;
+                z-index: 0;
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+              }
+            }
+          }
+        }
+
+        .user-info-box_elrow {
+          padding-right: 30px;
+          overflow: hidden;
+          float: left;
+          line-height: 30px;
+
+          > label {
+            float: left;
+            color: #a6a6a6;
+            margin-right: 10px;
+          }
+
+          > span {
+            float: left;
+            color: #333;
+            font-weight: 400;
+          }
+
+          > span.ID-card-text_span {
+            cursor: pointer;
+            color: #54A8E7;
+          }
+
+          > span.label-box-list_dl {
+            background-color: #FF6600;
+            color: #fff;
+            padding: 0 10px;
+            font-size: 12px;
+            border-radius: 3px;
+          }
+        }
+      }
+
+      &:hover {
+        .info-list-handle_dl {
+          display: inline;
+        }
+      }
+    }
+  }
+
+  .el-dialog--full > .el-dialog__body {
+    height: calc(100% - 126px);
+    max-height: 99%;
+  }
+}
+
+.table-judge {
+  margin-bottom: 54px;
+}
+// 正在加载中样式层调整
+
+.el-loading-mask {
+  // z-index: 2000;
+  z-index: 2;
+}
+
+.group_add_from .el-dialog__body {
+  background: #ebf5fc;
+}

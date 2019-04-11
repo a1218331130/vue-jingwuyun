@@ -1,0 +1,150 @@
+$firstColor: #0c5693;
+$secondColor: #0f9f0a;
+$thirtColor: #d43249;
+$fourthColor: #ef6c02;
+$fifthColor: #105bb8;
+/**情报导航分类/等级颜色**/
+.nav-list-box {
+  //padding: 30px 20px 30px 25px;
+  padding: 10px;
+  .genre-box {
+    margin-bottom: 15px;
+  }
+
+  .type-box {
+    margin: 20px 0 0 15px;
+    height: 22px;
+    margin-bottom: 10px;
+    .type-title {
+      height: 22px;
+      line-height: 22px;
+      padding: 0 10px;
+      max-width: 50px;
+      text-align: center;
+      border-radius: 22px;
+      color: #ffffff;
+      &.c1 {
+        background-color: $firstColor;
+      }
+
+      &.c2 {
+        background-color: $secondColor;
+      }
+
+      &.c3 {
+        background-color: $thirtColor;
+      }
+
+      &.c4 {
+        background-color: $fourthColor;
+      }
+
+      &.c5 {
+        background-color: $fifthColor;
+      }
+    }
+
+    .hr {
+      float: right;
+      margin-top: -13px;
+      width: calc(100% - 85px);
+    }
+  }
+
+  .link-box {
+    margin-left: -10px;
+    .span {
+      display: inline-block;
+      height: 35px;
+      line-height: 35px;
+      width: 200px;
+      padding: 0 8px;
+      margin: 10px 0px 0 30px;
+      cursor: pointer;
+      color: #0b5690;
+      border: 1px solid #88aacd;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      .hold {
+        height: 35px;
+        line-height: 35px;
+        width: 216px;
+        background: rgba(0, 0, 0, .0);
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        left: 0;
+
+        .iconfont {
+          font-size: 21px;
+          text-align: center;
+          width: 100%;
+          height: 35px;
+          line-height: 35px;
+          visibility: hidden;
+          margin: 0;
+          display: block;
+
+          &:hover {
+            background-color: #e2960c;
+          }
+        }
+      }
+
+      &:hover {
+        .hold {
+          z-index: 0;
+          background: rgba(0, 0, 0, .3);
+
+          i {
+            color: #FFFFFF;
+            visibility: visible;
+          }
+        }
+      }
+
+      .label {
+        //z-index: 1;
+        height: 31px;
+        line-height: 17px;
+        width: 22px;
+        font-size: 11px;
+        padding-left:11px;
+        position: absolute;
+        top: 0px;
+        right: -2px;
+
+        //border-radius: 25px;
+        text-align: center;
+        color: #ffffff;
+       // border-left: 35px solid transparent;
+        &.c1 {
+        //  border-top: 35px solid $firstColor;
+          background: url("../../assets/icon-bqz.png") no-repeat -1px -1px ;
+        }
+
+        &.c2 {
+          //background-color: $secondColor;
+          background: url("../../assets/icon-bqz.png") no-repeat -1px -34px ;
+        }
+
+        &.c3 {
+          //background-color: $thirtColor;
+          background: url("../../assets/icon-bqz.png") no-repeat -1px -67px ;
+        }
+
+        &.c4 {
+          background-color: $fourthColor;
+        }
+
+        &.c5 {
+          background-color: $fifthColor;
+        }
+      }
+    }
+  }
+}

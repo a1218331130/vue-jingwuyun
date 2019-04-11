@@ -1,0 +1,1033 @@
+body {
+    background-image: radial-gradient(#2894ff, #014587);
+    font-family: "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB";
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    background: #FFFFFF;
+    font-size: 14px;
+    line-height: 1.5em;
+    display: block;
+    margin: 8px;
+}
+body, html {
+    height: 100%;
+    min-height: 600px;
+}
+.app-wrapper {
+    margin: 0 auto;
+    max-width: 1920px;
+    min-width: 1200px;
+    height: 100vh;
+    min-height: 600px;
+}
+.app-layout, .app-layout > .el-layout__middle, .app-north, .app-south {
+    min-width: 1200px;
+}
+.el-layout--fit {
+    height: 100%;
+    overflow: hidden;
+}
+.el-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+}
+.app-north {
+    background-color: #199ED8;
+}
+.el-region.no-zoom {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+.app-north {
+    height: 60px;
+}
+.app-layout, .app-layout > .el-layout__middle, .app-north, .app-south {
+    min-width: 1200px;
+}
+.el-region-north {
+    width: 100%;
+    top: 0;
+    left: 0;
+    order: 0;
+}
+/* 主内容区 */
+.el-layout__middle {
+    flex-grow: 1;
+    display: flex;
+    align-items: stretch;
+    order: 1;
+    height: 100%;
+}
+.app-center {
+    background-color: #F2F2F2;
+}
+.app-center {
+    padding: 0;
+    background-color: #F5F5F5;
+}
+.el-region-center {
+    flex-grow: 1;
+    overflow: auto;
+    order: 1;
+}
+.app-center .app-center-box {
+    width: calc(50% + 688px);
+    margin: 0 auto;
+    position: absolute;
+    height: calc(100% - 60px);
+    left: 50%;
+    margin-left: -688px;
+}
+.app-center .app-center-box .app-center-context {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+    float: right;
+}
+/* 人员信息 */
+.app-center .app-center-box .app-center-context .dossier-list-context {
+    width: 1190px;
+    margin: 0 auto auto 185px;
+    padding: 20px 0;
+    float: left;
+    background: #F2F2F2;
+}
+/* 人员基本信息 */
+.people-dossier-card {
+    background-color: #fff;
+    padding: 0 10px 25px;
+    margin-bottom: 12px;
+}
+.user-bg {
+    background-repeat: repeat;
+}
+.el-row:after {
+    clear: both;
+}
+.el-row:after, .el-row:before {
+    display: table;
+    content: "";
+}
+.el-col-24 {
+    width: 100%;
+}
+.el-col-1, .el-col-10, .el-col-11, .el-col-12, .el-col-13, .el-col-14, .el-col-15, .el-col-16, .el-col-17, .el-col-18, .el-col-19, .el-col-2, .el-col-20, .el-col-21, .el-col-22, .el-col-23, .el-col-24, .el-col-3, .el-col-4, .el-col-5, .el-col-6, .el-col-7, .el-col-8, .el-col-9 {
+    float: left;
+    box-sizing: border-box;
+}
+/* 人员基本信息头部 */
+.header-tool {
+    overflow: hidden;
+    border-bottom: 2px solid #46BDFD;
+    color: #46BDFD;
+    position: relative;
+}
+.info-box {
+    margin-top: 13px;
+}
+.d-sub-title[data-v-2f28801b] {
+    float: left;
+    font-size: 14px;
+    line-height: 45px;
+}
+.iconfont {
+    font-weight: 400;
+}
+.iconfont {
+    speak: none;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: baseline;
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.header-tool {
+    overflow: hidden;
+    border-bottom: 2px solid #46BDFD;
+    color: #46BDFD;
+    position: relative;
+}
+.icon-iconziti23:before {
+    content: "\E63F";
+}
+.handle-tool {
+    float: right;
+    padding: 0;
+    margin: 9px;
+}
+dl {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+.header-tool {
+    overflow: hidden;
+    border-bottom: 2px solid #46BDFD;
+    color: #46BDFD;
+    position: relative;
+}
+.handle-tool {
+    float: right;
+    padding: 0;
+    margin: 9px;
+}
+dl {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+.header-tool {
+    overflow: hidden;
+    border-bottom: 2px solid #46BDFD;
+    color: #46BDFD;
+    position: relative;
+}
+.handle-tool dd {
+    float: left;
+    width: 65px;
+    height: 28px;
+    background-color: #46BDFD;
+    line-height: 28px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+dd {
+    display: block;
+    -webkit-margin-start: 40px;
+}
+.header-tool {
+    overflow: hidden;
+    border-bottom: 2px solid #46BDFD;
+    color: #46BDFD;
+    position: relative;
+}
+.handle-tool dd .export-text {
+    padding: 0;
+    color: #fff;
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+}
+.el-button--text {
+    border: none;
+    background: 0 0;
+}
+.el-button {
+    border-radius: 0;
+    opacity: 0.9;
+}
+.iconfont {
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: baseline;
+}
+.handle-tool dd .print-text {
+    padding: 0;
+    color: #fff;
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+}
+/* 人员基本信息内容 */
+.el-col-3 {
+    width: 12.5%;
+}
+/* 图片样式 */
+.info-box .users-image {
+    height: 145px;
+    border: 1px solid #D7D7d7;
+    text-align: center;
+    background-color: #F2F2F2;
+    position: relative;
+}
+.info-box .users-image img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(0) translateY(0);
+    border:none;
+}
+.info-box .users-image {
+    height: 145px;
+    border: 1px solid #D7D7d7;
+    text-align: center;
+    background-color: #F2F2F2;
+    position: relative;
+}
+/* 基本信息 */
+.el-col-21 {
+    width: 87.5%;
+}
+.el-row {
+    position: relative;
+    box-sizing: border-box;
+}
+.info-box .info-text-name {
+    margin-bottom: 12px;
+    margin-left: 10px;
+}
+.info-box .info-text-name .name {
+    font-size: 22px;
+    color: #1E1E1E;
+}
+.info-box .info-text-name .namesfz {
+    font-size: 22px;
+    color: #1E1E1E;
+    margin-left: 15px;
+}
+.info-box .info-text-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.el-col-8 {
+    width: 33.33333%;
+}
+.info-box .info-text-box label {
+    min-height: 28px;
+    line-height: 28px;
+    padding: 0 8px;
+    background-color: #F2F2F2;
+    margin-bottom: 2px;
+}
+
+label {
+    margin-right: 10px;
+    width: 70px;
+    text-align: justify;
+    text-align-last: justify;
+    cursor: default;
+}
+.info-box .info-text-box span.lable-text-input {
+    line-height: 28px;
+    width: 65%;
+}
+/* 表格样式 */
+.el-table::after, .el-table::before {
+    content: '';
+    position: absolute;
+    background-color: #dfe6ec;
+    z-index: 0;
+}
+.el-table::before {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+}
+.certificate-box {
+    margin-top: 13px;
+}
+.el-table--fit {
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.el-table, .el-table td, .el-table th, .el-tag {
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.el-table .hidden-columns {
+    position: absolute;
+    z-index: -1;
+}
+.el-table .hidden-columns, .el-table td.is-hidden, .el-table th.is-hidden, .el-table--hidden {
+    visibility: hidden;
+}
+/*.el-table .cell, .el-table__footer-wrapper, .el-table__header-wrapper {
+    overflow: hidden;
+}*/
+.el-table__body, .el-table__footer, .el-table__header {
+    table-layout: fixed;
+}
+/*999999999999999999999999999999999999999*/
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+.el-table tr {
+    background-color: #fff;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.el-table th.is-leaf {
+    text-align: center;
+    background: #97cbff;
+}
+.el-table td, .el-table th.is-leaf {
+    border-bottom: 1px solid #dfe6ec;
+}
+.el-table td.is-center, .el-table th.is-center {
+    text-align: center;
+}
+.el-table--border td, .el-table--border th {
+    border-right: 1px solid #dfe6ec;
+}
+.el-table--border th, .el-table__fixed-right-patch {
+    border-bottom: 1px solid #dfe6ec;
+}
+.el-table th {
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: #eef1f6;
+    text-align: left;
+}
+.el-table td, .el-table th {
+    height: 40px;
+    min-width: 0;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    position: relative;
+}
+.el-table, .el-table td, .el-table th, .el-tag {
+    box-sizing: border-box;
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+.el-table th.is-leaf .cell {
+    color: #ffffff;
+    background: #97cbff;
+}
+.el-table th>.cell {
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    line-height: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.el-table .caret-wrapper, .el-table th>.cell {
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+}
+.el-table .cell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 5px;
+}
+.el-table .cell {
+    white-space: normal;
+    word-break: break-all;
+    line-height: 24px;
+}
+/*99999999999999999999999*/
+.el-table__body-wrapper {
+    position: relative;
+}
+.el-table__body-wrapper, .el-table__footer-wrapper, .el-table__header-wrapper {
+    width: 100%;
+}
+.el-table__body, .el-table__footer, .el-table__header {
+    table-layout: fixed;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+.el-table tr {
+    background-color: #fff;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.el-table--enable-row-transition .el-table__body td {
+    transition: background-color .25s ease;
+}
+.el-table td.is-center, .el-table th.is-center {
+    text-align: center;
+}
+.el-table td {
+    text-align: left;
+    transition: background-color 0.0s ease;
+    background: #f4f9fd;
+}
+.el-table--border td, .el-table--border th {
+    border-right: 1px solid #dfe6ec;
+}
+.el-table td, .el-table th.is-leaf {
+    border-bottom: 1px solid #dfe6ec;
+}
+.el-table td, .el-table th {
+    height: 40px;
+    min-width: 0;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    position: relative;
+}
+
+.el-table, .el-table td, .el-table th, .el-tag {
+    box-sizing: border-box;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+.el-tag {
+    min-width: 25px;
+}
+.el-tag--primary {
+    background-color: rgba(32,160,255,.1);
+    border-color: rgba(32,160,255,.2);
+    color: #20a0ff;
+}
+.el-tag {
+    display: inline-block;
+    padding: 0 5px;
+    height: 24px;
+    line-height: 22px;
+    font-size: 12px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    white-space: nowrap;
+}
+.el-table {
+    color: #666666;
+}
+/* 暂无信息 */
+.el-table__empty-block {
+    position: relative;
+    height: 60px;
+    text-align: center;
+    width: 100%;
+}
+.el-table__empty-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    color: #5e7382;
+}
+.el-table__body, .el-table__footer, .el-table__header {
+    table-layout: fixed;
+}
+.el-table .cell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 5px;
+}
+.el-table .cell {
+    word-break: break-all;
+    line-height: 24px;
+}
+.time-text {
+    color: #ff6633;
+    margin-bottom: 0;
+}
+.other-text {
+    white-space: normal;
+    color: #000;
+}
+/* 新增按钮 */
+.handle-tool dd .export-text.icon-plus {
+    background-color: #f90;
+}
+.handle-tool dd .export-text {
+    padding: 0;
+    color: #fff;
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+}
+.el-button:hover {
+    opacity: 1;
+}
+/* 相关信息 */
+.header-tool.header-border {
+    border-bottom: 1px solid #eee;
+}
+.header-tool {
+    overflow: hidden;
+    color: #46BDFD;
+    position: relative;
+}
+
+.cursor--pointer {
+    cursor: pointer;
+    opacity: 1;
+}
+/*
+时光轴
+ */
+ .card-sub-title {
+     color: #46bbfb;
+ }
+ .time_line_box {
+    min-height: 50px;
+}
+.time_Line_start {
+    position: relative;
+    width: 90px;
+    height: 40px;
+}
+.time_Line_start:before {
+    content: '';
+    display: block;
+    clear: both;
+}
+.time_Line_start .start_br {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    color: #4ab7ff;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #f2f2f2;
+    border: 1px solid #4ab7ff;
+    position: absolute;
+    right: -37px;
+}
+.time_Line_start .start_br .iconfont {
+    font-size: 25px;
+}
+.icon-ditu:before {
+    content: "\E635";
+}
+.timeLine_box {
+    padding: 0 15px;
+}
+.timeLine_box_year .timeLine_Left {
+    background: #4ab7ff;
+    color: #fff;
+    border-radius: 20px 0 0 20px;
+}
+.timeLine_Left {
+    width: 90px;
+    float: left;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    margin-top: 15px;
+}
+.timeLine_Right_year {
+    float: left;
+    width: calc(100% - 90px);
+    box-sizing: border-box;
+    padding-bottom: 50px;
+    border-left: 1px solid #e5e5e5;
+}
+.timeLine_box_year .timeLine_Left .timeLine_time {
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+}
+.timeLine_box_year .timeLine_Left .caret-l {
+    margin-left: 10px;
+}
+[class*=" el-icon-"], [class^=el-icon-] {
+    font-family: element-icons!important;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: baseline;
+    display: inline-block;
+    -moz-osx-font-smoothing: grayscale;
+}
+.el-icon-caret-top:before {
+    content: "\E607";
+}
+.time_line_box .detailed {
+    max-height: 350px;
+}
+.time-box:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.timeLine_box {
+    padding: 0 15px;
+}
+.timeLine_Left .posicon {
+    position: absolute;
+    right: -10px;
+    width: 22px;
+    height: 22px;
+    background: #4ab7ff;
+    color: #fff;
+    border-radius: 50%;
+    line-height: 22px;
+}
+.icon-city:before {
+    content: "\E605";
+}
+.line-content span {
+    margin-left: 10px;
+    font-size: 26px;
+    color: #48ACE6;
+    margin-top: 10px;
+}
+.timeline_address {
+    color: #000;
+    font-weight: bold;
+}
+.timeline_body {
+    color: #4ab7ff;
+}
+.timeLine_Right {
+    float: left;
+    min-height: 50px;
+    width: calc(100% - 90px);
+    box-sizing: border-box;
+    padding-bottom: 30px;
+    border-left: 1px solid #e5e5e5;
+}
+/*
+时光轴
+ */
+/*轨迹规律*/
+.kinship-box {
+    text-align: center;
+    margin-top: 13px;
+}
+/*轨迹规律*/
+
+/*财产信息*/
+.el-tabs__item.is-active {
+    color: #5FAAE2;
+}
+.el-tabs__active-bar {
+    background-color: #5FAAE2;
+}
+.el-tabs__active-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    z-index: 1;
+    transition: transform .3s cubic-bezier(.645,.045,.355,1);
+    list-style: none;
+}
+.certificate .el-tabs__nav {
+     float: left;
+    border: 0;
+}
+.el-tabs__nav {
+    white-space: nowrap;
+    position: relative;
+    transition: transform .3s;
+}
+.certificate .el-tabs {
+    margin-bottom: 10px !important;
+    margin-top: -13px !important;
+}
+/*财产信息*/
+
+/* 车辆信息 */
+.app-center .app-center-box .app-center-context .dossier-list-context.car-dossier {
+    width: 1190px;
+    margin: 0 auto auto 185px;
+    padding: 20px 0;
+    float: left;
+    background: #F2F2F2;
+}
+/*基础信息*/
+.car-dossier .car-dossier-card {
+    background-color: #fff;
+    padding: 0 10px 25px;
+    margin-bottom: 12px;
+}
+.user-bg {
+    background-repeat: repeat;
+}
+.el-row {
+    position: relative;
+    box-sizing: border-box;
+}
+.car-dossier .header-tool {
+    overflow: hidden;
+    border-bottom: 2px solid #46BDFD;
+    color: #46BDFD;
+}
+.car-dossier .info-box {
+    margin-top: 13px;
+}
+.car-dossier .el-col-6 {
+    width: 25%;
+}
+.info-box .car-imgbg {
+    background: #dff1ff;
+    height: 252px;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    position: relative;
+}
+.info-box .car-imgbg .iconfont {
+    font-size: 42px;
+    color: #b9dfff;
+    text-align: center;
+    width: 100%;
+    height: 252px;
+}
+.car-dossier .info-box {
+    margin-top: 13px;
+}
+.car-dossier .info-box .info-text-name {
+    margin-bottom: 12px;
+    margin-left: 10px;
+}
+.car-dossier .info-box .info-text-name .name {
+    font-size: 22px;
+    color: #217fbc;
+    font-weight: bold;
+    vertical-align: middle;
+}
+.car-dossier .info-box .info-text-box {
+    display: flex;
+}
+.el-col-12 {
+    width: 50%;
+}
+.car-dossier .info-box .info-text-box label {
+    min-height: 28px;
+    line-height: 28px;
+    padding: 0 8px;
+    background-color: #F2F2F2;
+    margin-bottom: 2px;
+}
+.car-dossier label {
+    margin-right: 10px;
+    width: 110px;
+    text-align: justify;
+    text-align-last: justify;
+}
+.car-dossier .info-box .info-text-box span.lable-text-input {
+    line-height: 28px;
+    width: 65%;
+}
+.car-dossier .info-box {
+    margin-top: 13px;
+}
+.el-col-18 {
+    width: 75%;
+}
+/* 车主信息头部标题 */
+.car-dossier .car-dossier-card {
+    background-color: #fff;
+    padding: 0 10px 25px;
+    margin-bottom: 12px;
+}
+.car-dossier .header-tool {
+    overflow: hidden;
+    border-bottom: 2px solid #46BDFD;
+    color: #46BDFD;
+}
+.car-dossier .d-sub-title {
+    float: left;
+    font-size: 14px;
+    line-height: 45px;
+}
+.car-dossier .import-btn {
+    float: right;
+    margin: 9px;
+}
+.import-btn.add {
+    background-color: #FF9900;
+    color: #fff;
+}
+.el-button [class*=el-icon-]+span {
+    margin-left: 5px;
+}
+.import-btn {
+    border-radius: 3px;
+    border: none;
+    padding: 7px 10px;
+}
+.el-button {
+    background: #fff;
+    font-size: 14px;
+    opacity: 0.9;
+    user-select: none;
+}
+/* 牌曾挂车 */
+.car-dossier .car-box-wapper {
+    margin-bottom: 10px;
+}
+.car-dossier .car-box-wapper .car-img {
+    height: 90px;
+    box-sizing: border-box;
+    border: 1px solid #e4e4e4;
+    border-right: none;
+}
+.el-col-3 {
+    width: 12.5%;
+}
+.car-dossier .car-box-wapper .car-img .avatar-pic {
+    box-sizing: border-box;
+    width: 148px;
+}
+.car-dossier .car-box-wapper .car-img .avatar-pic img {
+    width: 148px;
+    height: 88px;
+}
+.el-col-21 {
+    width: 87.5%;
+}
+.car-dossier .car-box-wapper .car-info-content .car-info-item {
+    box-sizing: border-box;
+    width: 340px;
+    float: left;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 45px;
+    line-height: 44px;
+    text-align: center;
+}
+.car-dossier .car-box-wapper .car-info-content .car-info-item .car-itme-label {
+    color: #fff;
+    box-sizing: border-box;
+    background: #b4d6f1;
+    width: 110px;
+    border-right: 1px solid #e4e4e4;
+}
+.car-dossier .car-box-wapper .car-info-content .car-info-item .car-item-content {
+    box-sizing: border-box;
+    width: 230px;
+}
+/* 车曾挂牌 */
+col-4 {
+    width: 16.66667%;
+}
+.car-dossier .carhistory-list {
+    text-align: center;
+    border: 1px solid #ccc;
+}
+.car-dossier .carhistory-list .carlist-header {
+    padding: 10px 0;
+    font-weight: bold;
+    font-size: 18px;
+    background: #457dbc;
+    color: #fff;
+}
+.car-dossier .carhistory-list .carlist-content {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+.car-dossier .carhistory-list .carlist-foot {
+    padding: 3px 0;
+    color: #69b4fd;
+}
+.car-dossier .car-history-box .contact-box {
+    margin-top: 13px;
+    min-height: 113px;
+}
+/* 车辆参数配置 */
+.car-dossier .parameter-box {
+    margin-top: 13px;
+}
+.car-dossier .parameter-box .info-text-box label {
+    text-align: left;
+    height: 35px;
+    line-height: 35px;
+    width: 200px;
+    display: inline-block;
+    background: #e4f0fa;
+}
+/* 暂无信息 */
+.car-dossier .kinship-box .trajecth {
+    height: 113px;
+}
+.car-dossier .empty, .empty--tips {
+    text-align: center;
+    font-size: 16px;
+    color: #999999;
+    line-height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.empty:before, .empty--tips:before {
+    font-family: element-icons !important;
+    font-size: 32px;
+    content: '\E615';
+    display: block;
+}
+.empty:after, .empty--tips:after {
+    content: '\6682\65E0\76F8\5173\5185\5BB9';
+}
+/* 打印按钮 快照按钮 */
+.car-dossier .handle-tool dd .export-text {
+    padding: 0;
+    color: #fff !important;
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+}
+.car-dossier .handle-tool dd {
+    float: left;
+    width: 65px;
+    height: 28px;
+    background-color: #46BDFD;
+    line-height: 28px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.car-dossier .handle-tool {
+    float: right;
+    padding: 0;
+    margin: 9px;
+}

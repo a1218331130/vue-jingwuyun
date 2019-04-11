@@ -1,0 +1,119 @@
+@import "vars";
+@import "mixins";
+.app-top-bar {
+    background: $transparent;
+    z-index: 999;
+}
+
+.app-top-bar>.el-col {
+    height: $headerHeight;
+    float: left;
+}
+
+.topBarbg>img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+}
+
+.app-sys {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: $sideBarWidth;
+    line-height: $headerHeight;
+    background: $transparent;
+}
+
+.app-logo {
+    width: $sideBarCollapseWidth;
+    height: $headerHeight;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.app-logo img {
+    height: 35px;
+    width: 35px;
+    vertical-align: top;
+    margin-top: 12px;
+}
+
+.app-name {
+    font-size: $XL;
+    color: $lightGray;
+    text-shadow: 2px 2px 2px #666;
+}
+
+.sub-title {
+    position: relative;
+    font-size: $XL;
+    color: $lightGray;
+    line-height: $headerHeight;
+    text-shadow: 2px 2px 2px #666;
+}
+
+.app-top-menu {
+    width: auto;
+}
+
+.app-top-bar>.app-user-info {
+    position: relative;
+    z-index: 2;
+    float: right; //width: 350px;
+    text-align: right; //padding-right: $M;
+}
+
+.app-user-info {
+    .el-dropdown {
+        padding: 0 5px;
+    }
+}
+
+.userinfo-inner {
+    color: $white;
+    cursor: pointer;
+}
+
+.userinfo-inner img {
+    width: 40px;
+    height: 40px;
+    margin: 10px 0 10px 10px;
+    float: left;
+}
+
+.userinfo-inner i {
+    //line-height: $headerHeight;
+    margin-left: $XL;
+    font-size: $XL;
+    color: #fff;
+}
+
+.app-top-menu {
+    .el-menu {
+        background-color: transparent;
+    }
+    .el-submenu__title {
+        color: $lightGray;
+        &:hover {
+            background-color: $primaryHover;
+        }
+    }
+    >.el-menu-item {
+        color: $lightGray;
+        &:hover {
+            background-color: $primaryHover;
+        }
+        &.is-active {
+            border-bottom-color: $primaryLightColor;
+            color: $white;
+        }
+    }
+    .el-submenu {
+        .el-submenu__icon-arrow {
+            color: $darkWhite;
+        }
+    }
+}
